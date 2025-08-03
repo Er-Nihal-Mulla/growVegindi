@@ -2,7 +2,7 @@
 
 import { useContext } from 'react';
 import Link from 'next/link';
-import { ShoppingCart, UserCircle, LogOut } from 'lucide-react';
+import { ShoppingCart, UserCircle, LogOut, Globe } from 'lucide-react';
 import { AppContext } from '@/context/app-context';
 import { Button } from '@/components/ui/button';
 import {
@@ -34,19 +34,6 @@ export function SiteHeader() {
           <Link href="/" className="flex items-center gap-2" aria-label="Grow Vejindi Home">
             <Logo />
           </Link>
-          <div className="hidden md:flex items-center gap-2 border-l pl-4">
-            {languages.map((lang) => (
-              <Button
-                key={lang.code}
-                variant={language === lang.code ? 'secondary' : 'ghost'}
-                size="sm"
-                onClick={() => setLanguage(lang.code)}
-                className={cn("text-sm", language === lang.code ? "font-semibold" : "font-normal")}
-              >
-                {lang.name}
-              </Button>
-            ))}
-          </div>
         </div>
 
 
@@ -59,8 +46,28 @@ export function SiteHeader() {
               {content.buttons.browseProducts}
             </Link>
           </nav>
-          
+
           <div className="flex items-center gap-2">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Globe className="h-5 w-5" />
+                  <span className="sr-only">Change language</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                {languages.map((lang) => (
+                  <DropdownMenuItem
+                    key={lang.code}
+                    onSelect={() => setLanguage(lang.code)}
+                    className={cn(language === lang.code ? 'font-semibold bg-secondary' : 'font-normal')}
+                  >
+                    {lang.name}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+
             {isAuthenticated ? (
                <div className="flex items-center gap-3">
                 <Link href="/cart" passHref>
@@ -108,15 +115,12 @@ export function SiteHeader() {
              <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                     <Button variant="ghost" size="sm">
-                        Languages
+                        Menu
                     </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                    {languages.map((lang) => (
-                    <DropdownMenuItem key={lang.code} onSelect={() => setLanguage(lang.code)}>
-                        {lang.name}
-                    </DropdownMenuItem>
-                    ))}
+                  <DropdownMenuItem asChild><Link href="/">Home</Link></DropdownMenuItem>
+                  <DropdownMenuItem asChild><Link href="/products">{content.buttons.browseProducts}</Link></DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
           </div>
