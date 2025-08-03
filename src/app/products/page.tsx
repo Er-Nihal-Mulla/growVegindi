@@ -40,7 +40,7 @@ export default function ProductsPage() {
 
   const getProductHint = (productName: string) => {
     const name = productName.toLowerCase();
-    if (name.includes('tomatoes')) return 'tomatoes';
+    if (name.includes('tomatoes')) return 'fresh tomatoes';
     if (name.includes('spinach')) return 'spinach';
     if (name.includes('potatoes')) return 'potatoes';
     if (name.includes('onions')) return 'onions';
