@@ -38,6 +38,17 @@ export default function ProductsPage() {
     );
   }
 
+  const getProductHint = (productName: string) => {
+    const name = productName.toLowerCase();
+    if (name.includes('tomatoes')) return 'tomatoes';
+    if (name.includes('spinach')) return 'spinach';
+    if (name.includes('potatoes')) return 'potatoes';
+    if (name.includes('onions')) return 'onions';
+    if (name.includes('chilies')) return 'chili';
+    if (name.includes('ginger')) return 'ginger';
+    return 'vegetable';
+  }
+
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-headline font-bold mb-8">Our Fresh Products</h1>
@@ -52,7 +63,7 @@ export default function ProductsPage() {
                     width={400}
                     height={300}
                     className="object-cover"
-                    data-ai-hint={product.name.split(' ')[1]?.toLowerCase() === 'spinach' ? 'spinach' : (product.name.split(' ')[1]?.toLowerCase() || 'vegetable')}
+                    data-ai-hint={getProductHint(product.name)}
                   />
               </div>
             </CardHeader>
