@@ -1,3 +1,4 @@
+
 'use client';
 
 import { createContext, useState, ReactNode, useEffect, useCallback } from 'react';
@@ -18,6 +19,8 @@ type AppContextType = {
   clearCart: () => void;
   cartCount: number;
   cartTotal: number;
+  isLoading: boolean;
+  setIsLoading: (isLoading: boolean) => void;
 };
 
 export const AppContext = createContext<AppContextType>({
@@ -34,6 +37,8 @@ export const AppContext = createContext<AppContextType>({
   clearCart: () => {},
   cartCount: 0,
   cartTotal: 0,
+  isLoading: false,
+  setIsLoading: () => {},
 });
 
 export function AppProvider({ children }: { children: ReactNode }) {
@@ -41,6 +46,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -144,7 +150,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
         updateQuantity,
         clearCart,
         cartCount,
-        cartTotal
+        cartTotal,
+        isLoading,
+        setIsLoading,
       }}
     >
       {children}

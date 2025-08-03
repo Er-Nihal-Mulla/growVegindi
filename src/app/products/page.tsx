@@ -1,6 +1,7 @@
+
 'use client';
 
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -19,7 +20,11 @@ const mockProducts: Product[] = [
 ];
 
 export default function ProductsPage() {
-  const { isAuthenticated, addToCart } = useContext(AppContext);
+  const { isAuthenticated, addToCart, setIsLoading } = useContext(AppContext);
+  
+  useEffect(() => {
+    setIsLoading(false);
+  }, [setIsLoading]);
 
   if (!isAuthenticated) {
     return (
@@ -27,7 +32,7 @@ export default function ProductsPage() {
         <h1 className="text-2xl font-bold mb-4">Please Sign In</h1>
         <p className="mb-8 text-muted-foreground">You need to be logged in to view our products.</p>
         <Link href="/sign-in">
-          <Button>Sign In</Button>
+          <Button onClick={() => setIsLoading(true)}>Sign In</Button>
         </Link>
       </div>
     );

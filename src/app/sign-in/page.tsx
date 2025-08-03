@@ -1,6 +1,7 @@
+
 'use client';
 
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -10,23 +11,30 @@ import { Label } from '@/components/ui/label';
 import { AppContext } from '@/context/app-context';
 
 export default function SignInPage() {
-  const { signIn } = useContext(AppContext);
+  const { signIn, setIsLoading } = useContext(AppContext);
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    setIsLoading(false);
+  }, [setIsLoading]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     // In a real app, this would be an async call
-    const mockUser = {
-      id: '1',
-      name: 'Test User',
-      email: email,
-    };
-    signIn(mockUser);
-    router.push('/products');
+    setTimeout(() => {
+        const mockUser = {
+          id: '1',
+          name: 'Test User',
+          email: email,
+        };
+        signIn(mockUser);
+        router.push('/products');
+        // No need to set loading to false here, page transition will handle it
+    }, 1000);
   };
 
   return (
@@ -68,7 +76,7 @@ export default function SignInPage() {
             </Button>
             <div className="mt-4 text-center text-sm">
               Don&apos;t have an account?{' '}
-              <Link href="/sign-up" className="underline">
+              <Link href="/sign-up" className="underline" onClick={() => setIsLoading(true)}>
                 Sign up
               </Link>
             </div>

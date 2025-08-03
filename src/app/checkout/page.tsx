@@ -1,6 +1,7 @@
+
 'use client';
 
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -12,10 +13,14 @@ import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
 
 export default function CheckoutPage() {
-  const { isAuthenticated, cartTotal, cart, clearCart } = useContext(AppContext);
+  const { isAuthenticated, cartTotal, cart, clearCart, setIsLoading } = useContext(AppContext);
   const router = useRouter();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
+  
+  useEffect(() => {
+    setIsLoading(false);
+  }, [setIsLoading]);
 
   if (!isAuthenticated) {
     return (
@@ -23,7 +28,7 @@ export default function CheckoutPage() {
         <h1 className="text-2xl font-bold mb-4">Please Sign In</h1>
         <p className="mb-8 text-muted-foreground">You need to be logged in to proceed to checkout.</p>
         <Link href="/sign-in">
-          <Button>Sign In</Button>
+          <Button onClick={() => setIsLoading(true)}>Sign In</Button>
         </Link>
       </div>
     );
@@ -35,7 +40,7 @@ export default function CheckoutPage() {
         <h1 className="text-2xl font-bold mb-4">Your cart is empty!</h1>
         <p className="mb-8 text-muted-foreground">Add some products before you can checkout.</p>
         <Link href="/products">
-          <Button>Browse Products</Button>
+          <Button onClick={() => setIsLoading(true)}>Browse Products</Button>
         </Link>
       </div>
     );
@@ -51,6 +56,7 @@ export default function CheckoutPage() {
       });
       clearCart();
       router.push('/');
+      setIsLoading(true);
     }, 1500);
   };
 

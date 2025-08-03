@@ -1,6 +1,7 @@
+
 'use client';
 
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -12,8 +13,12 @@ import { content as allContent } from '@/lib/content';
 import { Trash2, IndianRupee } from 'lucide-react';
 
 export default function CartPage() {
-  const { language, isAuthenticated, cart, updateQuantity, removeFromCart, cartTotal } = useContext(AppContext);
+  const { language, isAuthenticated, cart, updateQuantity, removeFromCart, cartTotal, setIsLoading } = useContext(AppContext);
   const content = allContent[language].cart;
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, [setIsLoading]);
 
   if (!isAuthenticated) {
     return (
@@ -21,7 +26,7 @@ export default function CartPage() {
         <h1 className="text-2xl font-bold mb-4">Please Sign In</h1>
         <p className="mb-8 text-muted-foreground">You need to be logged in to view your cart.</p>
         <Link href="/sign-in">
-          <Button>Sign In</Button>
+          <Button onClick={() => setIsLoading(true)}>Sign In</Button>
         </Link>
       </div>
     );
@@ -33,7 +38,7 @@ export default function CartPage() {
         <h1 className="text-2xl font-bold mb-4">{content.empty}</h1>
         <p className="mb-8 text-muted-foreground">Looks like you haven't added anything to your cart yet.</p>
         <Link href="/products">
-          <Button>Browse Products</Button>
+          <Button onClick={() => setIsLoading(true)}>Browse Products</Button>
         </Link>
       </div>
     );
@@ -116,7 +121,7 @@ export default function CartPage() {
             </CardContent>
             <CardFooter>
               <Link href="/checkout" className="w-full">
-                <Button className="w-full">{content.checkout}</Button>
+                <Button className="w-full" onClick={() => setIsLoading(true)}>{content.checkout}</Button>
               </Link>
             </CardFooter>
           </Card>

@@ -1,6 +1,7 @@
+
 'use client';
 
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CheckCircle, Leaf, Handshake, IndianRupee, Award, Rocket } from 'lucide-react';
@@ -10,8 +11,12 @@ import { AppContext } from '@/context/app-context';
 import { content as allContent } from '@/lib/content';
 
 export default function HomePage() {
-  const { language } = useContext(AppContext);
+  const { language, setIsLoading } = useContext(AppContext);
   const content = allContent[language];
+  
+  useEffect(() => {
+    setIsLoading(false);
+  }, [setIsLoading]);
 
   const benefits = [
     { icon: Leaf, text: content.whyChooseUs.points[0] },
