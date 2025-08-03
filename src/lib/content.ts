@@ -50,8 +50,8 @@ type ContentStructure = {
 export const content: Record<Language, ContentStructure> = {
   en: {
     hero: {
-      title: 'From Our Farms to Your Family',
-      subtitle: 'Fresh, Local Produce Delivered to Your Doorstep.',
+      title: 'Sell Your Farm Fresh Produce Directly to Buyers',
+      subtitle: 'Join Grow Vejindi and connect directly with local customers. Skip the middlemen, set your own prices, and grow your farm income.',
     },
     whatWeDo: {
       title: 'How It Works',
@@ -79,7 +79,7 @@ export const content: Record<Language, ContentStructure> = {
         subtitle: "Join our community of farmers and buyers today. Experience the future of fresh produce."
     },
     buttons: {
-      startSelling: 'Start Selling',
+      startSelling: 'Start Selling Now',
       shopNow: 'Shop Now',
       registerFarmer: 'Register as Farmer',
       browseProducts: 'Browse Products',
@@ -105,8 +105,8 @@ export const content: Record<Language, ContentStructure> = {
   },
   hi: {
     hero: {
-      title: 'हमारे खेतों से आपके परिवार तक',
-      subtitle: 'ताज़ा, स्थानीय उपज आपके द्वार पर।',
+      title: 'अपनी खेत की ताजी उपज सीधे खरीदारों को बेचें',
+      subtitle: 'ग्रो वेजिंदी से जुड़ें और सीधे स्थानीय ग्राहकों से जुड़ें। बिचौलियों को छोड़ें, अपनी कीमतें खुद तय करें और अपनी खेती की आय बढ़ाएं।\nस्थानीय खरीदारों से सीधे जुड़ें और अपनी आय बढ़ाएं।',
     },
     whatWeDo: {
       title: 'यह कैसे काम करता है',
@@ -134,7 +134,7 @@ export const content: Record<Language, ContentStructure> = {
         subtitle: "आज ही हमारे किसानों और खरीदारों के समुदाय में शामिल हों। ताज़ा उपज के भविष्य का अनुभव करें।"
     },
     buttons: {
-      startSelling: 'बिक्री शुरू करें',
+      startSelling: 'अभी बेचना शुरू करें',
       shopNow: 'अभी खरीदें',
       registerFarmer: 'किसान के रूप में पंजीकरण करें',
       browseProducts: 'उत्पाद ब्राउज़ करें',
@@ -160,8 +160,8 @@ export const content: Record<Language, ContentStructure> = {
   },
   mr: {
     hero: {
-      title: 'आमच्या शेतातून तुमच्या कुटुंबापर्यंत',
-      subtitle: 'ताजी, स्थानिक भाजीपाला तुमच्या दारात.',
+      title: 'तुमची शेतातील ताजी उत्पादने थेट खरेदीदारांना विका',
+      subtitle: 'ग्रो वेजिंदीमध्ये सामील व्हा आणि थेट स्थानिक ग्राहकांशी संपर्क साधा. मध्यस्थांना वगळा, स्वतःच्या किंमती ठरवा आणि आपले शेती उत्पन्न वाढवा.',
     },
     whatWeDo: {
       title: 'हे कसे कार्य करते',
@@ -189,7 +189,7 @@ export const content: Record<Language, ContentStructure> = {
         subtitle: "आजच आमच्या शेतकरी आणि खरेदीदारांच्या समुदायात सामील व्हा. ताज्या उत्पादनांच्या भविष्याचा अनुभव घ्या."
     },
     buttons: {
-      startSelling: 'विक्री सुरू करा',
+      startSelling: 'आता विक्री सुरू करा',
       shopNow: 'आता खरेदी करा',
       registerFarmer: 'शेतकरी म्हणून नोंदणी करा',
       browseProducts: 'उत्पादने ब्राउझ करा',
