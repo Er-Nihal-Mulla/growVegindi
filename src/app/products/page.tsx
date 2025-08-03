@@ -76,7 +76,7 @@ export default function ProductsPage() {
                 <IndianRupee className="h-5 w-5 mr-1" />
                 {product.price.toFixed(2)}
               </p>
-              <Button onClick={() => addToCart(product)}>
+              <Button onClick={() => addToCart(product)} loading={!isAuthenticated}>
                 <ShoppingCart className="mr-2 h-4 w-4" />
                 Add to Cart
               </Button>
