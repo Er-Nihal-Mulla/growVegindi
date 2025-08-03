@@ -2,7 +2,7 @@
 
 import { useContext } from 'react';
 import Link from 'next/link';
-import { ShoppingCart, UserCircle, LogOut, ChevronDown } from 'lucide-react';
+import { ShoppingCart, UserCircle, LogOut } from 'lucide-react';
 import { AppContext } from '@/context/app-context';
 import { Button } from '@/components/ui/button';
 import {
@@ -16,32 +16,39 @@ import {
 import { Logo } from '@/components/logo';
 import { content as allContent } from '@/lib/content';
 import { Badge } from './ui/badge';
+import { cn } from '@/lib/utils';
 
 export function SiteHeader() {
   const { language, setLanguage, isAuthenticated, user, signOut, cartCount } = useContext(AppContext);
   const content = allContent[language];
+  const languages: { code: 'en' | 'hi' | 'mr', name: string }[] = [
+    { code: 'en', name: 'English' },
+    { code: 'hi', name: 'हिंदी' },
+    { code: 'mr', name: 'मराठी' },
+  ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-20 items-center justify-between">
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <button
-              className="flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-md transition-opacity hover:opacity-80"
-              aria-label="Toggle language menu"
-            >
-              <Logo />
-              <ChevronDown className="h-4 w-4 text-muted-foreground" />
-            </button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="start">
-            <DropdownMenuLabel>Select Language</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem onSelect={() => setLanguage('en')}>English</DropdownMenuItem>
-            <DropdownMenuItem onSelect={() => setLanguage('hi')}>हिंदी</DropdownMenuItem>
-            <DropdownMenuItem onSelect={() => setLanguage('mr')}>मराठी</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <div className="flex items-center gap-6">
+          <Link href="/" className="flex items-center gap-2" aria-label="Grow Vejindi Home">
+            <Logo />
+          </Link>
+          <div className="hidden md:flex items-center gap-2 border-l pl-4">
+            {languages.map((lang) => (
+              <Button
+                key={lang.code}
+                variant={language === lang.code ? 'secondary' : 'ghost'}
+                size="sm"
+                onClick={() => setLanguage(lang.code)}
+                className={cn("text-sm", language === lang.code ? "font-semibold" : "font-normal")}
+              >
+                {lang.name}
+              </Button>
+            ))}
+          </div>
+        </div>
+
 
         <div className="flex items-center gap-4">
           <nav className="hidden md:flex gap-6">
@@ -96,6 +103,22 @@ export function SiteHeader() {
                 </Link>
               </div>
             )}
+          </div>
+          <div className="md:hidden">
+             <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="sm">
+                        Languages
+                    </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                    {languages.map((lang) => (
+                    <DropdownMenuItem key={lang.code} onSelect={() => setLanguage(lang.code)}>
+                        {lang.name}
+                    </DropdownMenuItem>
+                    ))}
+                </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
       </div>
