@@ -114,7 +114,6 @@ export default function HomePage() {
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/sign-up?role=farmer" passHref><Button size="lg" variant="secondary" onClick={() => setIsLoading(true)}>{content.buttons.registerFarmer}</Button></Link>
               <Link href="/products" passHref><Button size="lg" variant="secondary" onClick={() => setIsLoading(true)}>{content.buttons.shopNow}</Button></Link>
-               <Link href="/sign-up" passHref><Button size="lg" variant="outline" className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary" onClick={() => setIsLoading(true)}>{content.buttons.startSelling}</Button></Link>
             </div>
           </div>
         </section>

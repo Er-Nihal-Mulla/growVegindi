@@ -22,7 +22,6 @@ type ContentStructure = {
     subtitle: string;
   }
   buttons: {
-    startSelling: string;
     shopNow: string;
     registerFarmer: string;
     browseProducts: string;
@@ -79,7 +78,6 @@ export const content: Record<Language, ContentStructure> = {
         subtitle: "Join our community of farmers and buyers today. Experience the future of fresh produce."
     },
     buttons: {
-      startSelling: 'Start Selling Now',
       shopNow: 'Shop Now',
       registerFarmer: 'Register as Farmer',
       browseProducts: 'Browse Products',
@@ -134,7 +132,6 @@ export const content: Record<Language, ContentStructure> = {
         subtitle: "आज ही हमारे किसानों और खरीदारों के समुदाय में शामिल हों। ताज़ा उपज के भविष्य का अनुभव करें।"
     },
     buttons: {
-      startSelling: 'अभी बेचना शुरू करें',
       shopNow: 'अभी खरीदें',
       registerFarmer: 'किसान के रूप में पंजीकरण करें',
       browseProducts: 'उत्पाद ब्राउज़ करें',
@@ -189,7 +186,6 @@ export const content: Record<Language, ContentStructure> = {
         subtitle: "आजच आमच्या शेतकरी आणि खरेदीदारांच्या समुदायात सामील व्हा. ताज्या उत्पादनांच्या भविष्याचा अनुभव घ्या."
     },
     buttons: {
-      startSelling: 'आता विक्री सुरू करा',
       shopNow: 'आता खरेदी करा',
       registerFarmer: 'शेतकरी म्हणून नोंदणी करा',
       browseProducts: 'उत्पादने ब्राउझ करा',
