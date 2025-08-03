@@ -9,6 +9,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { AppContext } from '@/context/app-context';
+import type { User } from '@/lib/types';
 
 export default function SignInPage() {
   const { signIn, setIsLoading } = useContext(AppContext);
@@ -24,16 +25,24 @@ export default function SignInPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // In a real app, this would be an async call
+    setIsLoading(true);
+    // In a real app, this would be an async call.
+    // We'll simulate a login and randomly assign a role for demonstration.
     setTimeout(() => {
-        const mockUser = {
+        const mockUser: User = {
           id: '1',
           name: 'Test User',
           email: email,
+          // In a real app, you'd fetch the user's role from your backend
+          role: Math.random() > 0.5 ? 'farmer' : 'customer'
         };
         signIn(mockUser);
-        router.push('/products');
-        // No need to set loading to false here, page transition will handle it
+        
+        if (mockUser.role === 'farmer') {
+            router.push('/farmer/dashboard');
+        } else {
+            router.push('/products');
+        }
     }, 1000);
   };
 

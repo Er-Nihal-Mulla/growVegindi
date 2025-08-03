@@ -4,6 +4,7 @@ export type User = {
   id: string;
   name: string;
   email: string;
+  role: 'customer' | 'farmer';
 };
 
 export type Product = {
@@ -13,6 +14,8 @@ export type Product = {
   price: number;
   image: string;
   seller: string;
+  quantity: number;
+  category: string;
 };
 
 export type CartItem = {

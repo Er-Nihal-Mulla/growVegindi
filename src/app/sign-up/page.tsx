@@ -2,22 +2,26 @@
 'use client';
 
 import { useContext, useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { AppContext } from '@/context/app-context';
+import type { User } from '@/lib/types';
 
 export default function SignUpPage() {
   const { signIn, setIsLoading } = useContext(AppContext);
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   
+  const role = searchParams.get('role') === 'farmer' ? 'farmer' : 'customer';
+
   useEffect(() => {
     setIsLoading(false);
   }, [setIsLoading]);
@@ -25,16 +29,21 @@ export default function SignUpPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setIsLoading(true);
     // In a real app, this would be an async call
     setTimeout(() => {
-        const newUser = {
+        const newUser: User = {
           id: String(Date.now()),
           name,
           email,
+          role,
         };
         signIn(newUser);
-        router.push('/products');
-        // No need to set loading to false here, page transition will handle it
+        if (role === 'farmer') {
+          router.push('/farmer/dashboard');
+        } else {
+          router.push('/products');
+        }
     }, 1000);
   };
 
@@ -42,17 +51,23 @@ export default function SignUpPage() {
     <div className="flex items-center justify-center min-h-[calc(100vh-8rem)] bg-background">
       <Card className="w-full max-w-sm">
         <CardHeader>
-          <CardTitle className="text-2xl font-headline">Sign Up</CardTitle>
-          <CardDescription>Create an account to get started.</CardDescription>
+          <CardTitle className="text-2xl font-headline">
+            {role === 'farmer' ? 'Farmer Sign Up' : 'Sign Up'}
+          </CardTitle>
+          <CardDescription>
+            {role === 'farmer' 
+              ? 'Create an account to start selling your produce.'
+              : 'Create an account to get started.'}
+          </CardDescription>
         </CardHeader>
         <form onSubmit={handleSubmit}>
           <CardContent className="grid gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="name">Name</Label>
+              <Label htmlFor="name">{role === 'farmer' ? 'Farm Name / Your Name' : 'Name'}</Label>
               <Input
                 id="name"
                 type="text"
-                placeholder="Your Name"
+                placeholder={role === 'farmer' ? "Ram's Farm" : "Your Name"}
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}

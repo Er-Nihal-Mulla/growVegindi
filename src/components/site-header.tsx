@@ -3,7 +3,7 @@
 
 import { useContext } from 'react';
 import Link from 'next/link';
-import { ShoppingCart, UserCircle, LogOut, Globe, Menu } from 'lucide-react';
+import { ShoppingCart, UserCircle, LogOut, Globe, Menu, LayoutDashboard } from 'lucide-react';
 import { AppContext } from '@/context/app-context';
 import { Button } from '@/components/ui/button';
 import {
@@ -47,23 +47,29 @@ export function SiteHeader() {
     close();
   };
 
+  const navLinks = [
+    { href: '/', label: 'Home' },
+    { href: '/products', label: content.buttons.browseProducts },
+  ];
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-20 items-center">
-        <div className="mr-auto">
+      <div className="container flex h-20 items-center justify-between">
+        <div className="mr-4 md:mr-6">
           <Link href="/" className="flex items-center gap-2" aria-label="Grow Vejindi Home" onClick={handleNavClick}>
             <Logo />
           </Link>
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-1">
-          <Link href="/" className="text-sm font-medium transition-colors hover:text-primary px-3 py-2" onClick={handleNavClick}>
-            Home
-          </Link>
-          <Link href="/products" className="text-sm font-medium transition-colors hover:text-primary px-3 py-2" onClick={handleNavClick}>
-            {content.buttons.browseProducts}
-          </Link>
+        <div className="hidden md:flex flex-1 items-center justify-end gap-1">
+          <nav className="flex items-center gap-1">
+             {navLinks.map((link) => (
+                <Link key={link.href} href={link.href} className="text-sm font-medium transition-colors hover:text-primary px-3 py-2" onClick={handleNavClick}>
+                  {link.label}
+                </Link>
+              ))}
+          </nav>
         
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -112,6 +118,14 @@ export function SiteHeader() {
                     {content.auth.welcome}, {user?.name.split(' ')[0]}!
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
+                  {user?.role === 'farmer' && (
+                     <DropdownMenuItem asChild>
+                      <Link href="/farmer/dashboard" onClick={handleNavClick}>
+                        <LayoutDashboard className="mr-2 h-4 w-4" />
+                        <span>Farmer Dashboard</span>
+                      </Link>
+                    </DropdownMenuItem>
+                  )}
                   <DropdownMenuItem onClick={handleSignOut}>
                       <LogOut className="mr-2 h-4 w-4" />
                       <span>{content.auth.signOut}</span>
@@ -129,7 +143,7 @@ export function SiteHeader() {
               </Link>
             </div>
           )}
-        </nav>
+        </div>
 
         {/* Mobile Navigation */}
         <div className="md:hidden">
@@ -143,11 +157,12 @@ export function SiteHeader() {
               <SheetContent>
                   <SheetClose asChild>
                     <nav className="grid gap-6 text-lg font-medium mt-8">
-                      <Link href="/" className="hover:text-primary" onClick={handleNavClick}>Home</Link>
-                      <Link href="/products" className="hover:text-primary" onClick={handleNavClick}>{content.buttons.browseProducts}</Link>
+                       {navLinks.map((link) => (
+                        <Link key={link.href} href={link.href} className="hover:text-primary" onClick={handleNavClick}>{link.label}</Link>
+                       ))}
                        <DropdownMenu>
                           <DropdownMenuTrigger asChild>
-                              <Button variant="ghost" className="justify-start px-0">
+                              <Button variant="ghost" className="justify-start px-0 text-lg font-medium">
                                   <Globe className="mr-2 h-5 w-5" />
                                   Change Language
                               </Button>
@@ -172,19 +187,25 @@ export function SiteHeader() {
                               <UserCircle className="h-6 w-6" />
                               <span>{user?.name.split(' ')[0]}</span>
                             </div>
+                            {user?.role === 'farmer' && (
+                              <Link href="/farmer/dashboard" className="flex items-center hover:text-primary" onClick={handleNavClick}>
+                                <LayoutDashboard className="mr-2 h-5 w-5" />
+                                Farmer Dashboard
+                              </Link>
+                            )}
                              <Link href="/cart" className="flex items-center hover:text-primary" onClick={handleNavClick}>
                               <ShoppingCart className="mr-2 h-5 w-5" />
                               Shopping Cart ({cartCount})
                             </Link>
-                            <Button onClick={handleSignOut} className="w-full justify-start" variant="ghost">
+                            <Button onClick={handleSignOut} className="w-full justify-start text-lg font-medium" variant="ghost">
                                 <LogOut className="mr-2 h-4 w-4" />
                                 <span>{content.auth.signOut}</span>
                             </Button>
                           </div>
                         ) : (
                           <div className="space-y-2">
-                            <Link href="/sign-in" passHref><Button className="w-full" onClick={handleNavClick}>Sign In</Button></Link>
-                            <Link href="/sign-up" passHref><Button variant="outline" className="w-full" onClick={handleNavClick}>Sign Up</Button></Link>
+                            <Link href="/sign-in" passHref><SheetClose asChild><Button className="w-full" onClick={handleNavClick}>Sign In</Button></SheetClose></Link>
+                            <Link href="/sign-up" passHref><SheetClose asChild><Button variant="outline" className="w-full" onClick={handleNavClick}>Sign Up</Button></SheetClose></Link>
                           </div>
                         )}
                       </div>
