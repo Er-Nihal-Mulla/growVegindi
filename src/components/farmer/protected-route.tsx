@@ -11,17 +11,23 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const router = useRouter();
 
   useEffect(() => {
-    if (!isLoading) {
-      if (!isAuthenticated) {
-        router.replace('/sign-in');
-      } else if (user?.role !== 'farmer') {
-        router.replace('/unauthorized');
-      } else {
-        setIsLoading(false);
-      }
+    // We want to run this check regardless of the initial `isLoading` state
+    // from the context, as this component's job is to decide if we should
+    // even be on this page.
+    if (!isAuthenticated) {
+      router.replace('/sign-in');
+      return;
     }
-  }, [isAuthenticated, user, router, isLoading, setIsLoading]);
+    if (user?.role !== 'farmer') {
+      router.replace('/unauthorized');
+      return;
+    }
+    // If all checks pass, we can turn off the loader.
+    setIsLoading(false);
+  }, [isAuthenticated, user, router, setIsLoading]);
 
+
+  // Show a loader while we are verifying auth state.
   if (isLoading || !isAuthenticated || user?.role !== 'farmer') {
     return (
       <div className="fixed inset-0 z-[200] flex items-center justify-center bg-background/80 backdrop-blur-sm">

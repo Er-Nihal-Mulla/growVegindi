@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -13,6 +13,10 @@ import { ProtectedRoute } from '@/components/farmer/protected-route';
 function FarmerDashboard() {
   const { user, getFarmerProducts, setIsLoading } = useContext(AppContext);
   const farmerProducts = user ? getFarmerProducts(user.name) : [];
+  
+  useEffect(() => {
+    setIsLoading(false);
+  }, [setIsLoading]);
   
   const totalEarnings = farmerProducts.reduce((acc, p) => acc + p.price, 0); // Simplified for demo
 

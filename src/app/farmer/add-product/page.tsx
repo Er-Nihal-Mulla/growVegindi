@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -36,10 +36,13 @@ function AddProductForm() {
   const { register, handleSubmit, formState: { errors } } = useForm<ProductFormValues>({
     resolver: zodResolver(productSchema),
   });
+  
+  useEffect(() => {
+    setIsLoading(false);
+  }, [setIsLoading]);
 
   const onSubmit: SubmitHandler<ProductFormValues> = (data) => {
     setLoading(true);
-    setIsLoading(true);
     
     // Simulate API call
     setTimeout(() => {
@@ -53,6 +56,7 @@ function AddProductForm() {
             description: `${data.name} has been successfully listed.`
         });
         router.push('/farmer/dashboard');
+        setIsLoading(true);
     }, 1500);
 
   };
