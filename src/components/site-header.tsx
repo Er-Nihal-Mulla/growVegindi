@@ -29,7 +29,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-20 items-center justify-between">
+      <div className="container flex h-20 items-center">
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center gap-2" aria-label="Grow Vejindi Home">
             <Logo />
@@ -37,7 +37,7 @@ export function SiteHeader() {
         </div>
 
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 ml-auto">
           <nav className="hidden md:flex gap-6">
             <Link href="/" className="text-sm font-medium transition-colors hover:text-primary">
               Home
