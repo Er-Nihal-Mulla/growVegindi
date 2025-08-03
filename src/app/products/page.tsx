@@ -52,7 +52,7 @@ export default function ProductsPage() {
                     width={400}
                     height={300}
                     className="object-cover"
-                    data-ai-hint={product.name.split(' ')[1]?.toLowerCase() || 'vegetable'}
+                    data-ai-hint={product.name.split(' ')[1]?.toLowerCase() === 'spinach' ? 'spinach' : (product.name.split(' ')[1]?.toLowerCase() || 'vegetable')}
                   />
               </div>
             </CardHeader>
