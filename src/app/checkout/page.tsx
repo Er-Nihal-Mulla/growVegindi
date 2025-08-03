@@ -1,6 +1,6 @@
 'use client';
 
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -12,9 +12,10 @@ import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
 
 export default function CheckoutPage() {
-  const { isAuthenticated, cartTotal, cart } = useContext(AppContext);
+  const { isAuthenticated, cartTotal, cart, clearCart } = useContext(AppContext);
   const router = useRouter();
   const { toast } = useToast();
+  const [loading, setLoading] = useState(false);
 
   if (!isAuthenticated) {
     return (
@@ -41,13 +42,16 @@ export default function CheckoutPage() {
   }
 
   const handlePlaceOrder = () => {
-    toast({
-      title: 'Order Placed!',
-      description: 'Thank you for your purchase. Your fresh produce is on its way!',
-    });
-    // In a real app, you would clear the cart here after successful payment
-    // and redirect to an order confirmation page.
-    router.push('/');
+    setLoading(true);
+    // Simulate API call for placing order
+    setTimeout(() => {
+      toast({
+        title: 'Order Placed!',
+        description: 'Thank you for your purchase. Your fresh produce is on its way!',
+      });
+      clearCart();
+      router.push('/');
+    }, 1500);
   };
 
   return (
@@ -64,14 +68,14 @@ export default function CheckoutPage() {
               <RadioGroup defaultValue="address-1">
                 <div className="space-y-4">
                   <div className="flex items-center space-x-2 border rounded-md p-4">
-                    <RadioGroupItem value="address-1" id="address-1" />
+                    <RadioGroupItem value="address-1" id="address-1" disabled={loading} />
                     <Label htmlFor="address-1" className="w-full cursor-pointer">
                       <p className="font-semibold">Home</p>
                       <p className="text-muted-foreground">123, B-Wing, Green Valley, Mumbai, 400001</p>
                     </Label>
                   </div>
                   <div className="flex items-center space-x-2 border rounded-md p-4">
-                    <RadioGroupItem value="address-2" id="address-2" />
+                    <RadioGroupItem value="address-2" id="address-2" disabled={loading} />
                     <Label htmlFor="address-2" className="w-full cursor-pointer">
                       <p className="font-semibold">Work</p>
                       <p className="text-muted-foreground">456, Tech Park, Pune, 411057</p>
@@ -79,7 +83,7 @@ export default function CheckoutPage() {
                   </div>
                 </div>
               </RadioGroup>
-              <Button variant="outline" className="mt-4">Add New Address</Button>
+              <Button variant="outline" className="mt-4" disabled={loading}>Add New Address</Button>
             </CardContent>
           </Card>
 
@@ -93,15 +97,15 @@ export default function CheckoutPage() {
               <RadioGroup defaultValue="upi">
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="upi" id="upi" />
+                    <RadioGroupItem value="upi" id="upi" disabled={loading}/>
                     <Label htmlFor="upi">UPI</Label>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="cod" id="cod" />
+                    <RadioGroupItem value="cod" id="cod" disabled={loading} />
                     <Label htmlFor="cod">Cash on Delivery (COD)</Label>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="card" id="card" />
+                    <RadioGroupItem value="card" id="card" disabled={loading} />
                     <Label htmlFor="card">Credit / Debit Card</Label>
                   </div>
                 </div>
@@ -132,7 +136,7 @@ export default function CheckoutPage() {
               </div>
             </CardContent>
             <CardContent>
-              <Button className="w-full" onClick={handlePlaceOrder}>Place Order</Button>
+              <Button className="w-full" onClick={handlePlaceOrder} loading={loading}>Place Order</Button>
             </CardContent>
           </Card>
         </div>

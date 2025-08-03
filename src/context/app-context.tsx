@@ -15,6 +15,7 @@ type AppContextType = {
   addToCart: (product: Product) => void;
   removeFromCart: (productId: string) => void;
   updateQuantity: (productId: string, quantity: number) => void;
+  clearCart: () => void;
   cartCount: number;
   cartTotal: number;
 };
@@ -30,6 +31,7 @@ export const AppContext = createContext<AppContextType>({
   addToCart: () => {},
   removeFromCart: () => {},
   updateQuantity: () => {},
+  clearCart: () => {},
   cartCount: 0,
   cartTotal: 0,
 });
@@ -105,6 +107,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
         return newCart;
     });
   };
+  
+  const clearCart = () => {
+    handleSetCart([]);
+  }
 
   const updateQuantity = (productId: string, quantity: number) => {
     if (quantity < 1) {
@@ -136,6 +142,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
         addToCart,
         removeFromCart,
         updateQuantity,
+        clearCart,
         cartCount,
         cartTotal
       }}

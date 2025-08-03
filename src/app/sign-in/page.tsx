@@ -14,10 +14,12 @@ export default function SignInPage() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, you'd validate credentials against a backend
+    setLoading(true);
+    // In a real app, this would be an async call
     const mockUser = {
       id: '1',
       name: 'Test User',
@@ -45,6 +47,7 @@ export default function SignInPage() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                disabled={loading}
               />
             </div>
             <div className="grid gap-2">
@@ -55,11 +58,12 @@ export default function SignInPage() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                disabled={loading}
               />
             </div>
           </CardContent>
           <CardFooter className="flex flex-col">
-            <Button type="submit" className="w-full">
+            <Button type="submit" className="w-full" loading={loading}>
               Sign In
             </Button>
             <div className="mt-4 text-center text-sm">
