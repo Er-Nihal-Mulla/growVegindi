@@ -2,7 +2,7 @@
 
 import { useContext } from 'react';
 import Link from 'next/link';
-import { ShoppingCart, UserCircle, LogOut } from 'lucide-react';
+import { ShoppingCart, UserCircle, LogOut, ChevronDown } from 'lucide-react';
 import { AppContext } from '@/context/app-context';
 import { Button } from '@/components/ui/button';
 import {
@@ -27,10 +27,11 @@ export function SiteHeader() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button
-              className="focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-md transition-opacity hover:opacity-80"
+              className="flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-md transition-opacity hover:opacity-80"
               aria-label="Toggle language menu"
             >
               <Logo />
+              <ChevronDown className="h-4 w-4 text-muted-foreground" />
             </button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="start">

@@ -4,8 +4,8 @@ export function Logo() {
   return (
     <div className="flex items-center gap-2" aria-label="Grow Vejindi Logo">
       <svg
-        width="40"
-        height="40"
+        width="32"
+        height="32"
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +48,7 @@ export function Logo() {
           strokeLinecap="round"
         />
       </svg>
-      <span className="font-headline text-2xl font-bold text-primary">Grow Vejindi</span>
+      <span className="font-headline text-xl font-bold text-primary">Grow Vejindi</span>
     </div>
   );
 }
