@@ -116,10 +116,6 @@ function SignUpFormComponent() {
 
 
 export default function SignUpPage() {
-  const { setIsLoading } = useContext(AppContext);
-    useEffect(() => {
-    setIsLoading(false);
-  }, [setIsLoading]);
   return (
     <div className="flex items-center justify-center min-h-[calc(100vh-8rem)] bg-background">
       <Suspense fallback={<div className="flex items-center justify-center h-full"><Loader2 className="h-16 w-16 animate-spin text-primary" /></div>}>
