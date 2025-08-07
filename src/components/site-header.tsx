@@ -55,7 +55,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-20 items-center justify-between">
-        <div className="mr-4 md:mr-6">
+        <div>
           <Link href="/" className="flex items-center gap-2" aria-label="Grow Vejindi Home" onClick={handleNavClick}>
             <Logo />
           </Link>
@@ -111,7 +111,7 @@ export function SiteHeader() {
               </DropdownMenu>
             </div>
           ) : (
-            <div className="flex items-center gap-2">
+             <div className="flex items-center gap-2">
                <nav className="flex items-center gap-1">
                  {navLinks.map((link) => (
                     <Link key={link.href} href={link.href} className="text-sm font-medium transition-colors hover:text-primary/80 text-foreground px-3 py-2" onClick={handleNavClick}>
