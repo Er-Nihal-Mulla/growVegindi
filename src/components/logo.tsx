@@ -9,11 +9,11 @@ export function Logo() {
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="text-secondary"
+        className="text-primary"
       >
         <path
           d="M12 2L8 6H16L12 2Z"
-          fill="#90EE90"
+          fill="hsl(var(--secondary))"
           stroke="currentColor"
           strokeWidth="1.5"
           strokeLinecap="round"
@@ -43,12 +43,12 @@ export function Logo() {
         />
          <path
           d="M12 16V12C12 10.3431 13.3431 9 15 9C16.6569 9 18 10.3431 18 12C18 13.3431 17.1667 14.6667 16 15.5"
-          stroke="#90EE90"
+          stroke="hsl(var(--secondary))"
           strokeWidth="1.5"
           strokeLinecap="round"
         />
       </svg>
-      <span className="font-headline text-xl font-bold text-primary-foreground">Grow Vejindi</span>
+      <span className="font-headline text-xl font-bold text-foreground">Grow Vejindi</span>
     </div>
   );
 }
