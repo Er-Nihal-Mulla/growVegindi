@@ -16,11 +16,11 @@ body {
     --popover-foreground: 20 14.3% 4.1%;
     --primary: 25 80% 50%; /* Earthy orange */
     --primary-foreground: 0 0% 100%;
-    --secondary: 90 40% 60%; /* Soft green */
+    --secondary: 20 5.9% 90%; /* Neutral gray */
     --secondary-foreground: 20 14.3% 4.1%;
     --muted: 60 4.8% 95.9%;
     --muted-foreground: 25 5.3% 44.7%;
-    --accent: 90 40% 60%; /* Soft green */
+    --accent: 20 5.9% 90%; /* Neutral gray */
     --accent-foreground: 20 14.3% 4.1%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 60 9.1% 97.8%;
@@ -44,11 +44,11 @@ body {
     --popover-foreground: 60 9.1% 97.8%;
     --primary: 25 80% 50%; /* Earthy orange */
     --primary-foreground: 0 0% 100%;
-    --secondary: 90 40% 60%; /* Soft green */
+    --secondary: 12 6.5% 15.1%; /* Dark neutral gray */
     --secondary-foreground: 60 9.1% 97.8%;
     --muted: 12 6.5% 15.1%;
     --muted-foreground: 24 5.4% 63.9%;
-    --accent: 90 40% 60%; /* Soft green */
+    --accent: 12 6.5% 15.1%; /* Dark neutral gray */
     --accent-foreground: 60 9.1% 97.8%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 60 9.1% 97.8%;
