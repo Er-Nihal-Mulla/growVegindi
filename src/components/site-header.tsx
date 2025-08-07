@@ -63,38 +63,15 @@ export function SiteHeader() {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex flex-1 items-center justify-end gap-1">
-          <nav className="flex items-center gap-1">
-             {navLinks.map((link) => (
-                <Link key={link.href} href={link.href} className="text-sm font-medium transition-colors hover:text-primary/80 text-foreground px-3 py-2" onClick={handleNavClick}>
-                  {link.label}
-                </Link>
-              ))}
-          </nav>
-        
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-foreground hover:bg-accent/10 hover:text-foreground">
-                <Globe className="h-5 w-5" />
-                <span className="sr-only">Change language</span>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              {languages.map((lang) => (
-                <DropdownMenuItem
-                  key={lang.code}
-                  onSelect={() => setLanguage(lang.code)}
-                  className={cn(language === lang.code ? 'font-semibold bg-secondary' : 'font-normal')}
-                >
-                  {lang.name}
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-
-          <Separator orientation="vertical" className="h-6 mx-2 bg-foreground/50" />
-
           {isAuthenticated ? (
             <div className="flex items-center gap-3">
+              <nav className="flex items-center gap-1">
+                 {navLinks.map((link) => (
+                    <Link key={link.href} href={link.href} className="text-sm font-medium transition-colors hover:text-primary/80 text-foreground px-3 py-2" onClick={handleNavClick}>
+                      {link.label}
+                    </Link>
+                  ))}
+              </nav>
               <Link href="/cart" passHref onClick={handleNavClick}>
                 <Button variant="ghost" size="icon" className="relative text-foreground hover:bg-accent/10 hover:text-foreground">
                   <ShoppingCart className="h-5 w-5" />
@@ -135,6 +112,34 @@ export function SiteHeader() {
             </div>
           ) : (
             <div className="flex items-center gap-2">
+               <nav className="flex items-center gap-1">
+                 {navLinks.map((link) => (
+                    <Link key={link.href} href={link.href} className="text-sm font-medium transition-colors hover:text-primary/80 text-foreground px-3 py-2" onClick={handleNavClick}>
+                      {link.label}
+                    </Link>
+                  ))}
+              </nav>
+               <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="icon" className="text-foreground hover:bg-accent/10 hover:text-foreground">
+                    <Globe className="h-5 w-5" />
+                    <span className="sr-only">Change language</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  {languages.map((lang) => (
+                    <DropdownMenuItem
+                      key={lang.code}
+                      onSelect={() => setLanguage(lang.code)}
+                      className={cn(language === lang.code ? 'font-semibold bg-secondary' : 'font-normal')}
+                    >
+                      {lang.name}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+
+              <Separator orientation="vertical" className="h-6 mx-2 bg-foreground/50" />
               <Link href="/sign-in" passHref>
                 <Button variant="ghost" className="text-foreground hover:bg-accent/10 hover:text-foreground" onClick={handleNavClick}>{content.auth.signIn}</Button>
               </Link>
