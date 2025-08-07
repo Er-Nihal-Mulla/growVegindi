@@ -54,105 +54,105 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-20 items-center justify-between">
-        <div className="mr-4 md:mr-6 flex items-center gap-4">
+      <div className="container flex h-20 items-center justify-end">
+        <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center gap-2" aria-label="Grow Vejindi Home" onClick={handleNavClick}>
             <Logo />
           </Link>
-        </div>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex flex-1 items-center justify-end gap-1">
-          {isAuthenticated ? (
-            <div className="flex items-center gap-3">
-              <nav className="flex items-center gap-1">
-                 {navLinks.map((link) => (
-                    <Link key={link.href} href={link.href} className="text-sm font-medium transition-colors hover:text-primary/80 text-foreground px-3 py-2" onClick={handleNavClick}>
-                      {link.label}
-                    </Link>
-                  ))}
-              </nav>
-              <Link href="/cart" passHref onClick={handleNavClick}>
-                <Button variant="ghost" size="icon" className="relative text-foreground hover:bg-accent/10 hover:text-foreground">
-                  <ShoppingCart className="h-5 w-5" />
-                  {cartCount > 0 && (
-                    <Badge variant="destructive" className="absolute -top-2 -right-2 h-6 w-6 rounded-full flex items-center justify-center p-0">
-                      {cartCount}
-                    </Badge>
-                  )}
-                  <span className="sr-only">Shopping Cart</span>
-                </Button>
-              </Link>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon" className="text-foreground hover:bg-accent/10 hover:text-foreground">
-                     <UserCircle className="h-6 w-6" />
-                     <span className="sr-only">User menu</span>
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuLabel>
-                    {content.auth.welcome}, {user?.name.split(' ')[0]}!
-                  </DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  {user?.role === 'farmer' && (
-                     <DropdownMenuItem asChild>
-                      <Link href="/farmer/dashboard" onClick={handleNavClick}>
-                        <LayoutDashboard className="mr-2 h-4 w-4" />
-                        <span>Farmer Dashboard</span>
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center justify-end gap-1">
+            {isAuthenticated ? (
+              <div className="flex items-center gap-3">
+                <nav className="flex items-center gap-1">
+                  {navLinks.map((link) => (
+                      <Link key={link.href} href={link.href} className="text-sm font-medium transition-colors hover:text-primary/80 text-foreground px-3 py-2" onClick={handleNavClick}>
+                        {link.label}
                       </Link>
-                    </DropdownMenuItem>
-                  )}
-                  <DropdownMenuItem onClick={handleSignOut}>
-                      <LogOut className="mr-2 h-4 w-4" />
-                      <span>{content.auth.signOut}</span>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
-          ) : (
-             <div className="flex items-center gap-2">
-               <nav className="flex items-center gap-1">
-                 {navLinks.map((link) => (
-                    <Link key={link.href} href={link.href} className="text-sm font-medium transition-colors hover:text-primary/80 text-foreground px-3 py-2" onClick={handleNavClick}>
-                      {link.label}
-                    </Link>
-                  ))}
-              </nav>
-               <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon" className="text-foreground hover:bg-accent/10 hover:text-foreground">
-                    <Globe className="h-5 w-5" />
-                    <span className="sr-only">Change language</span>
+                    ))}
+                </nav>
+                <Link href="/cart" passHref onClick={handleNavClick}>
+                  <Button variant="ghost" size="icon" className="relative text-foreground hover:bg-accent/10 hover:text-foreground">
+                    <ShoppingCart className="h-5 w-5" />
+                    {cartCount > 0 && (
+                      <Badge variant="destructive" className="absolute -top-2 -right-2 h-6 w-6 rounded-full flex items-center justify-center p-0">
+                        {cartCount}
+                      </Badge>
+                    )}
+                    <span className="sr-only">Shopping Cart</span>
                   </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  {languages.map((lang) => (
-                    <DropdownMenuItem
-                      key={lang.code}
-                      onSelect={() => setLanguage(lang.code)}
-                      className={cn(language === lang.code ? 'font-semibold bg-secondary' : 'font-normal')}
-                    >
-                      {lang.name}
+                </Link>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="icon" className="text-foreground hover:bg-accent/10 hover:text-foreground">
+                      <UserCircle className="h-6 w-6" />
+                      <span className="sr-only">User menu</span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuLabel>
+                      {content.auth.welcome}, {user?.name.split(' ')[0]}!
+                    </DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    {user?.role === 'farmer' && (
+                      <DropdownMenuItem asChild>
+                        <Link href="/farmer/dashboard" onClick={handleNavClick}>
+                          <LayoutDashboard className="mr-2 h-4 w-4" />
+                          <span>Farmer Dashboard</span>
+                        </Link>
+                      </DropdownMenuItem>
+                    )}
+                    <DropdownMenuItem onClick={handleSignOut}>
+                        <LogOut className="mr-2 h-4 w-4" />
+                        <span>{content.auth.signOut}</span>
                     </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+            ) : (
+              <div className="flex items-center gap-2">
+                <nav className="flex items-center gap-1">
+                  {navLinks.map((link) => (
+                      <Link key={link.href} href={link.href} className="text-sm font-medium transition-colors hover:text-primary/80 text-foreground px-3 py-2" onClick={handleNavClick}>
+                        {link.label}
+                      </Link>
+                    ))}
+                </nav>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="icon" className="text-foreground hover:bg-accent/10 hover:text-foreground">
+                      <Globe className="h-5 w-5" />
+                      <span className="sr-only">Change language</span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    {languages.map((lang) => (
+                      <DropdownMenuItem
+                        key={lang.code}
+                        onSelect={() => setLanguage(lang.code)}
+                        className={cn(language === lang.code ? 'font-semibold bg-secondary' : 'font-normal')}
+                      >
+                        {lang.name}
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
 
-              <Separator orientation="vertical" className="h-6 mx-2 bg-foreground/50" />
-              <Link href="/sign-in" passHref>
-                <Button variant="ghost" className="text-foreground hover:bg-accent/10 hover:text-foreground" onClick={handleNavClick}>{content.auth.signIn}</Button>
-              </Link>
-              <Link href="/sign-up" passHref>
-                <Button variant="secondary" onClick={handleNavClick}>{content.auth.signUp}</Button>
-              </Link>
-            </div>
-          )}
+                <Separator orientation="vertical" className="h-6 mx-2 bg-foreground/50" />
+                <Link href="/sign-in" passHref>
+                  <Button variant="ghost" className="text-foreground hover:bg-accent/10 hover:text-foreground" onClick={handleNavClick}>{content.auth.signIn}</Button>
+                </Link>
+                <Link href="/sign-up" passHref>
+                  <Button variant="secondary" onClick={handleNavClick}>{content.auth.signUp}</Button>
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Mobile Navigation */}
         <div className="md:hidden">
-           <Sheet>
+            <Sheet>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon">
                   <Menu className="h-6 w-6" />
@@ -162,10 +162,10 @@ export function SiteHeader() {
               <SheetContent>
                   <SheetClose asChild>
                     <nav className="grid gap-6 text-lg font-medium mt-8">
-                       {navLinks.map((link) => (
+                        {navLinks.map((link) => (
                         <Link key={link.href} href={link.href} className="hover:text-primary" onClick={handleNavClick}>{link.label}</Link>
-                       ))}
-                       <DropdownMenu>
+                        ))}
+                        <DropdownMenu>
                           <DropdownMenuTrigger asChild>
                               <Button variant="ghost" className="justify-start px-0 text-lg font-medium">
                                   <Globe className="mr-2 h-5 w-5" />
@@ -186,8 +186,8 @@ export function SiteHeader() {
                       </DropdownMenu>
 
                       <div className="border-t pt-6 mt-auto">
-                       {isAuthenticated ? (
-                         <div className="space-y-4">
+                        {isAuthenticated ? (
+                          <div className="space-y-4">
                             <div className="flex items-center gap-2">
                               <UserCircle className="h-6 w-6" />
                               <span>{user?.name.split(' ')[0]}</span>
@@ -198,7 +198,7 @@ export function SiteHeader() {
                                 Farmer Dashboard
                               </Link>
                             )}
-                             <Link href="/cart" className="flex items-center hover:text-primary" onClick={handleNavClick}>
+                              <Link href="/cart" className="flex items-center hover:text-primary" onClick={handleNavClick}>
                               <ShoppingCart className="mr-2 h-5 w-5" />
                               Shopping Cart ({cartCount})
                             </Link>
