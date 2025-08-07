@@ -9,7 +9,7 @@ export function Logo() {
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="text-primary"
+        className="text-secondary"
       >
         <path
           d="M12 2L8 6H16L12 2Z"
@@ -48,7 +48,7 @@ export function Logo() {
           strokeLinecap="round"
         />
       </svg>
-      <span className="font-headline text-xl font-bold text-primary">Grow Vejindi</span>
+      <span className="font-headline text-xl font-bold text-primary-foreground">Grow Vejindi</span>
     </div>
   );
 }

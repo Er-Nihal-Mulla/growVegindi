@@ -53,7 +53,7 @@ export function SiteHeader() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b bg-primary/95 backdrop-blur supports-[backdrop-filter]:bg-primary/60">
       <div className="container flex h-20 items-center justify-between">
         <div className="mr-4 md:mr-6">
           <Link href="/" className="flex items-center gap-2" aria-label="Grow Vejindi Home" onClick={handleNavClick}>
@@ -65,7 +65,7 @@ export function SiteHeader() {
         <div className="hidden md:flex flex-1 items-center justify-end gap-1">
           <nav className="flex items-center gap-1">
              {navLinks.map((link) => (
-                <Link key={link.href} href={link.href} className="text-sm font-medium transition-colors hover:text-primary px-3 py-2" onClick={handleNavClick}>
+                <Link key={link.href} href={link.href} className="text-sm font-medium transition-colors hover:text-primary-foreground/80 text-primary-foreground px-3 py-2" onClick={handleNavClick}>
                   {link.label}
                 </Link>
               ))}
@@ -73,7 +73,7 @@ export function SiteHeader() {
         
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className="text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground">
                 <Globe className="h-5 w-5" />
                 <span className="sr-only">Change language</span>
               </Button>
@@ -91,12 +91,12 @@ export function SiteHeader() {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <Separator orientation="vertical" className="h-6 mx-2" />
+          <Separator orientation="vertical" className="h-6 mx-2 bg-primary-foreground/50" />
 
           {isAuthenticated ? (
             <div className="flex items-center gap-3">
               <Link href="/cart" passHref onClick={handleNavClick}>
-                <Button variant="ghost" size="icon" className="relative">
+                <Button variant="ghost" size="icon" className="relative text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground">
                   <ShoppingCart className="h-5 w-5" />
                   {cartCount > 0 && (
                     <Badge variant="destructive" className="absolute -top-2 -right-2 h-6 w-6 rounded-full flex items-center justify-center p-0">
@@ -108,7 +108,7 @@ export function SiteHeader() {
               </Link>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon">
+                  <Button variant="ghost" size="icon" className="text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground">
                      <UserCircle className="h-6 w-6" />
                      <span className="sr-only">User menu</span>
                   </Button>
@@ -136,10 +136,10 @@ export function SiteHeader() {
           ) : (
             <div className="flex items-center gap-2">
               <Link href="/sign-in" passHref>
-                <Button variant="ghost" onClick={handleNavClick}>{content.auth.signIn}</Button>
+                <Button variant="ghost" className="text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground" onClick={handleNavClick}>{content.auth.signIn}</Button>
               </Link>
               <Link href="/sign-up" passHref>
-                <Button onClick={handleNavClick}>{content.auth.signUp}</Button>
+                <Button variant="secondary" onClick={handleNavClick}>{content.auth.signUp}</Button>
               </Link>
             </div>
           )}

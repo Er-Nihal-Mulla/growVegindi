@@ -14,10 +14,10 @@ body {
     --card-foreground: 20 14.3% 4.1%;
     --popover: 0 0% 100%;
     --popover-foreground: 20 14.3% 4.1%;
-    --primary: 30 74% 44%; /* Earthy orange */
-    --primary-foreground: 30 74% 94%;
-    --secondary: 60 4.8% 95.9%;
-    --secondary-foreground: 24 9.8% 10%;
+    --primary: 120 35% 45%; /* Green */
+    --primary-foreground: 120 25% 95%; /* Soft Green */
+    --secondary: 30 74% 44%; /* Earthy orange */
+    --secondary-foreground: 30 74% 94%;
     --muted: 60 4.8% 95.9%;
     --muted-foreground: 25 5.3% 44.7%;
     --accent: 30 74% 50%; /* Earthy orange accent */
@@ -42,10 +42,10 @@ body {
     --card-foreground: 60 9.1% 97.8%;
     --popover: 20 14.3% 4.1%;
     --popover-foreground: 60 9.1% 97.8%;
-    --primary: 30 74% 54%; /* Brighter orange for dark mode */
-    --primary-foreground: 30 74% 94%;
-    --secondary: 12 6.5% 15.1%;
-    --secondary-foreground: 60 9.1% 97.8%;
+    --primary: 120 35% 55%; /* Green */
+    --primary-foreground: 120 10% 10%;
+    --secondary: 30 74% 54%; /* Brighter orange for dark mode */
+    --secondary-foreground: 30 74% 94%;
     --muted: 12 6.5% 15.1%;
     --muted-foreground: 24 5.4% 63.9%;
     --accent: 30 74% 60%; /* Brighter orange accent */
