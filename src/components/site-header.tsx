@@ -54,12 +54,14 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-20 items-center justify-end">
+      <div className="container flex h-20 items-center justify-between">
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center gap-2" aria-label="Grow Vejindi Home" onClick={handleNavClick}>
             <Logo />
           </Link>
+        </div>
 
+        <div className="flex items-center gap-4">
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center justify-end gap-1">
             {isAuthenticated ? (
@@ -148,76 +150,76 @@ export function SiteHeader() {
               </div>
             )}
           </div>
-        </div>
 
-        {/* Mobile Navigation */}
-        <div className="md:hidden">
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button variant="outline" size="icon">
-                  <Menu className="h-6 w-6" />
-                  <span className="sr-only">Open menu</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent>
-                  <SheetClose asChild>
-                    <nav className="grid gap-6 text-lg font-medium mt-8">
-                        {navLinks.map((link) => (
-                        <Link key={link.href} href={link.href} className="hover:text-primary" onClick={handleNavClick}>{link.label}</Link>
-                        ))}
-                        <DropdownMenu>
-                          <DropdownMenuTrigger asChild>
-                              <Button variant="ghost" className="justify-start px-0 text-lg font-medium">
-                                  <Globe className="mr-2 h-5 w-5" />
-                                  Change Language
-                              </Button>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end">
-                              {languages.map((lang) => (
-                              <DropdownMenuItem
-                                  key={lang.code}
-                                  onSelect={() => setLanguage(lang.code)}
-                                  className={cn(language === lang.code ? 'font-semibold bg-secondary' : 'font-normal')}
-                              >
-                                  {lang.name}
-                              </DropdownMenuItem>
-                              ))}
-                          </DropdownMenuContent>
-                      </DropdownMenu>
+          {/* Mobile Navigation */}
+          <div className="md:hidden">
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button variant="outline" size="icon">
+                    <Menu className="h-6 w-6" />
+                    <span className="sr-only">Open menu</span>
+                  </Button>
+                </SheetTrigger>
+                <SheetContent>
+                    <SheetClose asChild>
+                      <nav className="grid gap-6 text-lg font-medium mt-8">
+                          {navLinks.map((link) => (
+                          <Link key={link.href} href={link.href} className="hover:text-primary" onClick={handleNavClick}>{link.label}</Link>
+                          ))}
+                          <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                                <Button variant="ghost" className="justify-start px-0 text-lg font-medium">
+                                    <Globe className="mr-2 h-5 w-5" />
+                                    Change Language
+                                </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                                {languages.map((lang) => (
+                                <DropdownMenuItem
+                                    key={lang.code}
+                                    onSelect={() => setLanguage(lang.code)}
+                                    className={cn(language === lang.code ? 'font-semibold bg-secondary' : 'font-normal')}
+                                >
+                                    {lang.name}
+                                </DropdownMenuItem>
+                                ))}
+                            </DropdownMenuContent>
+                        </DropdownMenu>
 
-                      <div className="border-t pt-6 mt-auto">
-                        {isAuthenticated ? (
-                          <div className="space-y-4">
-                            <div className="flex items-center gap-2">
-                              <UserCircle className="h-6 w-6" />
-                              <span>{user?.name.split(' ')[0]}</span>
-                            </div>
-                            {user?.role === 'farmer' && (
-                              <Link href="/farmer/dashboard" className="flex items-center hover:text-primary" onClick={handleNavClick}>
-                                <LayoutDashboard className="mr-2 h-5 w-5" />
-                                Farmer Dashboard
+                        <div className="border-t pt-6 mt-auto">
+                          {isAuthenticated ? (
+                            <div className="space-y-4">
+                              <div className="flex items-center gap-2">
+                                <UserCircle className="h-6 w-6" />
+                                <span>{user?.name.split(' ')[0]}</span>
+                              </div>
+                              {user?.role === 'farmer' && (
+                                <Link href="/farmer/dashboard" className="flex items-center hover:text-primary" onClick={handleNavClick}>
+                                  <LayoutDashboard className="mr-2 h-5 w-5" />
+                                  Farmer Dashboard
+                                </Link>
+                              )}
+                                <Link href="/cart" className="flex items-center hover:text-primary" onClick={handleNavClick}>
+                                <ShoppingCart className="mr-2 h-5 w-5" />
+                                Shopping Cart ({cartCount})
                               </Link>
-                            )}
-                              <Link href="/cart" className="flex items-center hover:text-primary" onClick={handleNavClick}>
-                              <ShoppingCart className="mr-2 h-5 w-5" />
-                              Shopping Cart ({cartCount})
-                            </Link>
-                            <Button onClick={handleSignOut} className="w-full justify-start text-lg font-medium" variant="ghost">
-                                <LogOut className="mr-2 h-4 w-4" />
-                                <span>{content.auth.signOut}</span>
-                            </Button>
-                          </div>
-                        ) : (
-                          <div className="space-y-2">
-                            <Link href="/sign-in" passHref><SheetClose asChild><Button className="w-full" onClick={handleNavClick}>Sign In</Button></SheetClose></Link>
-                            <Link href="/sign-up" passHref><SheetClose asChild><Button variant="outline" className="w-full" onClick={handleNavClick}>Sign Up</Button></SheetClose></Link>
-                          </div>
-                        )}
-                      </div>
-                    </nav>
-                  </SheetClose>
-              </SheetContent>
-          </Sheet>
+                              <Button onClick={handleSignOut} className="w-full justify-start text-lg font-medium" variant="ghost">
+                                  <LogOut className="mr-2 h-4 w-4" />
+                                  <span>{content.auth.signOut}</span>
+                              </Button>
+                            </div>
+                          ) : (
+                            <div className="space-y-2">
+                              <Link href="/sign-in" passHref><SheetClose asChild><Button className="w-full" onClick={handleNavClick}>Sign In</Button></SheetClose></Link>
+                              <Link href="/sign-up" passHref><SheetClose asChild><Button variant="outline" className="w-full" onClick={handleNavClick}>Sign Up</Button></SheetClose></Link>
+                            </div>
+                          )}
+                        </div>
+                      </nav>
+                    </SheetClose>
+                </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
     </header>
