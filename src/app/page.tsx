@@ -9,6 +9,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { AppContext } from '@/context/app-context';
 import { content as allContent } from '@/lib/content';
+import mobileAppImg from '../assets/mobileApp.png';
+import ourVisionImg from '../assets/ourVisionImg.png';
 
 export default function HomePage() {
   const { language, setIsLoading } = useContext(AppContext);
@@ -31,7 +33,7 @@ export default function HomePage() {
         {/* Hero Section */}
         <section className="relative w-full h-[60vh] md:h-[70vh] flex items-center justify-center text-center text-white">
           <Image
-            src="https://placehold.co/1920x1080.png"
+            src={mobileAppImg}
             alt="A smiling Indian farmer holding fresh produce in a field"
             data-ai-hint="smiling farmer produce"
             layout="fill"
@@ -93,7 +95,7 @@ export default function HomePage() {
           <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
             <div className="md:w-1/2">
                 <Image
-                    src="https://placehold.co/600x400.png"
+                    src={ourVisionImg}
                     alt="Illustration of a bridge connecting farms to a city"
                     data-ai-hint="farm city"
                     width={600}

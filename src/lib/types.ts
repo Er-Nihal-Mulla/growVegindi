@@ -1,3 +1,4 @@
+
 export type Language = 'en' | 'hi' | 'mr';
 
 export type User = {
@@ -5,6 +6,10 @@ export type User = {
   name: string;
   email: string;
   role: 'customer' | 'farmer';
+  mobile?: string;
+  village?: string;
+  taluka?: string;
+  district?: string;
 };
 
 export type Product = {
