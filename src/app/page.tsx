@@ -11,6 +11,8 @@ import { AppContext } from '@/context/app-context';
 import { content as allContent } from '@/lib/content';
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
 import Autoplay from "embla-carousel-autoplay"
+import heroImage from '../assets/mobileApp.png'
+import visionSlide1 from '../assets/visionSlide1.png'
 
 
 export default function HomePage() {
@@ -30,7 +32,7 @@ export default function HomePage() {
   ];
 
   const visionImages = [
-    { src: 'https://placehold.co/600x400.png', alt: 'Illustration of a bridge connecting farms to a city', hint: 'farm city' },
+    { src: visionSlide1, alt: 'Illustration of a bridge connecting farms to a city', hint: 'farm city' },
     { src: 'https://placehold.co/600x400.png', alt: 'A happy family receiving a box of fresh vegetables', hint: 'happy family' },
     { src: 'https://placehold.co/600x400.png', alt: 'A farmer using a tablet to manage their crops', hint: 'farmer technology' },
   ];
@@ -41,7 +43,7 @@ export default function HomePage() {
         {/* Hero Section */}
         <section className="relative w-full h-[60vh] md:h-[70vh] flex items-center justify-center text-center text-white">
           <Image
-            src="https://placehold.co/1920x1080.png"
+            src={heroImage}
             alt="A smiling Indian farmer holding fresh produce in a field"
             data-ai-hint="smiling farmer produce"
             layout="fill"
