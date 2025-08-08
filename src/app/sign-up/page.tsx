@@ -14,6 +14,7 @@ import { Loader2 } from 'lucide-react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
+import { content as allContent } from '@/lib/content';
 
 const signUpSchema = z.object({
   name: z.string().min(3, 'Name must be at least 3 characters'),
@@ -28,10 +29,12 @@ type SignUpFormValues = z.infer<typeof signUpSchema>;
 
 
 function SignUpFormComponent() {
-  const { signIn, setIsLoading } = useContext(AppContext);
+  const { signIn, setIsLoading, language } = useContext(AppContext);
   const router = useRouter();
   const searchParams = useSearchParams();
   const [loading, setLoading] = useState(false);
+  const content = allContent[language];
+  const signUpContent = content.signUp;
   
   const role = searchParams.get('role') === 'farmer' ? 'farmer' : 'customer';
 
@@ -71,57 +74,57 @@ function SignUpFormComponent() {
     <Card className="w-full max-w-lg">
       <CardHeader>
         <CardTitle className="text-2xl font-headline">
-          {role === 'farmer' ? 'Farmer Sign Up' : 'Create an Account'}
+          {role === 'farmer' ? signUpContent.farmerTitle : signUpContent.title}
         </CardTitle>
         <CardDescription>
           {role === 'farmer' 
-            ? 'Create an account to start selling your produce.'
-            : 'Fill in your details to get started.'}
+            ? signUpContent.farmerDescription
+            : signUpContent.description}
         </CardDescription>
       </CardHeader>
       <form onSubmit={handleSubmit(onSubmit)}>
         <CardContent className="grid gap-4">
           <div className="grid gap-2">
-            <Label htmlFor="name">{role === 'farmer' ? 'Farm Name / Your Name' : 'Full Name'}</Label>
+            <Label htmlFor="name">{role === 'farmer' ? signUpContent.farmerNameLabel : signUpContent.nameLabel}</Label>
             <Input id="name" {...register('name')} disabled={loading} />
             {errors.name && <p className="text-sm text-destructive">{errors.name.message}</p>}
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="mobile">Mobile Number</Label>
+            <Label htmlFor="mobile">{signUpContent.mobileLabel}</Label>
             <Input id="mobile" type="tel" {...register('mobile')} disabled={loading} />
             {errors.mobile && <p className="text-sm text-destructive">{errors.mobile.message}</p>}
           </div>
            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="village">Village</Label>
+              <Label htmlFor="village">{signUpContent.villageLabel}</Label>
               <Input id="village" {...register('village')} disabled={loading} />
               {errors.village && <p className="text-sm text-destructive">{errors.village.message}</p>}
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="taluka">Taluka</Label>
+              <Label htmlFor="taluka">{signUpContent.talukaLabel}</Label>
               <Input id="taluka" {...register('taluka')} disabled={loading} />
               {errors.taluka && <p className="text-sm text-destructive">{errors.taluka.message}</p>}
             </div>
              <div className="grid gap-2">
-              <Label htmlFor="district">District</Label>
+              <Label htmlFor="district">{signUpContent.districtLabel}</Label>
               <Input id="district" {...register('district')} disabled={loading} />
               {errors.district && <p className="text-sm text-destructive">{errors.district.message}</p>}
             </div>
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password">{signUpContent.passwordLabel}</Label>
             <Input id="password" type="password" {...register('password')} disabled={loading} />
             {errors.password && <p className="text-sm text-destructive">{errors.password.message}</p>}
           </div>
         </CardContent>
         <CardFooter className="flex flex-col">
           <Button type="submit" className="w-full" loading={loading}>
-            Create Account
+            {signUpContent.createAccountButton}
           </Button>
           <div className="mt-4 text-center text-sm">
-            Already have an account?{' '}
+            {signUpContent.alreadyHaveAccount}{' '}
             <Link href="/sign-in" className="underline" onClick={() => setIsLoading(true)}>
-              Sign In
+              {content.auth.signIn}
             </Link>
           </div>
         </CardFooter>

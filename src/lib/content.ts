@@ -43,6 +43,21 @@ type ContentStructure = {
     quantity: string;
     total: string;
     checkout: string;
+  },
+  signUp: {
+    title: string;
+    description: string;
+    farmerTitle: string;
+    farmerDescription: string;
+    nameLabel: string;
+    farmerNameLabel: string;
+    mobileLabel: string;
+    villageLabel: string;
+    talukaLabel: string;
+    districtLabel: string;
+    passwordLabel: string;
+    createAccountButton: string;
+    alreadyHaveAccount: string;
   }
 };
 
@@ -99,6 +114,21 @@ export const content: Record<Language, ContentStructure> = {
         quantity: 'Quantity',
         total: 'Total',
         checkout: 'Proceed to Checkout',
+    },
+    signUp: {
+        title: 'Create an Account',
+        description: 'Fill in your details to get started.',
+        farmerTitle: 'Farmer Sign Up',
+        farmerDescription: 'Create an account to start selling your produce.',
+        nameLabel: 'Full Name',
+        farmerNameLabel: 'Farm Name / Your Name',
+        mobileLabel: 'Mobile Number',
+        villageLabel: 'Village',
+        talukaLabel: 'Taluka',
+        districtLabel: 'District',
+        passwordLabel: 'Password',
+        createAccountButton: 'Create Account',
+        alreadyHaveAccount: 'Already have an account?',
     }
   },
   hi: {
@@ -153,6 +183,21 @@ export const content: Record<Language, ContentStructure> = {
         quantity: 'मात्रा',
         total: 'कुल',
         checkout: 'चेकआउट के लिए आगे बढ़ें',
+    },
+    signUp: {
+        title: 'खाता बनाएं',
+        description: 'आरंभ करने के लिए अपना विवरण भरें।',
+        farmerTitle: 'किसान साइन अप',
+        farmerDescription: 'अपनी उपज बेचना शुरू करने के लिए एक खाता बनाएं।',
+        nameLabel: 'पूरा नाम',
+        farmerNameLabel: 'खेत का नाम / आपका नाम',
+        mobileLabel: 'मोबाइल नंबर',
+        villageLabel: 'गाँव',
+        talukaLabel: 'तालुका',
+        districtLabel: 'जिला',
+        passwordLabel: 'पासवर्ड',
+        createAccountButton: 'खाता बनाएं',
+        alreadyHaveAccount: 'पहले से ही एक खाता है?',
     }
   },
   mr: {
@@ -207,6 +252,21 @@ export const content: Record<Language, ContentStructure> = {
         quantity: 'प्रमाण',
         total: 'एकूण',
         checkout: 'चेकआउट करण्यासाठी पुढे जा',
+    },
+    signUp: {
+        title: 'खाते तयार करा',
+        description: 'सुरुवात करण्यासाठी तुमचे तपशील भरा.',
+        farmerTitle: 'शेतकरी साइन अप',
+        farmerDescription: 'तुमची उत्पादने विकायला सुरुवात करण्यासाठी खाते तयार करा.',
+        nameLabel: 'पूर्ण नाव',
+        farmerNameLabel: 'शेताचे नाव / तुमचे नाव',
+        mobileLabel: 'मोबाईल नंबर',
+        villageLabel: 'गाव',
+        talukaLabel: 'तालुका',
+        districtLabel: 'जिल्हा',
+        passwordLabel: 'पासवर्ड',
+        createAccountButton: 'खाते तयार करा',
+        alreadyHaveAccount: 'आधीपासूनच खाते आहे?',
     }
   },
 };
