@@ -22,7 +22,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetClose } from './ui/sheet';
 import { Separator } from './ui/separator';
 
 export function SiteHeader() {
-  const { language, setLanguage, isAuthenticated, user, signOut, cartCount, setIsLoading, signInAsGuest, isGuest } = useContext(AppContext);
+  const { language, setLanguage, isAuthenticated, user, signOut, cartCount, setIsLoading } = useContext(AppContext);
   const content = allContent[language];
   const languages: { code: 'en' | 'hi' | 'mr', name: string }[] = [
     { code: 'en', name: 'English' },
@@ -55,7 +55,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-20 items-center justify-between">
-        <div className="mr-auto md:mr-6">
+        <div className="mr-6">
           <Link href="/" className="flex items-center gap-2" aria-label="Grow Vejindi Home" onClick={handleNavClick}>
             <Logo />
           </Link>
@@ -93,7 +93,7 @@ export function SiteHeader() {
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
                     <DropdownMenuLabel>
-                      {isGuest ? "Welcome, Guest!" : `${content.auth.welcome}, ${user?.name.split(' ')[0]}!`}
+                      {`${content.auth.welcome}, ${user?.name.split(' ')[0]}!`}
                     </DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     {user?.role === 'farmer' && (
@@ -141,7 +141,7 @@ export function SiteHeader() {
                 </DropdownMenu>
 
                 <Separator orientation="vertical" className="h-6 mx-2 bg-foreground/50" />
-                <Button variant="ghost" className="text-foreground hover:bg-accent/10 hover:text-foreground" onClick={signInAsGuest}>Sign in as Guest</Button>
+
                 <Link href="/sign-in" passHref>
                   <Button variant="ghost" className="text-foreground hover:bg-accent/10 hover:text-foreground" onClick={handleNavClick}>{content.auth.signIn}</Button>
                 </Link>
@@ -192,7 +192,7 @@ export function SiteHeader() {
                             <div className="space-y-4">
                               <div className="flex items-center gap-2">
                                 <UserCircle className="h-6 w-6" />
-                                <span>{isGuest ? "Guest" : user?.name.split(' ')[0]}</span>
+                                <span>{user?.name.split(' ')[0]}</span>
                               </div>
                               {user?.role === 'farmer' && (
                                 <Link href="/farmer/dashboard" className="flex items-center hover:text-primary" onClick={handleNavClick}>
@@ -211,7 +211,6 @@ export function SiteHeader() {
                             </div>
                           ) : (
                             <div className="space-y-2">
-                              <SheetClose asChild><Button className="w-full" onClick={signInAsGuest}>Sign in as Guest</Button></SheetClose>
                               <Link href="/sign-in" passHref><SheetClose asChild><Button className="w-full" onClick={handleNavClick}>Sign In</Button></SheetClose></Link>
                               <Link href="/sign-up" passHref><SheetClose asChild><Button variant="outline" className="w-full" onClick={handleNavClick}>Sign Up</Button></SheetClose></Link>
                             </div>

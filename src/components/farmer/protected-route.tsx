@@ -7,32 +7,27 @@ import { AppContext } from '@/context/app-context';
 import { Loader2 } from 'lucide-react';
 
 export function ProtectedRoute({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated, user, isLoading, setIsLoading, isGuest } = useContext(AppContext);
+  const { isAuthenticated, user, isLoading, setIsLoading } = useContext(AppContext);
   const router = useRouter();
 
   useEffect(() => {
-    // We want to run this check regardless of the initial `isLoading` state
-    // from the context, as this component's job is to decide if we should
-    // even be on this page.
-    if (!isAuthenticated && !isGuest) {
-      router.replace('/sign-in');
-      return;
+    if (!isLoading) {
+      if (!isAuthenticated) {
+        router.replace('/sign-in');
+      } else if (user?.role !== 'farmer') {
+        // Redirect non-farmers away
+        router.replace('/'); 
+      }
     }
-    
-    if(isGuest || user?.role !== 'farmer'){
-        router.replace('/unauthorized')
-        return;
-    }
-   
-    // If all checks pass, we can turn off the loader.
+  }, [isAuthenticated, user, router, isLoading]);
+
+  useEffect(() => {
     setIsLoading(false);
-  }, [isAuthenticated, user, router, setIsLoading, isGuest]);
+  }, [setIsLoading]);
 
-
-  // Show a loader while we are verifying auth state.
-  if (isLoading || !isAuthenticated || user?.role !== 'farmer' || isGuest) {
+  if (isLoading || !isAuthenticated || user?.role !== 'farmer') {
     return (
-      <div className="fixed inset-0 z-[200] flex items-center justify-center bg-background/80 backdrop-blur-sm">
+      <div className="flex items-center justify-center min-h-screen">
         <Loader2 className="h-16 w-16 animate-spin text-primary" />
       </div>
     );
