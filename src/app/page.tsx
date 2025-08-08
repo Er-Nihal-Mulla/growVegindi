@@ -4,28 +4,23 @@
 import { useContext, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CheckCircle, Leaf, Handshake, IndianRupee, Award, Rocket, UserCheck } from 'lucide-react';
+import { CheckCircle, Leaf, Handshake, IndianRupee, Award, Rocket } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { AppContext } from '@/context/app-context';
 import { content as allContent } from '@/lib/content';
-import mobileAppImg from '../assets/mobileApp.png';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
 import Autoplay from "embla-carousel-autoplay"
 
 
 export default function HomePage() {
-  const { language, setIsLoading, signInAsGuest } = useContext(AppContext);
+  const { language, setIsLoading } = useContext(AppContext);
   const content = allContent[language];
   
   useEffect(() => {
     setIsLoading(false);
   }, [setIsLoading]);
 
-  const handleGuestSignIn = () => {
-    setIsLoading(true);
-    signInAsGuest();
-  }
 
   const benefits = [
     { icon: Leaf, text: content.whyChooseUs.points[0] },
@@ -46,7 +41,7 @@ export default function HomePage() {
         {/* Hero Section */}
         <section className="relative w-full h-[60vh] md:h-[70vh] flex items-center justify-center text-center text-white">
           <Image
-            src={mobileAppImg}
+            src="https://placehold.co/1920x1080.png"
             alt="A smiling Indian farmer holding fresh produce in a field"
             data-ai-hint="smiling farmer produce"
             layout="fill"
@@ -61,9 +56,6 @@ export default function HomePage() {
             <p className="text-lg md:text-2xl max-w-3xl mx-auto drop-shadow-md">
               {content.hero.subtitle}
             </p>
-             <div className='mt-2 text-base md:text-lg max-w-3xl mx-auto drop-shadow-md'>
-                {allContent['hi'].hero.subtitle}
-            </div>
           </div>
         </section>
 
@@ -148,12 +140,16 @@ export default function HomePage() {
         {/* CTA Section */}
         <section id="cta" className="py-16 md:py-24 bg-primary text-primary-foreground">
           <div className="container mx-auto px-4 text-center">
-            <UserCheck className="w-16 h-16 mx-auto mb-4" />
-            <h2 className="text-3xl md:text-4xl font-headline font-bold mb-4">Join Our Community</h2>
-            <p className="text-lg mb-8 max-w-2xl mx-auto">Sign in as a guest to browse, or become a member to sell and get exclusive benefits.</p>
+            <Rocket className="w-16 h-16 mx-auto mb-4" />
+            <h2 className="text-3xl md:text-4xl font-headline font-bold mb-4">{content.cta.title}</h2>
+            <p className="text-lg mb-8 max-w-2xl mx-auto">{content.cta.subtitle}</p>
             <div className="flex flex-wrap justify-center gap-4">
-                <Button size="lg" variant="secondary" onClick={handleGuestSignIn}>Sign in as Guest</Button>
-                <Link href="/sign-in" passHref><Button size="lg" variant="outline" className="bg-transparent hover:bg-primary-foreground hover:text-primary" onClick={() => setIsLoading(true)}>Membership</Button></Link>
+              <Link href="/products">
+                <Button size="lg" variant="secondary" onClick={() => setIsLoading(true)}>{content.buttons.shopNow}</Button>
+              </Link>
+              <Link href="/sign-up?role=farmer">
+                <Button size="lg" variant="outline" className="bg-transparent hover:bg-primary-foreground hover:text-primary" onClick={() => setIsLoading(true)}>{content.buttons.registerFarmer}</Button>
+              </Link>
             </div>
           </div>
         </section>

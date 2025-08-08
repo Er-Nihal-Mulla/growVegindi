@@ -19,7 +19,6 @@ import { content as allContent } from '@/lib/content';
 import { Badge } from './ui/badge';
 import { cn } from '@/lib/utils';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from './ui/sheet';
-import { Separator } from './ui/separator';
 
 export function SiteHeader() {
   const { language, setLanguage, isAuthenticated, user, signOut, cartCount, setIsLoading } = useContext(AppContext);
@@ -41,15 +40,6 @@ export function SiteHeader() {
   const handleNavClick = () => {
     setIsLoading(true);
   }
-  
-  const handleMobileNavClick = () => {
-    setIsLoading(true);
-  };
-
-  const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/products', label: content.buttons.browseProducts },
-  ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -62,14 +52,15 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-4">
           {/* Desktop Navigation */}
-           <nav className="hidden md:flex items-center gap-1">
-              {navLinks.map((link) => (
-                  <Link key={link.href} href={link.href} className="text-sm font-medium transition-colors hover:text-primary/80 text-foreground px-3 py-2" onClick={handleNavClick}>
-                    {link.label}
-                  </Link>
-                ))}
+           <nav className="hidden md:flex items-center gap-6">
+              <Link href="/" className="text-sm font-medium transition-colors hover:text-primary/80 text-foreground" onClick={handleNavClick}>
+                Home
+              </Link>
+              <Link href="/products" className="text-sm font-medium transition-colors hover:text-primary/80 text-foreground" onClick={handleNavClick}>
+                {content.buttons.browseProducts}
+              </Link>
             </nav>
-          <div className="hidden md:flex items-center justify-end gap-1">
+          <div className="flex items-center justify-end gap-3">
             {isAuthenticated ? (
               <div className="flex items-center gap-3">
                 <Link href="/cart" passHref onClick={handleNavClick}>
@@ -132,8 +123,6 @@ export function SiteHeader() {
                   </DropdownMenuContent>
                 </DropdownMenu>
 
-                <Separator orientation="vertical" className="h-6 mx-2 bg-foreground/50" />
-
                 <Link href="/sign-in" passHref>
                   <Button variant="ghost" className="text-foreground hover:bg-accent/10 hover:text-foreground" onClick={handleNavClick}>{content.auth.signIn}</Button>
                 </Link>
@@ -154,62 +143,14 @@ export function SiteHeader() {
                   </Button>
                 </SheetTrigger>
                 <SheetContent>
+                  <nav className="grid gap-6 text-lg font-medium mt-8">
                     <SheetClose asChild>
-                      <nav className="grid gap-6 text-lg font-medium mt-8">
-                          {navLinks.map((link) => (
-                          <Link key={link.href} href={link.href} className="hover:text-primary" onClick={() => handleMobileNavClick()}>{link.label}</Link>
-                          ))}
-                          <DropdownMenu>
-                            <DropdownMenuTrigger asChild>
-                                <Button variant="ghost" className="justify-start px-0 text-lg font-medium">
-                                    <Globe className="mr-2 h-5 w-5" />
-                                    Change Language
-                                </Button>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent align="end">
-                                {languages.map((lang) => (
-                                <DropdownMenuItem
-                                    key={lang.code}
-                                    onSelect={() => setLanguage(lang.code)}
-                                    className={cn(language === lang.code ? 'font-semibold bg-secondary' : 'font-normal')}
-                                >
-                                    {lang.name}
-                                </DropdownMenuItem>
-                                ))}
-                            </DropdownMenuContent>
-                        </DropdownMenu>
-
-                        <div className="border-t pt-6 mt-auto">
-                          {isAuthenticated ? (
-                            <div className="space-y-4">
-                              <div className="flex items-center gap-2">
-                                <UserCircle className="h-6 w-6" />
-                                <span>{user?.name.split(' ')[0]}</span>
-                              </div>
-                              {user?.role === 'farmer' && (
-                                <Link href="/farmer/dashboard" className="flex items-center hover:text-primary" onClick={() => handleMobileNavClick()}>
-                                  <LayoutDashboard className="mr-2 h-5 w-5" />
-                                  Farmer Dashboard
-                                </Link>
-                              )}
-                                <Link href="/cart" className="flex items-center hover:text-primary" onClick={() => handleMobileNavClick()}>
-                                <ShoppingCart className="mr-2 h-5 w-5" />
-                                Shopping Cart ({cartCount})
-                              </Link>
-                              <Button onClick={handleSignOut} className="w-full justify-start text-lg font-medium" variant="ghost">
-                                  <LogOut className="mr-2 h-4 w-4" />
-                                  <span>{content.auth.signOut}</span>
-                              </Button>
-                            </div>
-                          ) : (
-                            <div className="space-y-2">
-                              <Link href="/sign-in" passHref><SheetClose asChild><Button className="w-full" onClick={handleNavClick}>Sign In</Button></SheetClose></Link>
-                              <Link href="/sign-up" passHref><SheetClose asChild><Button variant="outline" className="w-full" onClick={handleNavClick}>Sign Up</Button></SheetClose></Link>
-                            </div>
-                          )}
-                        </div>
-                      </nav>
+                      <Link href="/" className="hover:text-primary" onClick={handleNavClick}>Home</Link>
                     </SheetClose>
+                    <SheetClose asChild>
+                       <Link href="/products" className="hover:text-primary" onClick={handleNavClick}>{content.buttons.browseProducts}</Link>
+                    </SheetClose>
+                  </nav>
                 </SheetContent>
             </Sheet>
           </div>
