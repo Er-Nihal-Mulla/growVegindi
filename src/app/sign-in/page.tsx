@@ -36,7 +36,7 @@ export default function SignInPage() {
           id: '1',
           name: 'Test User',
           email: email,
-          // In a real app, you'd fetch the user's role from your backend
+          // This is now safe as it only runs on the client after an interaction
           role: Math.random() > 0.5 ? 'farmer' : 'customer'
         };
         signIn(mockUser);
