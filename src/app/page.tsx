@@ -131,8 +131,6 @@ export default function HomePage() {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious className="hidden sm:flex" />
-                <CarouselNext className="hidden sm:flex" />
               </Carousel>
             </div>
             <div className="md:w-1/2 text-center md:text-left">
