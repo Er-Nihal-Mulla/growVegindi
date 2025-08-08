@@ -4,6 +4,7 @@
 import { createContext, useState, ReactNode, useEffect, useCallback } from 'react';
 import type { Language, User, Product, CartItem } from '@/lib/types';
 import { useToast } from '@/hooks/use-toast';
+import { SignUpFormValues } from '@/app/sign-up/page';
 
 const mockProducts: Product[] = [
   { id: '1', name: 'Fresh Tomatoes', description: 'Juicy and ripe tomatoes from local farms.', price: 50, image: 'https://placehold.co/400x300.png', seller: 'Ram\'s Farm', quantity: 100, category: 'Vegetable' },
@@ -21,6 +22,7 @@ type AppContextType = {
   user: User | null;
   signIn: (user: User) => void;
   signOut: () => void;
+  signUpAndSignIn: (userData: SignUpFormValues & { role: 'farmer' | 'customer' }, paymentDetails: User['paymentDetails']) => void;
   cart: CartItem[];
   addToCart: (product: Product, quantity?: number) => void;
   removeFromCart: (productId: string) => void;
@@ -42,6 +44,7 @@ export const AppContext = createContext<AppContextType>({
   user: null,
   signIn: () => {},
   signOut: () => {},
+  signUpAndSignIn: () => {},
   cart: [],
   addToCart: () => {},
   removeFromCart: () => {},
@@ -108,6 +111,21 @@ export function AppProvider({ children }: { children: ReactNode }) {
     setIsAuthenticated(true);
     setUser(userData);
     localStorage.setItem('user', JSON.stringify(userData));
+  };
+  
+  const signUpAndSignIn = (userData: SignUpFormValues & { role: 'farmer' | 'customer' }, paymentDetails: User['paymentDetails']) => {
+     const newUser: User = {
+      id: String(Date.now()),
+      name: userData.name,
+      mobile: userData.mobile,
+      village: userData.village,
+      taluka: userData.taluka,
+      district: userData.district,
+      email: '', // Email is not collected
+      role: userData.role,
+      paymentDetails,
+    };
+    signIn(newUser);
   };
 
   const signOut = () => {
@@ -180,6 +198,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
         user,
         signIn,
         signOut,
+        signUpAndSignIn,
         cart,
         addToCart,
         removeFromCart,

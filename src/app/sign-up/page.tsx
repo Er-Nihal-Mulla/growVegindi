@@ -9,7 +9,6 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { AppContext } from '@/context/app-context';
-import type { User } from '@/lib/types';
 import { Loader2 } from 'lucide-react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -25,11 +24,11 @@ const signUpSchema = z.object({
   password: z.string().min(6, 'Password must be at least 6 characters'),
 });
 
-type SignUpFormValues = z.infer<typeof signUpSchema>;
+export type SignUpFormValues = z.infer<typeof signUpSchema>;
 
 
 function SignUpFormComponent() {
-  const { signIn, setIsLoading, language } = useContext(AppContext);
+  const { setIsLoading, language } = useContext(AppContext);
   const router = useRouter();
   const searchParams = useSearchParams();
   const [loading, setLoading] = useState(false);
@@ -49,25 +48,12 @@ function SignUpFormComponent() {
   const onSubmit: SubmitHandler<SignUpFormValues> = (data) => {
     setLoading(true);
     setIsLoading(true);
+    
     // In a real app, this would be an async call to your backend/Firebase
-    setTimeout(() => {
-        const newUser: User = {
-          id: String(Date.now()),
-          name: data.name,
-          mobile: data.mobile,
-          village: data.village,
-          taluka: data.taluka,
-          district: data.district,
-          email: '', // Email is not collected in this form
-          role,
-        };
-        signIn(newUser);
-        if (role === 'farmer') {
-          router.push('/farmer/dashboard');
-        } else {
-          router.push('/products');
-        }
-    }, 1500);
+    // Temporarily store form data and redirect to payment
+    const userData = { ...data, role };
+    localStorage.setItem('pending_user', JSON.stringify(userData));
+    router.push('/payment');
   };
 
   return (
@@ -119,7 +105,7 @@ function SignUpFormComponent() {
         </CardContent>
         <CardFooter className="flex flex-col">
           <Button type="submit" className="w-full" loading={loading}>
-            {signUpContent.createAccountButton}
+            Continue to Payment
           </Button>
           <div className="mt-4 text-center text-sm">
             {signUpContent.alreadyHaveAccount}{' '}

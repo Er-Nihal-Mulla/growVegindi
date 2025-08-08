@@ -10,6 +10,11 @@ export type User = {
   village?: string;
   taluka?: string;
   district?: string;
+  paymentDetails?: {
+    transactionId: string;
+    paymentDate: string;
+    amount: number;
+  };
 };
 
 export type Product = {
