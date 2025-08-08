@@ -10,13 +10,16 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { AppContext } from '@/context/app-context';
 import type { User } from '@/lib/types';
+import { content as allContent } from '@/lib/content';
 
 export default function SignInPage() {
-  const { signIn, setIsLoading } = useContext(AppContext);
+  const { signIn, setIsLoading, language } = useContext(AppContext);
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const content = allContent[language];
+  const signInContent = content.signIn;
 
   useEffect(() => {
     setIsLoading(false);
@@ -50,13 +53,13 @@ export default function SignInPage() {
     <div className="flex items-center justify-center min-h-[calc(100vh-8rem)] bg-background">
       <Card className="w-full max-w-sm">
         <CardHeader>
-          <CardTitle className="text-2xl font-headline">Sign In</CardTitle>
-          <CardDescription>Enter your email below to login to your account.</CardDescription>
+          <CardTitle className="text-2xl font-headline">{signInContent.title}</CardTitle>
+          <CardDescription>{signInContent.description}</CardDescription>
         </CardHeader>
         <form onSubmit={handleSubmit}>
           <CardContent className="grid gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">{signInContent.emailLabel}</Label>
               <Input
                 id="email"
                 type="email"
@@ -68,7 +71,7 @@ export default function SignInPage() {
               />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">{signInContent.passwordLabel}</Label>
               <Input
                 id="password"
                 type="password"
@@ -81,12 +84,12 @@ export default function SignInPage() {
           </CardContent>
           <CardFooter className="flex flex-col">
             <Button type="submit" className="w-full" loading={loading}>
-              Sign In
+              {signInContent.button}
             </Button>
             <div className="mt-4 text-center text-sm">
-              Don&apos;t have an account?{' '}
+              {signInContent.noAccount}{' '}
               <Link href="/sign-up" className="underline" onClick={() => setIsLoading(true)}>
-                Sign up
+                {content.auth.signUp}
               </Link>
             </div>
           </CardFooter>

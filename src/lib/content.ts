@@ -44,6 +44,14 @@ type ContentStructure = {
     total: string;
     checkout: string;
   },
+  signIn: {
+    title: string;
+    description: string;
+    emailLabel: string;
+    passwordLabel: string;
+    button: string;
+    noAccount: string;
+  },
   signUp: {
     title: string;
     description: string;
@@ -115,6 +123,14 @@ export const content: Record<Language, ContentStructure> = {
         total: 'Total',
         checkout: 'Proceed to Checkout',
     },
+    signIn: {
+      title: 'Sign In',
+      description: 'Enter your email below to login to your account.',
+      emailLabel: 'Email',
+      passwordLabel: 'Password',
+      button: 'Sign In',
+      noAccount: "Don't have an account?",
+    },
     signUp: {
         title: 'Create an Account',
         description: 'Fill in your details to get started.',
@@ -184,6 +200,14 @@ export const content: Record<Language, ContentStructure> = {
         total: 'कुल',
         checkout: 'चेकआउट के लिए आगे बढ़ें',
     },
+    signIn: {
+      title: 'साइन इन करें',
+      description: 'अपने खाते में लॉगिन करने के लिए नीचे अपना ईमेल दर्ज करें।',
+      emailLabel: 'ईमेल',
+      passwordLabel: 'पासवर्ड',
+      button: 'साइन इन करें',
+      noAccount: 'खाता नहीं है?',
+    },
     signUp: {
         title: 'खाता बनाएं',
         description: 'आरंभ करने के लिए अपना विवरण भरें।',
@@ -252,6 +276,14 @@ export const content: Record<Language, ContentStructure> = {
         quantity: 'प्रमाण',
         total: 'एकूण',
         checkout: 'चेकआउट करण्यासाठी पुढे जा',
+    },
+    signIn: {
+      title: 'साइन इन करा',
+      description: 'तुमच्या खात्यात लॉग इन करण्यासाठी खाली तुमचा ईमेल प्रविष्ट करा.',
+      emailLabel: 'ईमेल',
+      passwordLabel: 'पासवर्ड',
+      button: 'साइन इन करा',
+      noAccount: 'खाते नाही?',
     },
     signUp: {
         title: 'खाते तयार करा',
