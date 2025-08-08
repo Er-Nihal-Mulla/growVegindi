@@ -43,8 +43,7 @@ export function SiteHeader() {
   }
   
   const handleMobileNavClick = (close: () => void) => {
-    handleNavClick();
-    close();
+    handleMobileNavClick(close);
   };
 
   const navLinks = [
@@ -55,10 +54,14 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-20 items-center justify-between">
-        <div className="mr-6 flex items-center gap-6">
+        <div className="mr-6 flex items-center">
           <Link href="/" className="flex items-center gap-2" aria-label="Grow Vejindi Home" onClick={handleNavClick}>
             <Logo />
           </Link>
+        </div>
+
+        <div className="flex items-center gap-4">
+          {/* Desktop Navigation */}
            <nav className="hidden md:flex items-center gap-1">
               {navLinks.map((link) => (
                   <Link key={link.href} href={link.href} className="text-sm font-medium transition-colors hover:text-primary/80 text-foreground px-3 py-2" onClick={handleNavClick}>
@@ -66,10 +69,6 @@ export function SiteHeader() {
                   </Link>
                 ))}
             </nav>
-        </div>
-
-        <div className="flex items-center gap-4">
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center justify-end gap-1">
             {isAuthenticated ? (
               <div className="flex items-center gap-3">
@@ -158,7 +157,7 @@ export function SiteHeader() {
                     <SheetClose asChild>
                       <nav className="grid gap-6 text-lg font-medium mt-8">
                           {navLinks.map((link) => (
-                          <Link key={link.href} href={link.href} className="hover:text-primary" onClick={handleNavClick}>{link.label}</Link>
+                          <Link key={link.href} href={link.href} className="hover:text-primary" onClick={() => handleMobileNavClick(() => {})}>{link.label}</Link>
                           ))}
                           <DropdownMenu>
                             <DropdownMenuTrigger asChild>
@@ -188,12 +187,12 @@ export function SiteHeader() {
                                 <span>{user?.name.split(' ')[0]}</span>
                               </div>
                               {user?.role === 'farmer' && (
-                                <Link href="/farmer/dashboard" className="flex items-center hover:text-primary" onClick={handleNavClick}>
+                                <Link href="/farmer/dashboard" className="flex items-center hover:text-primary" onClick={() => handleMobileNavClick(() => {})}>
                                   <LayoutDashboard className="mr-2 h-5 w-5" />
                                   Farmer Dashboard
                                 </Link>
                               )}
-                                <Link href="/cart" className="flex items-center hover:text-primary" onClick={handleNavClick}>
+                                <Link href="/cart" className="flex items-center hover:text-primary" onClick={() => handleMobileNavClick(() => {})}>
                                 <ShoppingCart className="mr-2 h-5 w-5" />
                                 Shopping Cart ({cartCount})
                               </Link>
