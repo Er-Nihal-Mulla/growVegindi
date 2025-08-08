@@ -4,7 +4,7 @@
 import { useContext, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CheckCircle, Leaf, Handshake, IndianRupee, Award, Rocket } from 'lucide-react';
+import { CheckCircle, Leaf, Handshake, IndianRupee, Award, Rocket, UserCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { AppContext } from '@/context/app-context';
@@ -15,12 +15,17 @@ import Autoplay from "embla-carousel-autoplay"
 
 
 export default function HomePage() {
-  const { language, setIsLoading } = useContext(AppContext);
+  const { language, setIsLoading, signInAsGuest } = useContext(AppContext);
   const content = allContent[language];
   
   useEffect(() => {
     setIsLoading(false);
   }, [setIsLoading]);
+
+  const handleGuestSignIn = () => {
+    setIsLoading(true);
+    signInAsGuest();
+  }
 
   const benefits = [
     { icon: Leaf, text: content.whyChooseUs.points[0] },
@@ -143,12 +148,12 @@ export default function HomePage() {
         {/* CTA Section */}
         <section id="cta" className="py-16 md:py-24 bg-primary text-primary-foreground">
           <div className="container mx-auto px-4 text-center">
-            <Rocket className="w-16 h-16 mx-auto mb-4" />
-            <h2 className="text-3xl md:text-4xl font-headline font-bold mb-4">{content.cta.title}</h2>
-            <p className="text-lg mb-8 max-w-2xl mx-auto">{content.cta.subtitle}</p>
+            <UserCheck className="w-16 h-16 mx-auto mb-4" />
+            <h2 className="text-3xl md:text-4xl font-headline font-bold mb-4">Join Our Community</h2>
+            <p className="text-lg mb-8 max-w-2xl mx-auto">Sign in as a guest to browse, or become a member to sell and get exclusive benefits.</p>
             <div className="flex flex-wrap justify-center gap-4">
-                <Link href="/products" passHref><Button size="lg" variant="secondary" onClick={() => setIsLoading(true)}>{content.buttons.shopNow}</Button></Link>
-                <Link href="/sign-up?role=farmer" passHref><Button size="lg" variant="secondary" onClick={() => setIsLoading(true)}>{content.buttons.registerFarmer}</Button></Link>
+                <Button size="lg" variant="secondary" onClick={handleGuestSignIn}>Sign in as Guest</Button>
+                <Link href="/sign-in" passHref><Button size="lg" variant="outline" className="bg-transparent hover:bg-primary-foreground hover:text-primary" onClick={() => setIsLoading(true)}>Membership</Button></Link>
             </div>
           </div>
         </section>

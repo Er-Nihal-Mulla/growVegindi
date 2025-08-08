@@ -42,8 +42,8 @@ export function SiteHeader() {
     setIsLoading(true);
   }
   
-  const handleMobileNavClick = (close: () => void) => {
-    handleMobileNavClick(close);
+  const handleMobileNavClick = () => {
+    setIsLoading(true);
   };
 
   const navLinks = [
@@ -157,7 +157,7 @@ export function SiteHeader() {
                     <SheetClose asChild>
                       <nav className="grid gap-6 text-lg font-medium mt-8">
                           {navLinks.map((link) => (
-                          <Link key={link.href} href={link.href} className="hover:text-primary" onClick={() => handleMobileNavClick(() => {})}>{link.label}</Link>
+                          <Link key={link.href} href={link.href} className="hover:text-primary" onClick={() => handleMobileNavClick()}>{link.label}</Link>
                           ))}
                           <DropdownMenu>
                             <DropdownMenuTrigger asChild>
@@ -187,12 +187,12 @@ export function SiteHeader() {
                                 <span>{user?.name.split(' ')[0]}</span>
                               </div>
                               {user?.role === 'farmer' && (
-                                <Link href="/farmer/dashboard" className="flex items-center hover:text-primary" onClick={() => handleMobileNavClick(() => {})}>
+                                <Link href="/farmer/dashboard" className="flex items-center hover:text-primary" onClick={() => handleMobileNavClick()}>
                                   <LayoutDashboard className="mr-2 h-5 w-5" />
                                   Farmer Dashboard
                                 </Link>
                               )}
-                                <Link href="/cart" className="flex items-center hover:text-primary" onClick={() => handleMobileNavClick(() => {})}>
+                                <Link href="/cart" className="flex items-center hover:text-primary" onClick={() => handleMobileNavClick()}>
                                 <ShoppingCart className="mr-2 h-5 w-5" />
                                 Shopping Cart ({cartCount})
                               </Link>
