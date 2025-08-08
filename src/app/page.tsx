@@ -91,7 +91,7 @@ export default function HomePage() {
         </section>
 
         {/* Our Vision Section */}
-        <section id="vision" className="py-16 md:py-24 bg-background">
+        <section id="vision" className="py-16 md:py-24 bg-background overflow-x-hidden">
           <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
             <div className="md:w-1/2">
                 <Image
@@ -100,7 +100,7 @@ export default function HomePage() {
                     data-ai-hint="farm city"
                     width={600}
                     height={400}
-                    className="rounded-lg shadow-xl"
+                    className="rounded-lg shadow-xl animate-slide-in-left"
                 />
             </div>
             <div className="md:w-1/2 text-center md:text-left">
