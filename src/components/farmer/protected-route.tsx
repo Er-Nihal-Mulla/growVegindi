@@ -11,20 +11,30 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const router = useRouter();
 
   useEffect(() => {
+    // This effect handles redirection based on auth state and user role
     if (!isLoading) {
       if (!isAuthenticated) {
+        // If not authenticated at all, redirect to sign-in
         router.replace('/sign-in');
       } else if (user?.role !== 'farmer') {
-        // Redirect non-farmers away
-        router.replace('/'); 
+        // If authenticated but not a farmer (could be customer or guest),
+        // redirect away from the farmer-specific area.
+        router.replace('/products'); // Redirecting to products page is a safe default
       }
     }
   }, [isAuthenticated, user, router, isLoading]);
 
   useEffect(() => {
-    setIsLoading(false);
-  }, [setIsLoading]);
+    // This effect ensures the loading spinner is turned off once the component mounts
+    // and the redirection logic has had a chance to run.
+    if (user?.role === 'farmer') {
+        setIsLoading(false);
+    }
+  }, [setIsLoading, user]);
 
+
+  // Show a loader while checking authentication and role.
+  // This prevents a flash of the protected content before redirection.
   if (isLoading || !isAuthenticated || user?.role !== 'farmer') {
     return (
       <div className="flex items-center justify-center min-h-screen">
@@ -33,5 +43,6 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
     );
   }
 
+  // If all checks pass, render the protected content.
   return <>{children}</>;
 }

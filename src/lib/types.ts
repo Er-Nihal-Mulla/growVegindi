@@ -5,7 +5,7 @@ export type User = {
   id: string;
   name: string;
   email: string;
-  role: 'customer' | 'farmer';
+  role: 'customer' | 'farmer' | 'guest';
   mobile?: string;
   village?: string;
   taluka?: string;

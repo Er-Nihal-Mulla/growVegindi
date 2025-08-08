@@ -55,10 +55,17 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-20 items-center justify-between">
-        <div className="mr-6">
+        <div className="mr-6 flex items-center gap-6">
           <Link href="/" className="flex items-center gap-2" aria-label="Grow Vejindi Home" onClick={handleNavClick}>
             <Logo />
           </Link>
+           <nav className="hidden md:flex items-center gap-1">
+              {navLinks.map((link) => (
+                  <Link key={link.href} href={link.href} className="text-sm font-medium transition-colors hover:text-primary/80 text-foreground px-3 py-2" onClick={handleNavClick}>
+                    {link.label}
+                  </Link>
+                ))}
+            </nav>
         </div>
 
         <div className="flex items-center gap-4">
@@ -66,13 +73,6 @@ export function SiteHeader() {
           <div className="hidden md:flex items-center justify-end gap-1">
             {isAuthenticated ? (
               <div className="flex items-center gap-3">
-                <nav className="flex items-center gap-1">
-                  {navLinks.map((link) => (
-                      <Link key={link.href} href={link.href} className="text-sm font-medium transition-colors hover:text-primary/80 text-foreground px-3 py-2" onClick={handleNavClick}>
-                        {link.label}
-                      </Link>
-                    ))}
-                </nav>
                 <Link href="/cart" passHref onClick={handleNavClick}>
                   <Button variant="ghost" size="icon" className="relative text-foreground hover:bg-accent/10 hover:text-foreground">
                     <ShoppingCart className="h-5 w-5" />
@@ -113,13 +113,6 @@ export function SiteHeader() {
               </div>
             ) : (
               <div className="flex items-center gap-2">
-                <nav className="flex items-center gap-1">
-                  {navLinks.map((link) => (
-                      <Link key={link.href} href={link.href} className="text-sm font-medium transition-colors hover:text-primary/80 text-foreground px-3 py-2" onClick={handleNavClick}>
-                        {link.label}
-                      </Link>
-                    ))}
-                </nav>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button variant="ghost" size="icon" className="text-foreground hover:bg-accent/10 hover:text-foreground">
