@@ -5,6 +5,7 @@ import { createContext, useState, ReactNode, useEffect, useCallback } from 'reac
 import type { Language, User, Product, CartItem } from '@/lib/types';
 import { useToast } from '@/hooks/use-toast';
 import { SignUpFormValues } from '@/app/sign-up/page';
+import { useRouter } from 'next/navigation';
 
 const mockProducts: Product[] = [
   { id: '1', name: 'Fresh Tomatoes', description: 'Juicy and ripe tomatoes from local farms.', price: 50, image: 'https://placehold.co/400x300.png', seller: 'Ram\'s Farm', quantity: 100, category: 'Vegetable' },
@@ -20,7 +21,9 @@ type AppContextType = {
   setLanguage: (language: Language) => void;
   isAuthenticated: boolean;
   user: User | null;
+  isGuest: boolean;
   signIn: (user: User) => void;
+  signInAsGuest: () => void;
   signOut: () => void;
   signUpAndSignIn: (userData: SignUpFormValues & { role: 'farmer' | 'customer' }, paymentDetails: User['paymentDetails']) => void;
   cart: CartItem[];
@@ -42,7 +45,9 @@ export const AppContext = createContext<AppContextType>({
   setLanguage: () => {},
   isAuthenticated: false,
   user: null,
+  isGuest: false,
   signIn: () => {},
+  signInAsGuest: () => {},
   signOut: () => {},
   signUpAndSignIn: () => {},
   cart: [],
@@ -63,21 +68,31 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>('en');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState<User | null>(null);
+  const [isGuest, setIsGuest] = useState(false);
   const [cart, setCart] = useState<CartItem[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
+  const router = useRouter();
 
   useEffect(() => {
     const storedLang = localStorage.getItem('language') as Language;
     if (storedLang) setLanguage(storedLang);
 
     const storedUser = localStorage.getItem('user');
+    const guestStatus = localStorage.getItem('isGuest') === 'true';
+
     if (storedUser) {
         const parsedUser = JSON.parse(storedUser);
         setUser(parsedUser);
         setIsAuthenticated(true);
+        setIsGuest(false);
+    } else if (guestStatus) {
+        setIsAuthenticated(true); // Treat guest as "authenticated" for UI purposes
+        setIsGuest(true);
+        setUser({ id: 'guest', name: 'Guest', email: '', role: 'customer' });
     }
+
 
     const storedCart = localStorage.getItem('cart');
     if (storedCart) setCart(JSON.parse(storedCart));
@@ -109,8 +124,21 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   const signIn = (userData: User) => {
     setIsAuthenticated(true);
+    setIsGuest(false);
     setUser(userData);
     localStorage.setItem('user', JSON.stringify(userData));
+    localStorage.removeItem('isGuest');
+  };
+
+  const signInAsGuest = () => {
+    setIsLoading(true);
+    setIsAuthenticated(true);
+    setIsGuest(true);
+    setUser({ id: 'guest', name: 'Guest', email: '', role: 'customer' }); // Dummy user object for guest
+    localStorage.setItem('isGuest', 'true');
+    localStorage.removeItem('user');
+    router.push('/');
+    setTimeout(() => setIsLoading(false), 300);
   };
   
   const signUpAndSignIn = (userData: SignUpFormValues & { role: 'farmer' | 'customer' }, paymentDetails: User['paymentDetails']) => {
@@ -130,9 +158,12 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   const signOut = () => {
     setIsAuthenticated(false);
+    setIsGuest(false);
     setUser(null);
     localStorage.removeItem('user');
+    localStorage.removeItem('isGuest');
     handleSetCart([]);
+    router.push('/');
   };
 
   const addToCart = (product: Product, quantity = 1) => {
@@ -173,7 +204,14 @@ export function AppProvider({ children }: { children: ReactNode }) {
   };
 
   const addProduct = (productData: Omit<Product, 'id' | 'seller'>) => {
-    if (!user) return;
+    if (!user || isGuest) {
+        toast({
+            title: "Action Not Allowed",
+            description: "Guests cannot add products.",
+            variant: "destructive"
+        })
+        return;
+    };
     const newProduct: Product = {
       ...productData,
       id: String(Date.now()),
@@ -196,7 +234,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
         setLanguage: handleSetLanguage,
         isAuthenticated,
         user,
+        isGuest,
         signIn,
+        signInAsGuest,
         signOut,
         signUpAndSignIn,
         cart,
