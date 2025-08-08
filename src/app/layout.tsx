@@ -50,7 +50,7 @@ export default function RootLayout({
         <title>Grow Vejindi - Nurturing Growth</title>
         <meta name="description" content="An e-commerce platform for Indian farmers and local buyers." />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
           href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@24..144,700&family=PT+Sans:wght@400;700&display=swap"
           rel="stylesheet"

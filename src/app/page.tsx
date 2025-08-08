@@ -10,7 +10,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { AppContext } from '@/context/app-context';
 import { content as allContent } from '@/lib/content';
 import mobileAppImg from '../assets/mobileApp.png';
-import ourVisionImg from '../assets/ourVisionImg.png';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import Autoplay from "embla-carousel-autoplay"
+
 
 export default function HomePage() {
   const { language, setIsLoading } = useContext(AppContext);
@@ -25,6 +27,12 @@ export default function HomePage() {
     { icon: Handshake, text: content.whyChooseUs.points[1] },
     { icon: IndianRupee, text: content.whyChooseUs.points[2] },
     { icon: Award, text: content.whyChooseUs.points[3] },
+  ];
+
+  const visionImages = [
+    { src: 'https://placehold.co/600x400.png', alt: 'Illustration of a bridge connecting farms to a city', hint: 'farm city' },
+    { src: 'https://placehold.co/600x400.png', alt: 'A happy family receiving a box of fresh vegetables', hint: 'happy family' },
+    { src: 'https://placehold.co/600x400.png', alt: 'A farmer using a tablet to manage their crops', hint: 'farmer technology' },
   ];
 
   return (
@@ -91,17 +99,41 @@ export default function HomePage() {
         </section>
 
         {/* Our Vision Section */}
-        <section id="vision" className="py-16 md:py-24 bg-background overflow-x-hidden">
+        <section id="vision" className="py-16 md:py-24 bg-background overflow-hidden">
           <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
             <div className="md:w-1/2">
-                <Image
-                    src={ourVisionImg}
-                    alt="Illustration of a bridge connecting farms to a city"
-                    data-ai-hint="farm city"
-                    width={600}
-                    height={400}
-                    className="rounded-lg shadow-xl animate-slide-in-left"
-                />
+               <Carousel 
+                className="w-full max-w-lg mx-auto"
+                plugins={[
+                    Autoplay({
+                      delay: 3000,
+                      stopOnInteraction: true,
+                    }),
+                  ]}
+               >
+                <CarouselContent>
+                  {visionImages.map((image, index) => (
+                    <CarouselItem key={index}>
+                      <div className="p-1">
+                        <Card>
+                          <CardContent className="flex aspect-video items-center justify-center p-0 rounded-lg overflow-hidden">
+                             <Image
+                                src={image.src}
+                                alt={image.alt}
+                                data-ai-hint={image.hint}
+                                width={600}
+                                height={400}
+                                className="object-cover"
+                            />
+                          </CardContent>
+                        </Card>
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="hidden sm:flex" />
+                <CarouselNext className="hidden sm:flex" />
+              </Carousel>
             </div>
             <div className="md:w-1/2 text-center md:text-left">
               <h2 className="text-3xl md:text-4xl font-headline font-bold mb-6">{content.ourVision.title}</h2>
