@@ -22,7 +22,6 @@ type AppContextType = {
   isAuthenticated: boolean;
   user: User | null;
   signIn: (user: User) => void;
-  signInAsGuest: () => void;
   signOut: () => void;
   signUpAndSignIn: (userData: SignUpFormValues & { role: 'farmer' | 'customer' }, paymentDetails: User['paymentDetails']) => void;
   cart: CartItem[];
@@ -45,7 +44,6 @@ export const AppContext = createContext<AppContextType>({
   isAuthenticated: false,
   user: null,
   signIn: () => {},
-  signInAsGuest: () => {},
   signOut: () => {},
   signUpAndSignIn: () => {},
   cart: [],
@@ -114,18 +112,6 @@ export function AppProvider({ children }: { children: ReactNode }) {
     setIsAuthenticated(true);
     setUser(userData);
     localStorage.setItem('user', JSON.stringify(userData));
-  };
-
-  const signInAsGuest = () => {
-    setIsLoading(true);
-    const guestUser: User = {
-      id: 'guest',
-      name: 'Guest',
-      email: '',
-      role: 'guest',
-    };
-    signIn(guestUser);
-    router.push('/products');
   };
   
   const signUpAndSignIn = (userData: SignUpFormValues & { role: 'farmer' | 'customer' }, paymentDetails: User['paymentDetails']) => {
@@ -213,7 +199,6 @@ export function AppProvider({ children }: { children: ReactNode }) {
         isAuthenticated,
         user,
         signIn,
-        signInAsGuest,
         signOut,
         signUpAndSignIn,
         cart,

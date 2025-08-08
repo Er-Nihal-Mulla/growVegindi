@@ -15,7 +15,7 @@ import Autoplay from "embla-carousel-autoplay"
 
 
 export default function HomePage() {
-  const { language, setIsLoading, signInAsGuest } = useContext(AppContext);
+  const { language, setIsLoading } = useContext(AppContext);
   const content = allContent[language];
   
   useEffect(() => {
@@ -147,8 +147,8 @@ export default function HomePage() {
             <h2 className="text-3xl md:text-4xl font-headline font-bold mb-4">{content.cta.title}</h2>
             <p className="text-lg mb-8 max-w-2xl mx-auto">{content.cta.subtitle}</p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button size="lg" variant="secondary" onClick={signInAsGuest}>Sign in as Guest</Button>
-              <Link href="/sign-in" passHref><Button size="lg" variant="secondary" onClick={() => setIsLoading(true)}>Membership</Button></Link>
+                <Link href="/products" passHref><Button size="lg" variant="secondary" onClick={() => setIsLoading(true)}>{content.buttons.shopNow}</Button></Link>
+                <Link href="/sign-up?role=farmer" passHref><Button size="lg" variant="secondary" onClick={() => setIsLoading(true)}>{content.buttons.registerFarmer}</Button></Link>
             </div>
           </div>
         </section>
