@@ -1,0 +1,15 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow public write access to the 'waitlist' collection for the notify me form
+    match /waitlist/{entry} {
+      allow create: if true;
+      allow read, update, delete: if false; // No one can read/modify/delete waitlist entries
+    }
+
+    // Default deny all other collections
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
