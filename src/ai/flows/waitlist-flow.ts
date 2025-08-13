@@ -1,3 +1,4 @@
+
 'use server';
 /**
  * @fileOverview A Genkit flow for adding users to a waitlist in Firestore.
@@ -14,6 +15,7 @@ import { initializeApp, getApps, App } from 'firebase-admin/app';
 const AddToWaitlistInputSchema = z.object({
   name: z.string().describe('The name of the user.'),
   email: z.string().email().describe('The email of the user.'),
+  mobile: z.string().describe('The mobile number of the user.'),
 });
 export type AddToWaitlistInput = z.infer<typeof AddToWaitlistInputSchema>;
 
@@ -38,6 +40,7 @@ const addToWaitlistFlow = ai.defineFlow(
       await db.collection('waitlist').add({
         name: input.name,
         email: input.email,
+        mobile: input.mobile,
         createdAt: new Date(),
       });
       return { success: true };

@@ -24,6 +24,7 @@ import { useToast } from '@/hooks/use-toast';
 const waitlistSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   email: z.string().email('Please enter a valid email address'),
+  mobile: z.string().regex(/^[0-9]{10}$/, 'Please enter a valid 10-digit mobile number'),
 });
 
 export default function HomePage() {
@@ -211,8 +212,8 @@ export default function HomePage() {
                  <p>You're on the list. We'll notify you at launch.</p>
                </div>
             ) : (
-                <form onSubmit={handleSubmit(onWaitlistSubmit)} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                    <div className="flex-1">
+                <form onSubmit={handleSubmit(onWaitlistSubmit)} className="flex flex-col gap-4 max-w-md mx-auto">
+                    <div className="w-full">
                       <Input 
                         {...register('name')} 
                         placeholder="Your Name" 
@@ -221,7 +222,7 @@ export default function HomePage() {
                       />
                        {errors.name && <p className="text-destructive text-left mt-1 text-sm">{errors.name.message}</p>}
                     </div>
-                     <div className="flex-1">
+                     <div className="w-full">
                       <Input 
                         {...register('email')}
                         type="email" 
@@ -230,6 +231,16 @@ export default function HomePage() {
                         aria-invalid={errors.email ? "true" : "false"}
                       />
                       {errors.email && <p className="text-destructive text-left mt-1 text-sm">{errors.email.message}</p>}
+                    </div>
+                     <div className="w-full">
+                      <Input 
+                        {...register('mobile')}
+                        type="tel" 
+                        placeholder="Your Mobile Number" 
+                        className="bg-primary-foreground text-primary placeholder:text-primary/70"
+                        aria-invalid={errors.mobile ? "true" : "false"}
+                      />
+                      {errors.mobile && <p className="text-destructive text-left mt-1 text-sm">{errors.mobile.message}</p>}
                     </div>
                     <Button type="submit" size="lg" variant="secondary" loading={isSubmitting}>Notify Me</Button>
                 </form>
