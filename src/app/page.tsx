@@ -255,14 +255,6 @@ export default function HomePage() {
             <Rocket className="w-16 h-16 mx-auto mb-4" />
             <h2 className="text-3xl md:text-4xl font-headline font-bold mb-4">{content.cta.title}</h2>
             <p className="text-lg mb-8 max-w-2xl mx-auto">{content.cta.subtitle}</p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/products">
-                <Button size="lg" variant="default" onClick={() => setIsLoading(true)}>{content.buttons.shopNow}</Button>
-              </Link>
-              <Link href="/sign-up?role=farmer">
-                <Button size="lg" variant="outline" className="bg-transparent hover:bg-background/20" onClick={() => setIsLoading(true)}>{content.buttons.registerFarmer}</Button>
-              </Link>
-            </div>
           </div>
         </section>
       </main>
