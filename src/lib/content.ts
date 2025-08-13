@@ -22,6 +22,17 @@ type ContentStructure = {
     title: string;
     text: string;
   };
+  notify: {
+    title: string;
+    subtitle: string;
+    namePlaceholder: string;
+    emailPlaceholder: string;
+    mobilePlaceholder: string;
+    buttonText: string;
+    submittingText: string;
+    successTitle: string;
+    successSubtitle: string;
+  },
   cta: {
     title: string;
     subtitle: string;
@@ -106,6 +117,17 @@ export const content: Record<Language, ContentStructure> = {
       title: 'Our Vision',
       text: "Our vision is to build a strong bridge between India's hardworking farmers and consumers, creating a transparent, fair, and sustainable ecosystem for all.",
     },
+    notify: {
+        title: "We’re Launching Soon!",
+        subtitle: "Be the first to know when we go live. Join our waitlist for exclusive updates.",
+        namePlaceholder: "Your Name",
+        emailPlaceholder: "Your Email Address",
+        mobilePlaceholder: "Your Mobile Number",
+        buttonText: "Notify Me",
+        submittingText: "Submitting...",
+        successTitle: "Thank you for your interest!",
+        successSubtitle: "You're on the list. We'll notify you at launch."
+    },
     cta: {
         title: "Ready to Get Started?",
         subtitle: "Join our community of farmers and buyers today. Experience the future of fresh produce."
@@ -188,6 +210,17 @@ export const content: Record<Language, ContentStructure> = {
       title: 'हमारा दृष्टिकोण',
       text: 'हमारा दृष्टिकोण भारत के मेहनती किसानों और उपभोक्ताओं के बीच एक मजबूत पुल बनाना है, जो सभी के लिए एक पारदर्शी, निष्पक्ष और टिकाऊ पारिस्थितिकी तंत्र का निर्माण करता है।',
     },
+    notify: {
+        title: "हम जल्द ही लॉन्च कर रहे हैं!",
+        subtitle: "जब हम लाइव हों तो सबसे पहले जानें। विशेष अपडेट के लिए हमारी प्रतीक्षा सूची में शामिल हों।",
+        namePlaceholder: "आपका नाम",
+        emailPlaceholder: "आपका ईमेल पता",
+        mobilePlaceholder: "आपका मोबाइल नंबर",
+        buttonText: "मुझे सूचित करें",
+        submittingText: "सबमिट हो रहा है...",
+        successTitle: "आपकी रुचि के लिए धन्यवाद!",
+        successSubtitle: "आप सूची में हैं। हम आपको लॉन्च के समय सूचित करेंगे।"
+    },
     cta: {
         title: "शुरू करने के लिए तैयार हैं?",
         subtitle: "आज ही हमारे किसानों और खरीदारों के समुदाय में शामिल हों। ताज़ा उपज के भविष्य का अनुभव करें।"
@@ -217,7 +250,7 @@ export const content: Record<Language, ContentStructure> = {
     },
     signIn: {
       title: 'साइन इन करें',
-      description: 'अपने खाते में लॉगिन करने के लिए नीचे अपना ईमेल दर्ज करें।',
+      description: 'अपने खाते में लॉगिन करने के لیے नीचे अपना ईमेल दर्ज करें।',
       emailLabel: 'ईमेल',
       passwordLabel: 'पासवर्ड',
       button: 'साइन इन करें',
@@ -269,6 +302,17 @@ export const content: Record<Language, ContentStructure> = {
     ourVision: {
       title: 'आमचे ध्येय',
       text: 'भारतातील कष्टकरी शेतकरी आणि ग्राहक यांच्यात एक मजबूत पूल बांधणे, सर्वांसाठी एक पारदर्शक, न्याय्य आणि शाश्वत परिसंस्था तयार करणे हे आमचे ध्येय आहे.',
+    },
+    notify: {
+        title: "आम्ही लवकरच लॉन्च करत आहोत!",
+        subtitle: "आम्ही थेट झाल्यावर सर्वात आधी जाणून घ्या. विशेष अद्यतनांसाठी आमच्या प्रतीक्षा यादीमध्ये सामील व्हा.",
+        namePlaceholder: "तुमचे नाव",
+        emailPlaceholder: "तुमचा ईमेल पत्ता",
+        mobilePlaceholder: "तुमचा मोबाईल नंबर",
+        buttonText: "मला सूचित करा",
+        submittingText: "सबमिट करत आहे...",
+        successTitle: "तुमच्या आवडीबद्दल धन्यवाद!",
+        successSubtitle: "तुम्ही यादीत आहात. आम्ही तुम्हाला लॉन्चच्या वेळी सूचित करू."
     },
      cta: {
         title: "सुरुवात करण्यास तयार आहात?",
