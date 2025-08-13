@@ -102,7 +102,7 @@ export function SiteHeader() {
                 </DropdownMenu>
               </div>
             ) : (
-              <div className="flex items-center gap-2">
+              <div className="hidden md:flex items-center gap-2">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button variant="ghost" size="icon" className="text-foreground hover:bg-accent/10 hover:text-foreground">
@@ -150,6 +150,41 @@ export function SiteHeader() {
                     <SheetClose asChild>
                        <Link href="/products" className="hover:text-primary" onClick={handleNavClick}>{content.buttons.browseProducts}</Link>
                     </SheetClose>
+                    <div className="border-t pt-6 mt-4 space-y-4">
+                      {!isAuthenticated && (
+                        <>
+                          <SheetClose asChild>
+                            <Link href="/sign-in" passHref>
+                              <Button variant="ghost" className="w-full justify-start text-lg" onClick={handleNavClick}>{content.auth.signIn}</Button>
+                            </Link>
+                          </SheetClose>
+                          <SheetClose asChild>
+                             <Link href="/sign-up" passHref>
+                              <Button variant="secondary" className="w-full text-lg" onClick={handleNavClick}>{content.auth.signUp}</Button>
+                            </Link>
+                          </SheetClose>
+                          <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                               <Button variant="outline" className="w-full justify-start text-lg font-medium">
+                                <Globe className="mr-2 h-5 w-5" />
+                                <span>Change language</span>
+                               </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end" className="w-56">
+                              {languages.map((lang) => (
+                                <DropdownMenuItem
+                                  key={lang.code}
+                                  onSelect={() => setLanguage(lang.code)}
+                                  className={cn("text-base", language === lang.code ? 'font-semibold bg-secondary' : 'font-normal')}
+                                >
+                                  {lang.name}
+                                </DropdownMenuItem>
+                              ))}
+                            </DropdownMenuContent>
+                          </DropdownMenu>
+                        </>
+                      )}
+                    </div>
                   </nav>
                 </SheetContent>
             </Sheet>

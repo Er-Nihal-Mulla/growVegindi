@@ -51,52 +51,54 @@ export default function CartPage() {
         <div className="lg:col-span-2">
           <Card>
             <CardContent className="p-0">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead className="w-1/3">{content.product}</TableHead>
-                    <TableHead>{content.price}</TableHead>
-                    <TableHead>{content.quantity}</TableHead>
-                    <TableHead>{content.total}</TableHead>
-                    <TableHead className="text-right"></TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {cart.map(({ product, quantity }) => (
-                    <TableRow key={product.id}>
-                      <TableCell className="font-medium">
-                        <div className="flex items-center gap-4">
-                          <Image
-                            src={product.image}
-                            alt={product.name}
-                            width={64}
-                            height={64}
-                            className="rounded-md object-cover"
-                            data-ai-hint={product.name.split(' ')[1]?.toLowerCase() || 'vegetable'}
-                          />
-                          <span>{product.name}</span>
-                        </div>
-                      </TableCell>
-                      <TableCell><div className='flex items-center'><IndianRupee className="h-4 w-4" />{product.price.toFixed(2)}</div></TableCell>
-                      <TableCell>
-                        <Input
-                          type="number"
-                          min="1"
-                          value={quantity}
-                          onChange={(e) => updateQuantity(product.id, parseInt(e.target.value, 10))}
-                          className="w-20"
-                        />
-                      </TableCell>
-                      <TableCell><div className='flex items-center'><IndianRupee className="h-4 w-4" />{(product.price * quantity).toFixed(2)}</div></TableCell>
-                      <TableCell className="text-right">
-                        <Button variant="ghost" size="icon" onClick={() => removeFromCart(product.id)}>
-                          <Trash2 className="h-4 w-4" />
-                        </Button>
-                      </TableCell>
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead className="w-[200px] sm:w-1/3">{content.product}</TableHead>
+                      <TableHead>{content.price}</TableHead>
+                      <TableHead>{content.quantity}</TableHead>
+                      <TableHead>{content.total}</TableHead>
+                      <TableHead className="text-right"></TableHead>
                     </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+                  </TableHeader>
+                  <TableBody>
+                    {cart.map(({ product, quantity }) => (
+                      <TableRow key={product.id}>
+                        <TableCell className="font-medium">
+                          <div className="flex items-center gap-4">
+                            <Image
+                              src={product.image}
+                              alt={product.name}
+                              width={64}
+                              height={64}
+                              className="rounded-md object-cover"
+                              data-ai-hint={product.name.split(' ')[1]?.toLowerCase() || 'vegetable'}
+                            />
+                            <span className="line-clamp-2">{product.name}</span>
+                          </div>
+                        </TableCell>
+                        <TableCell><div className='flex items-center'><IndianRupee className="h-4 w-4" />{product.price.toFixed(2)}</div></TableCell>
+                        <TableCell>
+                          <Input
+                            type="number"
+                            min="1"
+                            value={quantity}
+                            onChange={(e) => updateQuantity(product.id, parseInt(e.target.value, 10))}
+                            className="w-20"
+                          />
+                        </TableCell>
+                        <TableCell><div className='flex items-center'><IndianRupee className="h-4 w-4" />{(product.price * quantity).toFixed(2)}</div></TableCell>
+                        <TableCell className="text-right">
+                          <Button variant="ghost" size="icon" onClick={() => removeFromCart(product.id)}>
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
             </CardContent>
           </Card>
         </div>
