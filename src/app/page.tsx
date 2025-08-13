@@ -31,9 +31,9 @@ export default function HomePage() {
   ];
   
   const features = [
-    { icon: Target, title: "Sell Directly to Buyers", description: "Cut out the middleman and connect with customers in your area who are looking for fresh, local produce." },
-    { icon: DollarSign, title: "Set Your Own Prices", description: "You have the freedom to set fair prices for your products, ensuring you get the compensation you deserve." },
-    { icon: LineChart, title: "Grow Your Farm Income", description: "By reaching a wider customer base and controlling your prices, you can significantly increase your earnings." }
+    { icon: Target, title: content.features[0].title, description: content.features[0].description },
+    { icon: DollarSign, title: content.features[1].title, description: content.features[1].description },
+    { icon: LineChart, title: content.features[2].title, description: content.features[2].description }
   ]
 
   const visionImages = [

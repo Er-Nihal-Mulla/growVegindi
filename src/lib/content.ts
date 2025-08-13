@@ -1,3 +1,4 @@
+
 import type { Language } from './types';
 
 type ContentStructure = {
@@ -5,6 +6,10 @@ type ContentStructure = {
     title: string;
     subtitle: string;
   };
+  features: {
+    title: string;
+    description: string;
+  }[];
   whatWeDo: {
     title: string;
     steps: string[];
@@ -75,6 +80,11 @@ export const content: Record<Language, ContentStructure> = {
       title: 'Sell Your Farm Fresh Produce Directly to Buyers',
       subtitle: 'Join Grow Vejindi and connect directly with local customers. Skip the middlemen, set your own prices, and grow your farm income.',
     },
+    features: [
+      { title: "Sell Directly to Buyers", description: "Cut out the middleman and connect with customers in your area who are looking for fresh, local produce." },
+      { title: "Set Your Own Prices", description: "You have the freedom to set fair prices for your products, ensuring you get the compensation you deserve." },
+      { title: "Grow Your Farm Income", description: "By reaching a wider customer base and controlling your prices, you can significantly increase your earnings." }
+    ],
     whatWeDo: {
       title: 'How It Works',
       steps: [
@@ -152,6 +162,11 @@ export const content: Record<Language, ContentStructure> = {
       title: 'अपनी खेत की ताजी उपज सीधे खरीदारों को बेचें',
       subtitle: 'स्थानीय खरीदारों से सीधे जुड़ें और अपनी आय बढ़ाएं।',
     },
+    features: [
+        { title: "सीधे खरीदारों को बेचें", description: "बिचौलिए को हटा दें और अपने क्षेत्र में उन ग्राहकों से जुड़ें जो ताजा, स्थानीय उपज की तलाश में हैं।" },
+        { title: "अपनी कीमतें खुद निर्धारित करें", description: "आपको अपने उत्पादों के लिए उचित मूल्य निर्धारित करने की स्वतंत्रता है, यह सुनिश्चित करते हुए कि आपको वह मुआवजा मिले जिसके आप हकदार हैं।" },
+        { title: "अपनी कृषि आय बढ़ाएँ", description: "एक विस्तृत ग्राहक आधार तक पहुँचकर और अपनी कीमतों को नियंत्रित करके, आप अपनी कमाई में उल्लेखनीय वृद्धि कर सकते हैं।" }
+    ],
     whatWeDo: {
       title: 'यह कैसे काम करता है',
       steps: [
@@ -229,6 +244,11 @@ export const content: Record<Language, ContentStructure> = {
       title: 'तुमची शेतातील ताजी उत्पादने थेट खरेदीदारांना विका',
       subtitle: 'ग्रो वेजिंदीमध्ये सामील व्हा आणि थेट स्थानिक ग्राहकांशी संपर्क साधा. मध्यस्थांना वगळा, स्वतःच्या किंमती ठरवा आणि आपले शेती उत्पन्न वाढवा.',
     },
+    features: [
+        { title: "थेट खरेदीदारांना विका", description: "मध्यस्थांना वगळा आणि आपल्या परिसरातील ताज्या, स्थानिक उत्पादनांच्या शोधात असलेल्या ग्राहकांशी संपर्क साधा." },
+        { title: "आपल्या स्वतःच्या किंमती ठरवा", description: "तुम्हाला तुमच्या उत्पादनांसाठी योग्य किंमती ठरवण्याचे स्वातंत्र्य आहे, ज्यामुळे तुम्हाला योग्य मोबदला मिळेल याची खात्री होते." },
+        { title: "तुमचे शेती उत्पन्न वाढवा", description: "विस्तृत ग्राहक वर्गापर्यंत पोहोचून आणि तुमच्या किंमतींवर नियंत्रण ठेवून, तुम्ही तुमच्या कमाईत लक्षणीय वाढ करू शकता." }
+    ],
     whatWeDo: {
       title: 'हे कसे कार्य करते',
       steps: [
