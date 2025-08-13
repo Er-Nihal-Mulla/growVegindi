@@ -56,9 +56,6 @@ export function SiteHeader() {
               <Link href="/" className="text-sm font-medium transition-colors hover:text-primary/80 text-foreground" onClick={handleNavClick}>
                 Home
               </Link>
-              <Link href="/products" className="text-sm font-medium transition-colors hover:text-primary/80 text-foreground" onClick={handleNavClick}>
-                {content.buttons.browseProducts}
-              </Link>
             </nav>
           <div className="flex items-center justify-end gap-3">
             {isAuthenticated ? (
@@ -139,9 +136,6 @@ export function SiteHeader() {
                   <nav className="grid gap-6 text-lg font-medium mt-8">
                     <SheetClose asChild>
                       <Link href="/" className="hover:text-primary" onClick={handleNavClick}>Home</Link>
-                    </SheetClose>
-                    <SheetClose asChild>
-                       <Link href="/products" className="hover:text-primary" onClick={handleNavClick}>{content.buttons.browseProducts}</Link>
                     </SheetClose>
                     <div className="border-t pt-6 mt-4 space-y-4">
                       {!isAuthenticated && (
