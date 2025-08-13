@@ -122,13 +122,6 @@ export function SiteHeader() {
                     ))}
                   </DropdownMenuContent>
                 </DropdownMenu>
-
-                <Link href="/sign-in" passHref>
-                  <Button variant="ghost" className="text-foreground hover:bg-accent/10 hover:text-foreground" onClick={handleNavClick}>{content.auth.signIn}</Button>
-                </Link>
-                <Link href="/sign-up" passHref>
-                  <Button variant="secondary" onClick={handleNavClick}>{content.auth.signUp}</Button>
-                </Link>
               </div>
             )}
           </div>
@@ -153,16 +146,6 @@ export function SiteHeader() {
                     <div className="border-t pt-6 mt-4 space-y-4">
                       {!isAuthenticated && (
                         <>
-                          <SheetClose asChild>
-                            <Link href="/sign-in" passHref>
-                              <Button variant="ghost" className="w-full justify-start text-lg" onClick={handleNavClick}>{content.auth.signIn}</Button>
-                            </Link>
-                          </SheetClose>
-                          <SheetClose asChild>
-                             <Link href="/sign-up" passHref>
-                              <Button variant="secondary" className="w-full text-lg" onClick={handleNavClick}>{content.auth.signUp}</Button>
-                            </Link>
-                          </SheetClose>
                           <DropdownMenu>
                             <DropdownMenuTrigger asChild>
                                <Button variant="outline" className="w-full justify-start text-lg font-medium">
