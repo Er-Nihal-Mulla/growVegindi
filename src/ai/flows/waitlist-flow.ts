@@ -9,8 +9,7 @@
 
 import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
-import { getFirestore } from 'firebase-admin/firestore';
-import { initializeApp, getApps, App } from 'firebase-admin/app';
+import { db } from '@/services/firebase-admin';
 
 const AddToWaitlistInputSchema = z.object({
   name: z.string().describe('The name of the user.'),
@@ -18,16 +17,6 @@ const AddToWaitlistInputSchema = z.object({
   mobile: z.string().describe('The mobile number of the user.'),
 });
 export type AddToWaitlistInput = z.infer<typeof AddToWaitlistInputSchema>;
-
-// Initialize Firebase Admin SDK
-function getFirebaseApp(): App {
-    if (getApps().length) {
-        return getApps()[0];
-    }
-    return initializeApp();
-}
-
-const db = getFirestore(getFirebaseApp());
 
 const addToWaitlistFlow = ai.defineFlow(
   {
