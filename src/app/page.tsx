@@ -43,7 +43,7 @@ export default function HomePage() {
   ];
   
   const socialLinks = [
-    { name: 'Instagram', url: 'https://www.instagram.com/grow_vejindi?igsh=bjI0OGptZjVoeHV5&utm_source=qr', icon: 'https://cdn.worldvectorlogo.com/logos/instagram-2-1.svg' },
+    { name: 'Instagram', url: 'https://www.instagram.com/grow_vejindi?igsh=bjI0OGptZjVoeHV5&utm_source=qr', icon: 'https://cdn.worldvectorlogo.com/logos/instagram-icon.svg' },
   ]
 
   return (
