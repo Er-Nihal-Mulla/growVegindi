@@ -10,7 +10,9 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'cdn.worldvectorlogo.com', pathname: '/**' },
     ],
   },
-  experimental: { serverActions: {} },
+  experimental: {
+    serverActions: {}, // ✅ if you want to use server actions
+  },
 };
 
 export default nextConfig;
