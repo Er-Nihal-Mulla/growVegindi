@@ -43,9 +43,7 @@ export default function HomePage() {
   ];
   
   const socialLinks = [
-    { name: 'Instagram', url: 'https://instagram.com', icon: 'https://cdn.worldvectorlogo.com/logos/instagram-2-1.svg' },
-    { name: 'Facebook', url: 'https://facebook.com', icon: 'https://cdn.worldvectorlogo.com/logos/facebook-3.svg' },
-    { name: 'WhatsApp', url: 'https://whatsapp.com', icon: 'https://cdn.worldvectorlogo.com/logos/whatsapp-3.svg' }
+    { name: 'Instagram', url: 'https://www.instagram.com/grow_vejindi?igsh=bjI0OGptZjVoeHV5&utm_source=qr', icon: 'https://cdn.worldvectorlogo.com/logos/instagram-2-1.svg' },
   ]
 
   return (
