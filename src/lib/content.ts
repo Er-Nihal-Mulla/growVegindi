@@ -198,7 +198,7 @@ export const content: Record<Language, ContentStructure> = {
       ],
     },
     whyChooseUs: {
-      title: 'ग्रो वेजिंदी क्यों चुनें?',
+      title: 'ग्रो वेजिंडी क्यों चुनें?',
       points: [
         'सीधे खेत से',
         'कोई बिचौलिया नहीं',
@@ -231,7 +231,7 @@ export const content: Record<Language, ContentStructure> = {
       browseProducts: 'उत्पाद ब्राउज़ करें',
     },
     footer: {
-      tagline: 'ग्रो वेजिंदी: मिलकर विकास का पोषण।',
+      tagline: 'ग्रो वेजिंडी: मिलकर विकास का पोषण।',
     },
      auth: {
       signIn: 'साइन इन करें',
@@ -275,7 +275,7 @@ export const content: Record<Language, ContentStructure> = {
   mr: {
     hero: {
       title: 'तुमची शेतातील ताजी उत्पादने थेट खरेदीदारांना विका',
-      subtitle: 'ग्रो वेजिंदीमध्ये सामील व्हा आणि थेट स्थानिक ग्राहकांशी संपर्क साधा. मध्यस्थांना वगळा, स्वतःच्या किंमती ठरवा आणि आपले शेती उत्पन्न वाढवा.',
+      subtitle: 'ग्रो वेजिंडीमध्ये सामील व्हा आणि थेट स्थानिक ग्राहकांशी संपर्क साधा. मध्यस्थांना वगळा, स्वतःच्या किंमती ठरवा आणि आपले शेती उत्पन्न वाढवा.',
     },
     features: [
         { title: "थेट खरेदीदारांना विका", description: "मध्यस्थांना वगळा आणि आपल्या परिसरातील ताज्या, स्थानिक उत्पादनांच्या शोधात असलेल्या ग्राहकांशी संपर्क साधा." },
@@ -291,7 +291,7 @@ export const content: Record<Language, ContentStructure> = {
       ],
     },
     whyChooseUs: {
-      title: 'ग्रो वेजिंदी का निवडावे?',
+      title: 'ग्रो वेजिंडी का निवडावे?',
       points: [
         'थेट शेतातून',
         'मध्यस्थ नाही',
@@ -324,7 +324,7 @@ export const content: Record<Language, ContentStructure> = {
       browseProducts: 'उत्पादने ब्राउझ करा',
     },
     footer: {
-      tagline: 'ग्रो वेजिंदी: एकत्र विकासाचे संगोपन.',
+      tagline: 'ग्रो वेजिंडी: एकत्र विकासाचे संगोपन.',
     },
     auth: {
       signIn: 'साइन इन करा',
