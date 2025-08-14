@@ -1,4 +1,4 @@
-import { db } from '@/services/firebase-admin';
+import db from "@/services/firebase-admin";
 import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {

@@ -1,3 +1,4 @@
+// firebase-admin.ts
 import admin from "firebase-admin";
 
 if (!admin.apps.length) {
@@ -10,4 +11,4 @@ if (!admin.apps.length) {
   });
 }
 
-export default admin;
+export default admin.firestore();
