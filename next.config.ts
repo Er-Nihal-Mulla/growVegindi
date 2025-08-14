@@ -10,8 +10,7 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'cdn.worldvectorlogo.com', pathname: '/**' },
     ],
   },
-  experimental: { serverActions: {} }, // fixed
-  // remove appDir, Next.js 15 auto-detects src/app
+  experimental: { serverActions: {} },
 };
 
 export default nextConfig;
