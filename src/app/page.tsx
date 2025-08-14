@@ -12,7 +12,7 @@ import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carouse
 import Autoplay from "embla-carousel-autoplay"
 import heroImage from '../assets/mobileApp.png'
 import visionSlide1 from '../assets/visionSlide1.png'
-import { NotifyForm } from '@/components/NotifyForm';
+import NotifyForm from '@/components/NotifyForm';
 
 
 export default function HomePage() {

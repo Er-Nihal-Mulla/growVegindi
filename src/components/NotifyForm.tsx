@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useContext } from 'react';
@@ -13,7 +12,6 @@ import { addToWaitlist } from '@/ai/flows/waitlist-flow';
 import { AppContext } from '@/context/app-context';
 import { content as allContent } from '@/lib/content';
 
-
 const waitlistSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   email: z.string().email('Please enter a valid email address'),
@@ -22,12 +20,11 @@ const waitlistSchema = z.object({
 
 type WaitlistInput = z.infer<typeof waitlistSchema>;
 
-export function NotifyForm() {
+function NotifyForm() {
   const { toast } = useToast();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { language } = useContext(AppContext);
   const content = allContent[language].notify;
-
 
   const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<WaitlistInput>({
     resolver: zodResolver(waitlistSchema),
@@ -40,11 +37,11 @@ export function NotifyForm() {
         setIsSubmitted(true);
         reset();
       } else {
-         toast({
-            title: 'Error',
-            description: 'Something went wrong. Please try again.',
-            variant: 'destructive',
-          });
+        toast({
+          title: 'Error',
+          description: 'Something went wrong. Please try again.',
+          variant: 'destructive',
+        });
       }
     } catch (error) {
       console.error(error);
@@ -114,3 +111,5 @@ export function NotifyForm() {
     </section>
   );
 }
+
+export default NotifyForm;
