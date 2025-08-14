@@ -1,18 +1,9 @@
-import type { NextConfig } from 'next';
-
-const nextConfig: NextConfig = {
-  typescript: { ignoreBuildErrors: true },
-  eslint: { ignoreDuringBuilds: true },
-  images: {
-    remotePatterns: [
-      { protocol: 'https', hostname: 'placehold.co', pathname: '/**' },
-      { protocol: 'https', hostname: 'razorpay.com', pathname: '/**' },
-      { protocol: 'https', hostname: 'cdn.worldvectorlogo.com', pathname: '/**' },
-    ],
-  },
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   experimental: {
-    serverActions: {}, // ✅ if you want to use server actions
+    appDir: true, // make sure the app/ folder is used
   },
+  output: 'standalone', // makes Vercel build standalone output
 };
 
 export default nextConfig;
