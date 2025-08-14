@@ -43,7 +43,7 @@ export default function HomePage() {
   ];
   
   const socialLinks = [
-    { name: 'Instagram', url: 'https://www.instagram.com/grow_vejindi?igsh=bjI0OGptZjVoeHV5&utm_source=qr', icon: 'https://cdn.worldvectorlogo.com/logos/instagram-icon.svg' },
+    { name: 'Instagram', url: 'https://www.instagram.com/grow_vejindi?igsh=bjI0OGptZjVoeHV5&utm_source=qr' },
   ]
 
   return (
@@ -182,7 +182,20 @@ export default function HomePage() {
           <div className="flex justify-center gap-6 mb-4">
             {socialLinks.map(link => (
               <a key={link.name} href={link.url} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                <Image src={link.icon} alt={link.name} width={24} height={24} className="opacity-70 hover:opacity-100" />
+                 <svg
+                    className="w-6 h-6"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                  </svg>
                 <span className="sr-only">{link.name}</span>
               </a>
             ))}
