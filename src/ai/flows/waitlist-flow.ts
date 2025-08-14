@@ -19,15 +19,15 @@ const AddToWaitlistInputSchema = z.object({
 });
 export type AddToWaitlistInput = z.infer<typeof AddToWaitlistInputSchema>;
 
-let app: App;
-if (!getApps().length) {
-    app = initializeApp();
-} else {
-    app = getApps()[0];
+// Initialize Firebase Admin SDK
+function getFirebaseApp(): App {
+    if (getApps().length) {
+        return getApps()[0];
+    }
+    return initializeApp();
 }
 
-const db = getFirestore(app);
-
+const db = getFirestore(getFirebaseApp());
 
 const addToWaitlistFlow = ai.defineFlow(
   {
@@ -50,7 +50,6 @@ const addToWaitlistFlow = ai.defineFlow(
     }
   }
 );
-
 
 export async function addToWaitlist(input: AddToWaitlistInput): Promise<{ success: boolean }> {
     return addToWaitlistFlow(input);
