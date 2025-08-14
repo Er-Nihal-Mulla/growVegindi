@@ -1,7 +1,7 @@
-import type {NextConfig} from 'next';
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  /* existing config options */
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -27,9 +27,15 @@ const nextConfig: NextConfig = {
         hostname: 'cdn.worldvectorlogo.com',
         port: '',
         pathname: '/**',
-      }
+      },
     ],
   },
+
+  /* NEW: fix Vercel deployment for app dir */
+  experimental: {
+    appDir: true, // enables app directory routing
+  },
+  output: 'standalone', // generates files Vercel needs
 };
 
 export default nextConfig;
