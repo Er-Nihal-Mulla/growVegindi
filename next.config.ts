@@ -1,10 +1,9 @@
-// STUDIO/next.config.ts
-import { defineConfig } from 'next';
-
-export default defineConfig({
-  // Remove swcMinify and appDir if you are not using experimental app router features
-  experimental: {
-    serverActions: true, // optional, only if you use server actions
-  },
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
-});
+  experimental: {
+    serverActions: true, // optional
+  },
+};
+
+export default nextConfig;
