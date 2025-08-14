@@ -181,21 +181,39 @@ export default function HomePage() {
         <div className="container mx-auto px-4 text-center text-muted-foreground">
           <div className="flex justify-center gap-6 mb-4">
             {socialLinks.map(link => (
-              <a key={link.name} href={link.url} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                 <svg
-                    className="w-6 h-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    stroke="currentColor"
-                    strokeWidth="1"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                  </svg>
+              <a key={link.name} href={link.url} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:opacity-80 transition-opacity">
+                <svg
+                  className="w-6 h-6"
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                >
+                  <defs>
+                    <linearGradient
+                      id="instagram-gradient"
+                      x1="28.16"
+                      x2="3.84"
+                      y1="3.84"
+                      y2="28.16"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop stopColor="#fdc16d" offset="0" />
+                      <stop stopColor="#f77737" offset=".15" />
+                      <stop stopColor="#d6249f" offset=".4" />
+                      <stop stopColor="#8a3ab9" offset=".7" />
+                      <stop stopColor="#4c68d7" offset=".95" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    fill="url(#instagram-gradient)"
+                    d="M26,3H6C4.346,3,3,4.346,3,6V26c0,1.654,1.346,3,3,3H26c1.654,0,3-1.346,3-3V6C29,4.346,27.654,3,26,3ZM20,16a4,4,0,1,1-4-4A4,4,0,0,1,20,16Z"
+                  />
+                  <path
+                    fill="#fff"
+                    d="M16,10c-3.309,0-6,2.691-6,6s2.691,6,6,6,6-2.691,6-6S19.309,10,16,10Zm0,10c-2.206,0-4-1.794-4-4s1.794-4,4-4,4,1.794,4,4S18.206,20,16,20Z"
+                  />
+                  <circle fill="#fff" cx="22.5" cy="9.5" r="1.5" />
+                </svg>
                 <span className="sr-only">{link.name}</span>
               </a>
             ))}
