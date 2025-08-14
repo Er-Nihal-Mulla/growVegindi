@@ -1,9 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true, // make sure the app/ folder is used
+  reactStrictMode: true,
+  swcMinify: true,
+  images: {
+    unoptimized: true, // Avoids image optimization issues on Vercel
   },
-  output: 'standalone', // makes Vercel build standalone output
 };
 
 export default nextConfig;
