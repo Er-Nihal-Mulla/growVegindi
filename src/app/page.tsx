@@ -53,8 +53,8 @@ export default function HomePage() {
         <section className="relative w-full h-[60vh] md:h-[70vh] flex items-center justify-center text-center text-white">
           <Image
             src={heroImage}
-            alt="A smiling Indian farmer holding fresh produce in a field"
-            data-ai-hint="smiling farmer produce"
+            alt="A smiling Indian farmer holding fresh Product in a field"
+            data-ai-hint="smiling farmer Product"
             fill
             className="absolute z-0 object-cover"
           />

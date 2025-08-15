@@ -88,18 +88,18 @@ type ContentStructure = {
 export const content: Record<Language, ContentStructure> = {
   en: {
     hero: {
-      title: 'Sell Your Farm Fresh Produce Directly to Buyers',
+      title: 'Sell Your Farm Fresh Product Directly to Buyers',
       subtitle: 'Join Grow Vejindi and connect directly with local customers. Skip the middlemen, set your own prices, and grow your farm income.',
     },
     features: [
-      { title: "Sell Directly to Buyers", description: "Cut out the middleman and connect with customers in your area who are looking for fresh, local produce." },
+      { title: "Sell Directly to Buyers", description: "Cut out the middleman and connect with customers in your area who are looking for fresh, local Product." },
       { title: "Set Your Own Prices", description: "You have the freedom to set fair prices for your products, ensuring you get the compensation you deserve." },
       { title: "Grow Your Farm Income", description: "By reaching a wider customer base and controlling your prices, you can significantly increase your earnings." }
     ],
     whatWeDo: {
       title: 'How It Works',
       steps: [
-        'Farmers list their fresh produce directly on our platform.',
+        'Farmers list their fresh Product directly on our platform.',
         'You browse, select, and purchase the best local products online.',
         'We ensure fast and direct delivery from the farm to your home.',
       ],
@@ -130,7 +130,7 @@ export const content: Record<Language, ContentStructure> = {
     },
     cta: {
         title: "Ready to Get Started?",
-        subtitle: "Join our community of farmers and buyers today. Experience the future of fresh produce."
+        subtitle: "Join our community of farmers and buyers today. Experience the future of fresh Product."
     },
     buttons: {
       shopNow: 'Shop Now',
@@ -167,7 +167,7 @@ export const content: Record<Language, ContentStructure> = {
         title: 'Create an Account',
         description: 'Fill in your details to get started.',
         farmerTitle: 'Farmer Sign Up',
-        farmerDescription: 'Create an account to start selling your produce.',
+        farmerDescription: 'Create an account to start selling your Product.',
         nameLabel: 'Full Name',
         farmerNameLabel: 'Farm Name / Your Name',
         mobileLabel: 'Mobile Number',
@@ -181,18 +181,18 @@ export const content: Record<Language, ContentStructure> = {
   },
   hi: {
     hero: {
-      title: 'अपनी खेत की ताजी उपज सीधे खरीदारों को बेचें',
+      title: 'अपनी खेत की ताजी उत्पाद सीधे खरीदारों को बेचें',
       subtitle: 'स्थानीय खरीदारों से सीधे जुड़ें और अपनी आय बढ़ाएं।',
     },
     features: [
-        { title: "सीधे खरीदारों को बेचें", description: "बिचौलिए को हटा दें और अपने क्षेत्र में उन ग्राहकों से जुड़ें जो ताजा, स्थानीय उपज की तलाश में हैं।" },
+        { title: "सीधे खरीदारों को बेचें", description: "बिचौलिए को हटा दें और अपने क्षेत्र में उन ग्राहकों से जुड़ें जो ताजा, स्थानीय उत्पाद की तलाश में हैं।" },
         { title: "अपनी कीमतें खुद निर्धारित करें", description: "आपको अपने उत्पादों के लिए उचित मूल्य निर्धारित करने की स्वतंत्रता है, यह सुनिश्चित करते हुए कि आपको वह मुआवजा मिले जिसके आप हकदार हैं।" },
         { title: "अपनी कृषि आय बढ़ाएँ", description: "एक विस्तृत ग्राहक आधार तक पहुँचकर और अपनी कीमतों को नियंत्रित करके, आप अपनी कमाई में उल्लेखनीय वृद्धि कर सकते हैं।" }
     ],
     whatWeDo: {
       title: 'यह कैसे काम करता है',
       steps: [
-        'किसान सीधे हमारे प्लेटफॉर्म पर अपनी ताज़ा उपज सूचीबद्ध करते हैं।',
+        'किसान सीधे हमारे प्लेटफॉर्म पर अपनी ताज़ा उत्पाद सूचीबद्ध करते हैं।',
         'आप ऑनलाइन सर्वोत्तम स्थानीय उत्पादों को ब्राउज़ करते, चुनते और खरीदते हैं।',
         'हम खेत से आपके घर तक तेज़ और सीधी डिलीवरी सुनिश्चित करते हैं।',
       ],
@@ -223,7 +223,7 @@ export const content: Record<Language, ContentStructure> = {
     },
     cta: {
         title: "शुरू करने के लिए तैयार हैं?",
-        subtitle: "आज ही हमारे किसानों और खरीदारों के समुदाय में शामिल हों। ताज़ा उपज के भविष्य का अनुभव करें।"
+        subtitle: "आज ही हमारे किसानों और खरीदारों के समुदाय में शामिल हों। ताज़ा उत्पाद के भविष्य का अनुभव करें।"
     },
     buttons: {
       shopNow: 'अभी खरीदें',
@@ -260,7 +260,7 @@ export const content: Record<Language, ContentStructure> = {
         title: 'खाता बनाएं',
         description: 'आरंभ करने के लिए अपना विवरण भरें।',
         farmerTitle: 'किसान साइन अप',
-        farmerDescription: 'अपनी उपज बेचना शुरू करने के लिए एक खाता बनाएं।',
+        farmerDescription: 'अपनी उत्पाद बेचना शुरू करने के लिए एक खाता बनाएं।',
         nameLabel: 'पूरा नाम',
         farmerNameLabel: 'खेत का नाम / आपका नाम',
         mobileLabel: 'मोबाइल नंबर',

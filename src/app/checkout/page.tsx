@@ -52,7 +52,7 @@ export default function CheckoutPage() {
     setTimeout(() => {
       toast({
         title: 'Order Placed!',
-        description: 'Thank you for your purchase. Your fresh produce is on its way!',
+        description: 'Thank you for your purchase. Your fresh Product is on its way!',
       });
       clearCart();
       router.push('/');
