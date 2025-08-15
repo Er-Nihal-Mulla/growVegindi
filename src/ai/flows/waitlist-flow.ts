@@ -1,15 +1,15 @@
 // src/ai/flows/waitlist-flow.ts
-import { db } from "@/services/firebase";
-import { collection, addDoc } from "firebase/firestore";
+import db from "@/services/firebase-admin";
 
-export const addToWaitlist = async (data: { name: string; email: string; mobile: string }) => {
+export const addToWaitlist = async (data: { name: string; email?: string | null; mobile: string }) => {
   try {
-    await addDoc(collection(db, "waitlist"), {
+    const docRef = await db.collection("waitlist").add({
       fullName: data.name,
-      emailId: data.email,
+      emailId: data.email || null,
       mobileNo: data.mobile,
       createdAt: new Date(),
     });
+    console.log("Document written with ID: ", docRef.id);
     return { success: true };
   } catch (error) {
     console.error("Error adding to waitlist:", error);

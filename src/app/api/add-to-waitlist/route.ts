@@ -1,3 +1,4 @@
+
 import db from "@/services/firebase-admin";
 import { NextResponse } from 'next/server';
 
@@ -5,14 +6,14 @@ export async function POST(req: Request) {
   try {
     const { name, email, mobile } = await req.json();
 
-    if (!name || !email || !mobile) {
+    if (!name || !mobile) {
       return NextResponse.json({ success: false, error: 'Missing required fields' }, { status: 400 });
     }
 
     await db.collection('waitlist').add({
-      name,
-      email,
-      mobile,
+      fullName: name,
+      emailId: email || null,
+      mobileNo: mobile,
       createdAt: new Date(),
     });
 

@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useContext } from 'react';
@@ -8,13 +9,12 @@ import { CheckCircle, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
-import { addToWaitlist } from '@/ai/flows/waitlist-flow';
 import { AppContext } from '@/context/app-context';
 import { content as allContent } from '@/lib/content';
 
 const waitlistSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
-  email: z.string().email('Please enter a valid email address'),
+  email: z.string().email('Please enter a valid email address').optional().or(z.literal('')),
   mobile: z.string().regex(/^[0-9]{10}$/, 'Please enter a valid 10-digit mobile number'),
 });
 
@@ -32,14 +32,23 @@ function NotifyForm() {
 
   const onWaitlistSubmit: SubmitHandler<WaitlistInput> = async (data) => {
     try {
-      const result = await addToWaitlist(data);
+      const response = await fetch('/api/add-to-waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
       if (result.success) {
         setIsSubmitted(true);
         reset();
       } else {
         toast({
           title: 'Error',
-          description: 'Something went wrong. Please try again.',
+          description: result.error || 'Something went wrong. Please try again.',
           variant: 'destructive',
         });
       }
