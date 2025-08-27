@@ -54,7 +54,7 @@ export default function HomePage() {
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative w-full h-[60vh] md:h-[70vh] flex items-center justify-center text-center text-white">
+        <section className="relative w-full h-[70vh] md:h-[70vh] flex items-center justify-center text-center text-white">
           <Image
             src={heroImage}
             alt="A smiling Indian farmer holding fresh Product in a field"

@@ -88,7 +88,7 @@ type ContentStructure = {
 export const content: Record<Language, ContentStructure> = {
   en: {
     hero: {
-      title: 'Sell Your Farm Fresh Product Directly to Buyers',
+      title: 'It is now our responsibility to deliver pure and fresh vegetables, fruits and vegetables directly to the "customer" from the "farmer king" dam',
       subtitle: 'Join Grow Vejindi and connect directly with local customers. Skip the middlemen, set your own prices, and grow your farm income.',
     },
     features: [
@@ -181,7 +181,7 @@ export const content: Record<Language, ContentStructure> = {
   },
   hi: {
     hero: {
-      title: 'अपनी खेत की ताजी उत्पाद सीधे खरीदारों को बेचें',
+      title: 'अब हमारी जिम्मेदारी है कि हम "किसान राजा" के बांध से शुद्ध और ताजा सब्जियां, फल और सब्जियाँ सीधे "ग्राहक" तक पहुंचाएं...',
       subtitle: 'स्थानीय खरीदारों से सीधे जुड़ें और अपनी आय बढ़ाएं।',
     },
     features: [
@@ -274,7 +274,7 @@ export const content: Record<Language, ContentStructure> = {
   },
   mr: {
     hero: {
-      title: 'तुमची शेतातील ताजी उत्पादने थेट खरेदीदारांना विका',
+      title: '"शेतकरीराजाच्या" बांधावरून शुद्ध व ताजा भाजीपाला, फळभाज्या व फळे थेट "ग्राहकापर्यंत" पोहचवण्याची जबाबदारी आत्ता आमची...',
       subtitle: 'ग्रो वेजिंडीमध्ये सामील व्हा आणि थेट स्थानिक ग्राहकांशी संपर्क साधा. मध्यस्थांना वगळा, आपल्या उत्पादनांचा दर स्वतः ठरवा आणि आपले शेती उत्पन्न वाढवा.',
     },
     features: [
