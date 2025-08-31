@@ -13,8 +13,8 @@ import Autoplay from "embla-carousel-autoplay"
 import heroImage from '../assets/mobileApp.png'
 import ourVisionImg from '../assets/ourVisionImg.png'
 import visionSlide1 from '../assets/visionSlide1.png'
-import clickImg from '../assets/clickImg.jpg'
-import clickImage from '../assets/clickImage.jpg'
+import clickImg from '../assets/clickImg.jpeg'
+import clickImage from '../assets/clickImage.png'
 import NotifyForm from '@/components/NotifyForm';
 
 
@@ -40,8 +40,8 @@ export default function HomePage() {
   ]
 
   const visionImages = [
-    { src: clickImage, alt: 'Illustration of a bridge connecting farms to a city', hint: 'farm city' },
     { src: visionSlide1, alt: 'A happy family receiving a box of fresh vegetables', hint: 'happy family' },
+    { src: clickImage, alt: 'Illustration of a bridge connecting farms to a city', hint: 'farm city' },
     { src: ourVisionImg, alt: 'A farmer using a tablet to manage their crops', hint: 'farmer technology' },
     { src: clickImg, alt: 'A farmer using a tablet to manage their crops', hint: 'farmer clicking' },
   ];

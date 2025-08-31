@@ -39,7 +39,7 @@ type AppContextType = {
 };
 
 export const AppContext = createContext<AppContextType>({
-  language: 'en',
+  language: 'mr',
   setLanguage: () => {},
   isAuthenticated: false,
   user: null,
@@ -61,7 +61,7 @@ export const AppContext = createContext<AppContextType>({
 });
 
 export function AppProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>('mr');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const [cart, setCart] = useState<CartItem[]>([]);
@@ -72,7 +72,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const storedLang = localStorage.getItem('language') as Language;
-    if (storedLang) setLanguage(storedLang);
+    if (storedLang) {
+      setLanguage(storedLang);
+    } else {
+        localStorage.setItem('language', 'mr');
+    }
 
     const storedUser = localStorage.getItem('user');
     if (storedUser) {

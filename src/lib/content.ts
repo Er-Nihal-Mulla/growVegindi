@@ -88,7 +88,7 @@ type ContentStructure = {
 export const content: Record<Language, ContentStructure> = {
   en: {
     hero: {
-      title: 'It is now our responsibility to deliver pure and fresh vegetables, fruits and vegetables directly to the "customer" from the "farmer king" dam',
+      title: 'It is now our responsibility to deliver pure and fresh vegetables, fruits and vegetables directly to the "customer" from the "farmer king" farmland',
       subtitle: 'Join Grow Vejindi and connect directly with local customers. Skip the middlemen, set your own prices, and grow your farm income.',
     },
     features: [
@@ -212,7 +212,7 @@ export const content: Record<Language, ContentStructure> = {
     },
     notify: {
         title: "हम जल्द ही लॉन्च कर रहे हैं!",
-        subtitle: "जब हम लाइव हों तो सबसे पहले जानें। विशेष अपडेट के लिए हमारी प्रतीक्षा सूची में शामिल हों।",
+        subtitle: "हम जल्द ही आ रहे हैं! सबसे पहले जानने के लिए हमारी प्रतीक्षा सूची में शामिल हों।",
         namePlaceholder: "आपका नाम",
         emailPlaceholder: "आपका ईमेल पता",
         mobilePlaceholder: "आपका मोबाइल नंबर",
@@ -301,11 +301,11 @@ export const content: Record<Language, ContentStructure> = {
     },
     ourVision: {
       title: 'आमचे ध्येय',
-      text: 'भारतातील कष्टकरी शेतकरी आणि ग्राहक यांच्यात एक मजबूत नातं जोडणं, सर्वांसाठी पारदर्शक, न्याय्य आणि शाश्वत परिसंस्था निर्माण करणे हे आमचे ध्येय आहे.',
+      text: 'भारतातील कष्टकरी शेतकरी आणि ग्राहक यांच्यात एक मजबूत नातं जोडणं, सर्वांसाठी पारदर्शक आणि शाश्वत परिसंस्था निर्माण करणे हे आमचे ध्येय आहे',
     },
     notify: {
         title: "आम्ही लवकरच लॉन्च करत आहोत!",
-        subtitle: "आम्ही थेट झाल्यावर सर्वात आधी जाणून घ्या. विशेष अद्यतनांसाठी आमच्या प्रतीक्षा यादीमध्ये सामील व्हा.",
+        subtitle: "आम्ही लवकरच येत आहोत! सर्वात आधी जाणून घेण्यासाठी आमच्या वेटलिस्टमध्ये नाव नोंदवा.",
         namePlaceholder: "तुमचे नाव",
         emailPlaceholder: "तुमचा ईमेल पत्ता",
         mobilePlaceholder: "तुमचा मोबाईल नंबर",
