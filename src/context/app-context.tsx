@@ -76,6 +76,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     if (storedLang && ['en', 'hi', 'mr'].includes(storedLang)) {
       setLanguage(storedLang);
     } else {
+      // If no language is stored, default to Marathi
       setLanguage('mr');
       localStorage.setItem('language', 'mr');
     }
