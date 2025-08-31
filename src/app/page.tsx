@@ -48,6 +48,7 @@ export default function HomePage() {
   
   const socialLinks = [
     { name: 'Instagram', url: 'https://www.instagram.com/grow_vejindi?igsh=bjI0OGptZjVoeHV5&utm_source=qr' },
+    { name: 'WhatsApp', url: 'https://wa.me/919876543210' }, // TODO: Replace with your WhatsApp number
   ]
 
   return (
@@ -186,38 +187,49 @@ export default function HomePage() {
           <div className="flex justify-center gap-6 mb-4">
             {socialLinks.map(link => (
               <a key={link.name} href={link.url} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:opacity-80 transition-opacity">
-                <svg
-                  className="w-6 h-6"
-                  viewBox="0 0 32 32"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                >
-                  <defs>
-                    <linearGradient
-                      id="instagram-gradient"
-                      x1="28.16"
-                      x2="3.84"
-                      y1="3.84"
-                      y2="28.16"
-                      gradientUnits="userSpaceOnUse"
-                    >
-                      <stop stopColor="#fdc16d" offset="0" />
-                      <stop stopColor="#f77737" offset=".15" />
-                      <stop stopColor="#d6249f" offset=".4" />
-                      <stop stopColor="#8a3ab9" offset=".7" />
-                      <stop stopColor="#4c68d7" offset=".95" />
-                    </linearGradient>
-                  </defs>
-                  <path
-                    fill="url(#instagram-gradient)"
-                    d="M26,3H6C4.346,3,3,4.346,3,6V26c0,1.654,1.346,3,3,3H26c1.654,0,3-1.346,3-3V6C29,4.346,27.654,3,26,3ZM20,16a4,4,0,1,1-4-4A4,4,0,0,1,20,16Z"
-                  />
-                  <path
-                    fill="#fff"
-                    d="M16,10c-3.309,0-6,2.691-6,6s2.691,6,6,6,6-2.691,6-6S19.309,10,16,10Zm0,10c-2.206,0-4-1.794-4-4s1.794-4,4-4,4,1.794,4,4S18.206,20,16,20Z"
-                  />
-                  <circle fill="#fff" cx="22.5" cy="9.5" r="1.5" />
-                </svg>
+                {link.name === 'Instagram' ? (
+                   <svg
+                    className="w-6 h-6"
+                    viewBox="0 0 32 32"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                  >
+                    <defs>
+                      <linearGradient
+                        id="instagram-gradient"
+                        x1="28.16"
+                        x2="3.84"
+                        y1="3.84"
+                        y2="28.16"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop stopColor="#fdc16d" offset="0" />
+                        <stop stopColor="#f77737" offset=".15" />
+                        <stop stopColor="#d6249f" offset=".4" />
+                        <stop stopColor="#8a3ab9" offset=".7" />
+                        <stop stopColor="#4c68d7" offset=".95" />
+                      </linearGradient>
+                    </defs>
+                    <path
+                      fill="url(#instagram-gradient)"
+                      d="M26,3H6C4.346,3,3,4.346,3,6V26c0,1.654,1.346,3,3,3H26c1.654,0,3-1.346,3-3V6C29,4.346,27.654,3,26,3ZM20,16a4,4,0,1,1-4-4A4,4,0,0,1,20,16Z"
+                    />
+                    <path
+                      fill="#fff"
+                      d="M16,10c-3.309,0-6,2.691-6,6s2.691,6,6,6,6-2.691,6-6S19.309,10,16,10Zm0,10c-2.206,0-4-1.794-4-4s1.794-4,4-4,4,1.794,4,4S18.206,20,16,20Z"
+                    />
+                    <circle fill="#fff" cx="22.5" cy="9.5" r="1.5" />
+                  </svg>
+                ) : (
+                  <svg 
+                    className="w-6 h-6" 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    viewBox="0 0 448 512"
+                    fill="currentColor"
+                  >
+                    <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.8 0-67.6-9.5-97.8-26.7l-7-4.2-72.1 18.9L46.4 357.5l-4.5-7.3c-18.8-30.6-28.6-66.3-28.6-102.9 0-110.4 89.9-200 200.2-200 55.1 0 105.9 21.5 143.4 59.5 37.5 37.5 58.6 88.3 58.6 142.4 0 110.4-89.9 200-200.1 200zm107.7-160.2c-3.7-1.9-22-10.8-25.4-12-3.4-1.2-5.8-1.9-8.3 1.9-2.5 3.7-9.6 12-11.8 14.4-2.2 2.4-4.4 2.7-8.1 1-3.7-1.7-15.6-5.8-29.8-18.4-11-9.9-18.5-22.1-20.7-25.8-2.2-3.7-.2-5.8.6-7.6 1.7-1.8 3.7-3 5.5-4.6 1.8-1.5 2.4-2.5 3.7-4.2 1.2-1.7 1-3.2 0-5.1-1-1.9-8.3-20-11.3-27.4-3.1-7.4-6.2-6.3-8.5-6.3-2.3 0-5 .1-7.6 .1-2.6 0-6.8 1-10.3 4.8-3.5 3.9-13.4 13.1-13.4 32.1s13.7 37.1 15.6 39.6c1.9 2.5 26.9 41.2 65.4 58 9.6 4.2 17.1 6.7 22.7 8.6 8.3 2.8 15.9 2.3 19.8-.5 4.3-3.1 13.4-13.7 15.3-16.1 1.9-2.4 1.9-4.5 1.3-6.2-.6-1.7-2.4-2.8-5.1-4.7z" />
+                  </svg>
+                )}
                 <span className="sr-only">{link.name}</span>
               </a>
             ))}
