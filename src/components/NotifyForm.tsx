@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState, useContext } from 'react';
+import { useState, useContext, useMemo } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -27,10 +27,12 @@ function NotifyForm() {
   const { language } = useContext(AppContext);
   const content = allContent[language].notify;
   
-  const waitlistSchema = getWaitlistSchema(content);
+  const waitlistSchema = useMemo(() => getWaitlistSchema(content), [content]);
 
   const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<WaitlistInput>({
     resolver: zodResolver(waitlistSchema),
+    // Re-validate on language change
+    context: { language },
   });
 
   const onWaitlistSubmit: SubmitHandler<WaitlistInput> = async (data) => {
