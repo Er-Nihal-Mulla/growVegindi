@@ -12,19 +12,22 @@ import { useToast } from '@/hooks/use-toast';
 import { AppContext } from '@/context/app-context';
 import { content as allContent } from '@/lib/content';
 
-const waitlistSchema = z.object({
-  name: z.string().min(2, 'Name must be at least 2 characters'),
-  email: z.string().email('Please enter a valid email address').optional().or(z.literal('')),
-  mobile: z.string().regex(/^[0-9]{10}$/, 'Please enter a valid 10-digit mobile number'),
+type WaitlistInput = z.infer<ReturnType<typeof getWaitlistSchema>>;
+
+const getWaitlistSchema = (content: (typeof allContent)['en']['notify']) => z.object({
+  name: z.string().min(2, content.nameError),
+  email: z.string().email(content.emailError).optional().or(z.literal('')),
+  mobile: z.string().regex(/^[0-9]{10}$/, content.mobileError),
 });
 
-type WaitlistInput = z.infer<typeof waitlistSchema>;
 
 function NotifyForm() {
   const { toast } = useToast();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { language } = useContext(AppContext);
   const content = allContent[language].notify;
+  
+  const waitlistSchema = getWaitlistSchema(content);
 
   const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<WaitlistInput>({
     resolver: zodResolver(waitlistSchema),

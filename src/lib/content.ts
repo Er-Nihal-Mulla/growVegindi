@@ -32,6 +32,9 @@ type ContentStructure = {
     submittingText: string;
     successTitle: string;
     successSubtitle: string;
+    nameError: string;
+    emailError: string;
+    mobileError: string;
   },
   cta: {
     title: string;
@@ -126,7 +129,10 @@ export const content: Record<Language, ContentStructure> = {
         buttonText: "Notify Me",
         submittingText: "Submitting...",
         successTitle: "Thank you for your interest!",
-        successSubtitle: "You're on the list. We'll notify you at launch."
+        successSubtitle: "You're on the list. We'll notify you at launch.",
+        nameError: "Name must be at least 2 characters",
+        emailError: "Please enter a valid email address",
+        mobileError: "Please enter a valid 10-digit mobile number",
     },
     cta: {
         title: "Ready to Get Started?",
@@ -219,7 +225,10 @@ export const content: Record<Language, ContentStructure> = {
         buttonText: "मुझे सूचित करें",
         submittingText: "सबमिट हो रहा है...",
         successTitle: "आपकी रुचि के लिए धन्यवाद!",
-        successSubtitle: "आप सूची में हैं। हम आपको लॉन्च के समय सूचित करेंगे।"
+        successSubtitle: "आप सूची में हैं। हम आपको लॉन्च के समय सूचित करेंगे।",
+        nameError: "नाम कम से कम 2 अक्षर का होना चाहिए",
+        emailError: "कृपया एक वैध ईमेल पता दर्ज करें",
+        mobileError: "कृपया एक वैध 10 अंकों का मोबाइल नंबर दर्ज करें",
     },
     cta: {
         title: "शुरू करने के लिए तैयार हैं?",
@@ -275,23 +284,23 @@ export const content: Record<Language, ContentStructure> = {
   mr: {
     hero: {
       title: '"शेतकरीराजाच्या" बांधावरून शुद्ध व ताजा भाजीपाला, फळभाज्या व फळे थेट "ग्राहकापर्यंत" पोहचवण्याची जबाबदारी आत्ता आमची...',
-      subtitle: 'ग्रो वेजिंडीमध्ये सामील व्हा आणि थेट स्थानिक ग्राहकांशी संपर्क साधा. मध्यस्थांना वगळा, आपल्या उत्पादनांचा दर स्वतः ठरवा आणि आपले शेती उत्पन्न वाढवा.',
+      subtitle: 'ग्रो वेजिंडी सामील व्हा आणि थेट स्थानिक ग्राहकांशी संपर्क साधा. मध्यस्थांना वगळा, आपल्या उत्पादनांचा दर ठरवा आणि आपले शेती उत्पन्न वाढवा.',
     },
     features: [
         { title: "थेट खरेदीदारांना विका", description: "मध्यस्थांना वगळा आणि आपल्या परिसरातील ताज्या, स्थानिक उत्पादनांच्या शोधात असलेल्या ग्राहकांशी संपर्क साधा." },
-        { title: "आपल्या स्वतःच्या किंमती ठरवा", description: "तुम्हाला तुमच्या उत्पादनांसाठी योग्य किंमती ठरवण्याचे स्वातंत्र्य आहे, ज्यामुळे तुम्हाला योग्य मोबदला मिळेल याची खात्री होते." },
+        { title: "आपल्या उत्पादनांच्या किंमती ठरवा", description: "तुम्हाला तुमच्या उत्पादनांसाठी योग्य किंमती ठरवण्याचे स्वातंत्र्य आहे, ज्यामुळे तुम्हाला योग्य मोबदला मिळेल याची खात्री होते." },
         { title: "तुमचे शेती उत्पन्न वाढवा", description: "विस्तृत ग्राहक वर्गापर्यंत पोहोचून आणि तुमच्या किंमतींवर नियंत्रण ठेवून, तुम्ही तुमच्या कमाईत लक्षणीय वाढ करू शकता." }
     ],
     whatWeDo: {
-      title: 'हे कसे कार्य करते',
+      title: 'ग्रो वेजिंडी कसे कार्य करते ?',
       steps: [
-        'शेतकरी थेट आमच्या प्लॅटफॉर्मवर त्यांची ताजी उत्पादने सूचीबद्ध करतात.',
-        'तुम्ही ऑनलाइन सर्वोत्तम स्थानिक उत्पादने ब्राउझ करता, निवडता आणि खरेदी करता.',
+        'शेतकरी थेट आमच्या प्लॅटफॉर्मवर त्यांची ताजी उत्पादने सुचीबद्ध करतात.',
+        'तुम्ही ऑनलाइन सर्वोत्तम उत्पादने शोधुन खरेदी करू शकता.',
         'आम्ही शेतापासून तुमच्या घरापर्यंत जलद आणि थेट वितरणाची खात्री करतो.',
       ],
     },
     whyChooseUs: {
-      title: 'ग्रो वेजिंडी का निवडावे?',
+      title: 'ग्रो वेजिंडी का निवडावे ?',
       points: [
         'थेट शेतातून',
         'मध्यस्थ नाही',
@@ -312,7 +321,10 @@ export const content: Record<Language, ContentStructure> = {
         buttonText: "मला सूचित करा",
         submittingText: "सबमिट करत आहे...",
         successTitle: "तुमच्या आवडीबद्दल धन्यवाद!",
-        successSubtitle: "तुम्ही यादीत आहात. आम्ही तुम्हाला लॉन्चच्या वेळी सूचित करू."
+        successSubtitle: "तुम्ही यादीत आहात. आम्ही तुम्हाला लॉन्चच्या वेळी सूचित करू.",
+        nameError: "नाव किमान २ अक्षरे असावे",
+        emailError: "कृपया वैध ईमेल पत्ता प्रविष्ट करा",
+        mobileError: "कृपया वैध १०-अंकी मोबाईल नंबर टाका",
     },
      cta: {
         title: "सुरुवात करण्यास तयार आहात?",
