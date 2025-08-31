@@ -4,7 +4,7 @@
 import { useContext, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Leaf, Handshake, IndianRupee, Award, Rocket, LineChart, Target, DollarSign } from 'lucide-react';
+import { Leaf, Handshake, IndianRupee, Award, Rocket, LineChart, Target } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { AppContext } from '@/context/app-context';
 import { content as allContent } from '@/lib/content';
@@ -35,7 +35,7 @@ export default function HomePage() {
   
   const features = [
     { icon: Target, title: content.features[0].title, description: content.features[0].description },
-    { icon: DollarSign, title: content.features[1].title, description: content.features[1].description },
+    { icon: IndianRupee, title: content.features[1].title, description: content.features[1].description },
     { icon: LineChart, title: content.features[2].title, description: content.features[2].description }
   ]
 

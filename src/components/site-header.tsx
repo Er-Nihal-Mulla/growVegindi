@@ -104,7 +104,7 @@ export function SiteHeader() {
                   <DropdownMenuTrigger asChild>
                     <Button variant="ghost" size="icon" className="text-foreground hover:bg-accent/10 hover:text-foreground">
                       <Globe className="h-5 w-5" />
-                      <span className="sr-only">Change language</span>
+                      <span className="sr-only">Select language</span>
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
@@ -144,7 +144,7 @@ export function SiteHeader() {
                             <DropdownMenuTrigger asChild>
                                <Button variant="outline" className="w-full justify-start text-lg font-medium">
                                 <Globe className="mr-2 h-5 w-5" />
-                                <span>Change language</span>
+                                <span>Select language</span>
                                </Button>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent align="end" className="w-56">
