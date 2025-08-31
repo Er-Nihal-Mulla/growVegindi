@@ -71,11 +71,13 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
 
   useEffect(() => {
+    // Set language from localStorage or default to 'mr'
     const storedLang = localStorage.getItem('language') as Language;
-    if (storedLang) {
+    if (storedLang && ['en', 'hi', 'mr'].includes(storedLang)) {
       setLanguage(storedLang);
     } else {
-        localStorage.setItem('language', 'mr');
+      setLanguage('mr');
+      localStorage.setItem('language', 'mr');
     }
 
     const storedUser = localStorage.getItem('user');
