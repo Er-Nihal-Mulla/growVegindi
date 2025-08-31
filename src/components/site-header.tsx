@@ -24,9 +24,9 @@ export function SiteHeader() {
   const { language, setLanguage, isAuthenticated, user, signOut, cartCount, setIsLoading } = useContext(AppContext);
   const content = allContent[language];
   const languages: { code: 'en' | 'hi' | 'mr', name: string }[] = [
+    { code: 'mr', name: 'मराठी' },
     { code: 'en', name: 'English' },
     { code: 'hi', name: 'हिंदी' },
-    { code: 'mr', name: 'मराठी' },
   ];
 
   const handleSignOut = () => {
