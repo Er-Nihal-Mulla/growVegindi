@@ -111,7 +111,7 @@ function NotifyForm() {
               {errors.mobile && <p className="text-destructive text-left mt-1 text-sm">{errors.mobile.message}</p>}
             </div>
 
-            <Button type="submit" size="lg" variant="secondary" disabled={isSubmitting}>
+            <Button type="submit" size="lg" variant="secondary" loading={isSubmitting}>
               {isSubmitting ? content.submittingText : content.buttonText}
             </Button>
           </form>
