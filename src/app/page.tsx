@@ -13,8 +13,8 @@ import Autoplay from "embla-carousel-autoplay"
 import heroImage from '../assets/mobileApp.png'
 import ourVisionImg from '../assets/ourVisionImg.png'
 import visionSlide1 from '../assets/visionSlide1.png'
-import clickImg from '../assets/clickImg.jpg'
-import clickImage from '../assets/clickImage.jpg'
+import clickImg from '../assets/clickImg.jpeg'
+import clickImage from '../assets/clickImage.png'
 import NotifyForm from '@/components/NotifyForm';
 
 
@@ -40,14 +40,15 @@ export default function HomePage() {
   ]
 
   const visionImages = [
-    { src: clickImage, alt: 'Illustration of a bridge connecting farms to a city', hint: 'farm city' },
     { src: visionSlide1, alt: 'A happy family receiving a box of fresh vegetables', hint: 'happy family' },
+    { src: clickImage, alt: 'Illustration of a bridge connecting farms to a city', hint: 'farm city' },
     { src: ourVisionImg, alt: 'A farmer using a tablet to manage their crops', hint: 'farmer technology' },
     { src: clickImg, alt: 'A farmer using a tablet to manage their crops', hint: 'farmer clicking' },
   ];
   
   const socialLinks = [
     { name: 'Instagram', url: 'https://www.instagram.com/grow_vejindi?igsh=bjI0OGptZjVoeHV5&utm_source=qr' },
+    { name: 'WhatsApp', url: 'https://wa.me/9270357711' }, // TODO: Replace with your WhatsApp number
   ]
 
   return (
@@ -186,38 +187,70 @@ export default function HomePage() {
           <div className="flex justify-center gap-6 mb-4">
             {socialLinks.map(link => (
               <a key={link.name} href={link.url} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:opacity-80 transition-opacity">
-                <svg
-                  className="w-6 h-6"
-                  viewBox="0 0 32 32"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                >
-                  <defs>
-                    <linearGradient
-                      id="instagram-gradient"
-                      x1="28.16"
-                      x2="3.84"
-                      y1="3.84"
-                      y2="28.16"
-                      gradientUnits="userSpaceOnUse"
-                    >
-                      <stop stopColor="#fdc16d" offset="0" />
-                      <stop stopColor="#f77737" offset=".15" />
-                      <stop stopColor="#d6249f" offset=".4" />
-                      <stop stopColor="#8a3ab9" offset=".7" />
-                      <stop stopColor="#4c68d7" offset=".95" />
-                    </linearGradient>
-                  </defs>
-                  <path
-                    fill="url(#instagram-gradient)"
-                    d="M26,3H6C4.346,3,3,4.346,3,6V26c0,1.654,1.346,3,3,3H26c1.654,0,3-1.346,3-3V6C29,4.346,27.654,3,26,3ZM20,16a4,4,0,1,1-4-4A4,4,0,0,1,20,16Z"
-                  />
-                  <path
-                    fill="#fff"
-                    d="M16,10c-3.309,0-6,2.691-6,6s2.691,6,6,6,6-2.691,6-6S19.309,10,16,10Zm0,10c-2.206,0-4-1.794-4-4s1.794-4,4-4,4,1.794,4,4S18.206,20,16,20Z"
-                  />
-                  <circle fill="#fff" cx="22.5" cy="9.5" r="1.5" />
-                </svg>
+                {link.name === 'Instagram' ? (
+                   <svg
+                    className="w-6 h-6"
+                    viewBox="0 0 32 32"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                  >
+                    <defs>
+                      <linearGradient
+                        id="instagram-gradient"
+                        x1="28.16"
+                        x2="3.84"
+                        y1="3.84"
+                        y2="28.16"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop stopColor="#fdc16d" offset="0" />
+                        <stop stopColor="#f77737" offset=".15" />
+                        <stop stopColor="#d6249f" offset=".4" />
+                        <stop stopColor="#8a3ab9" offset=".7" />
+                        <stop stopColor="#4c68d7" offset=".95" />
+                      </linearGradient>
+                    </defs>
+                    <path
+                      fill="url(#instagram-gradient)"
+                      d="M26,3H6C4.346,3,3,4.346,3,6V26c0,1.654,1.346,3,3,3H26c1.654,0,3-1.346,3-3V6C29,4.346,27.654,3,26,3ZM20,16a4,4,0,1,1-4-4A4,4,0,0,1,20,16Z"
+                    />
+                    <path
+                      fill="#fff"
+                      d="M16,10c-3.309,0-6,2.691-6,6s2.691,6,6,6,6-2.691,6-6S19.309,10,16,10Zm0,10c-2.206,0-4-1.794-4-4s1.794-4,4-4,4,1.794,4,4S18.206,20,16,20Z"
+                    />
+                    <circle fill="#fff" cx="22.5" cy="9.5" r="1.5" />
+                  </svg>
+                ) : (
+                  <svg
+  className="w-6 h-6"
+  viewBox="0 0 32 32"
+  xmlns="http://www.w3.org/2000/svg"
+  fill="currentColor"
+>
+  <defs>
+    <linearGradient
+      id="whatsapp-gradient"
+      x1="28.16"
+      x2="3.84"
+      y1="3.84"
+      y2="28.16"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="#5BD066" offset="0" />
+      <stop stop-color="#27B43E" offset="1" />
+    </linearGradient>
+  </defs>
+  <path
+    fill="url(#whatsapp-gradient)"
+    d="M16 2C8.268 2 2 8.268 2 16c0 2.61.662 5.064 1.818 7.095L2 30l6.91-1.818A13.93 13.93 0 0 0 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2z"
+  />
+  <path
+    fill="#fff"
+    d="M12.5 9.5c-.333-.67-.844-.61-1.36-.61-.922 0-2.36 1.104-2.36 3.16 0 1.685.742 3.528 3.243 6.287 2.414 2.662 5.585 4.039 8.218 3.992 2.633-.046 3.175-2.312 3.175-3.077 0-.339-.21-.508-.355-.554-.897-.431-2.552-1.233-2.929-1.384-.376-.151-.573.053-.695.164-.341.326-1.018 1.285-1.25 1.501-.232.216-.578.107-.721.025-.529-.212-1.964-.85-3.108-1.959-1.414-1.371-1.497-1.843-1.763-2.263-.213-.336-.057-.542.021-.632.305-.351.725-.894.914-1.164.189-.27.039-.68-.051-.935-.386-1.097-.714-2.015-.98-2.55z"
+  />
+</svg>
+
+                )}
                 <span className="sr-only">{link.name}</span>
               </a>
             ))}
