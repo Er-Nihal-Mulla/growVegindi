@@ -10,7 +10,7 @@ import { AppContext } from '@/context/app-context';
 import { content as allContent } from '@/lib/content';
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
 import Autoplay from "embla-carousel-autoplay"
-import heroImage from '../assets/mobileApp.png'
+import heroImage from '../assets/mobileApp1.png'
 import ourVisionImg from '../assets/ourVisionImg.png'
 import visionSlide1 from '../assets/visionSlide1.png'
 import clickImg from '../assets/clickImg.jpeg'
@@ -57,7 +57,7 @@ export default function HomePage() {
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative w-full h-[70vh] md:h-[70vh] flex items-center justify-center text-center text-white">
+        <section className="relative w-full h-[70vh] md:h-[120vh] flex items-center justify-center text-center text-white">
           <Image
             src={heroImage}
             alt="A smiling Indian farmer holding fresh Product in a field"
@@ -67,7 +67,7 @@ export default function HomePage() {
           />
           <div className="absolute inset-0 bg-black/50 z-10" />
           <div className="relative z-20 container mx-auto px-4">
-            <h1 className="text-4xl md:text-6xl font-headline font-bold mb-4 drop-shadow-lg">
+            <h1 className="text-4xl md:text-6xl font-headline font-bold mb-8 drop-shadow-lg">
               {content.hero.title}
             </h1>
             <p className="text-lg md:text-2xl max-w-3xl mx-auto drop-shadow-md">
