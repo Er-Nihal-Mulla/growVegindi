@@ -49,7 +49,7 @@ export default function HomePage() {
   const socialLinks = [
     { name: 'Instagram', url: 'https://www.instagram.com/grow_vejindi?igsh=bjI0OGptZjVoeHV5&utm_source=qr' },
     { name: 'WhatsApp', url: 'https://wa.me/9270357711' },
-    { name: 'Gmail', url: 'mailto:growvejindi@gmail.com' }
+    { name: 'Gmail', url: 'mailto:growvejindi77@gmail.com' }
   ]
 
   return (
@@ -251,13 +251,31 @@ export default function HomePage() {
                   </svg>
                 )}
                  {link.name === 'Gmail' && (
-                  <svg 
-                    className="w-6 h-6"
-                    viewBox="0 0 24 24" 
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor">
-                    <path d="M22 5.889v12.222c0 1.054-.856 1.912-1.912 1.912H3.912C2.856 20.023 2 19.165 2 18.111V5.889c0-.24.045-.471.127-.686l.004-.01 9.422 7.066a.75.75 0 0 0 .9 0l9.42-7.065.006.012A1.904 1.904 0 0 1 22 5.89ZM3.024 4.002l9.043 6.782L21.01 3.95a1.912 1.912 0 0 0-1.583-.95H4.57a1.912 1.912 0 0 0-1.546.952Z" />
-                  </svg>
+                  <svg
+                  className="w-6 h-6"
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                >
+                  <defs>
+                    <linearGradient
+                      id="gmail-gradient"
+                      x1="28.16"
+                      x2="3.84"
+                      y1="3.84"
+                      y2="28.16"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop stop-color="#EA4335" offset="0" />
+                      <stop stop-color="#C5221F" offset="1" />
+                    </linearGradient>
+                  </defs>
+                  <circle cx="16" cy="16" r="14" fill="url(#gmail-gradient)" />
+                  <path
+                    fill="#fff"
+                    d="M8 11v10h3V15l5 4 5-4v6h3V11l-8 6-8-6z"
+                  />
+                </svg>                                                             
                 )}
                 <span className="sr-only">{link.name}</span>
               </a>
