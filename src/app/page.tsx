@@ -50,7 +50,7 @@ export default function HomePage() {
     { name: 'Instagram', url: 'https://www.instagram.com/grow_vejindi?igsh=bjI0OGptZjVoeHV5&utm_source=qr' },
     { name: 'WhatsApp', url: 'https://wa.me/9270357711' },
     { name: 'Gmail', url: 'mailto:growvejindi77@gmail.com' },
-    { name: 'Facebook', url: 'https://facebook.com' }
+    { name: 'Facebook', url: 'https://www.facebook.com/profile.php?id=61580335581153&mibextid=ZbWKwL' }
   ]
 
   return (
@@ -280,30 +280,17 @@ export default function HomePage() {
                 )}
                 {link.name === 'Facebook' && (
                   <svg
-                    className="w-6 h-6"
-                    viewBox="0 0 32 32"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                  >
-                    <defs>
-                      <linearGradient
-                        id="facebook-gradient"
-                        x1="28.16"
-                        x2="3.84"
-                        y1="3.84"
-                        y2="28.16"
-                        gradientUnits="userSpaceOnUse"
-                      >
-                        <stop stop-color="#1877F2" offset="0" />
-                        <stop stop-color="#1877F2" offset="1" />
-                      </linearGradient>
-                    </defs>
-                    <circle cx="16" cy="16" r="14" fill="url(#facebook-gradient)" />
-                    <path
-                      fill="#fff"
-                      d="M22 16h-3.29v9.71h-4.01V16h-2.5v-3.71h2.5v-2.47c0-2.15 1.11-5.29 5.2-5.29H22v3.71h-2.07c-.49 0-.93.22-.93.97v2.07H22l-.71 3.71z"
-                    />
-                  </svg>
+                  className="w-6 h-6"
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                >
+                  <circle cx="16" cy="16" r="14" fill="#1877F2" />
+                  <path
+                    fill="#fff"
+                    d="M18.5 11H20V7h-2.5c-3.1 0-5 1.9-5 5v2H10v4h2.5v8h4v-8h2.8l.7-4H16.5v-1.5c0-.7.2-1.2 1.2-1.2z"
+                  />
+                </svg>                
                 )}
                 <span className="sr-only">{link.name}</span>
               </a>
