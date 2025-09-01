@@ -49,7 +49,8 @@ export default function HomePage() {
   const socialLinks = [
     { name: 'Instagram', url: 'https://www.instagram.com/grow_vejindi?igsh=bjI0OGptZjVoeHV5&utm_source=qr' },
     { name: 'WhatsApp', url: 'https://wa.me/9270357711' },
-    { name: 'Gmail', url: 'mailto:growvejindi77@gmail.com' }
+    { name: 'Gmail', url: 'mailto:growvejindi77@gmail.com' },
+    { name: 'Facebook', url: 'https://www.facebook.com/profile.php?id=61580335581153&mibextid=ZbWKwL' }
   ]
 
   return (
@@ -277,6 +278,20 @@ export default function HomePage() {
                   />
                 </svg>                                                             
                 )}
+                {link.name === 'Facebook' && (
+                  <svg
+                  className="w-6 h-6"
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                >
+                  <circle cx="16" cy="16" r="14" fill="#1877F2" />
+                  <path
+                    fill="#fff"
+                    d="M18.5 11H20V7h-2.5c-3.1 0-5 1.9-5 5v2H10v4h2.5v8h4v-8h2.8l.7-4H16.5v-1.5c0-.7.2-1.2 1.2-1.2z"
+                  />
+                </svg>                
+                )}
                 <span className="sr-only">{link.name}</span>
               </a>
             ))}
@@ -287,4 +302,3 @@ export default function HomePage() {
     </div>
   );
 }
-
