@@ -32,3 +32,9 @@ export type CartItem = {
   product: Product;
   quantity: number;
 };
+
+export type SocialLink = {
+  name: string;
+  url: string;
+  icon: React.ComponentType<{ className?: string }>;
+};

@@ -4,7 +4,7 @@
 import { useContext, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Leaf, Handshake, IndianRupee, Award, Rocket, LineChart, Target } from 'lucide-react';
+import { Leaf, Handshake, IndianRupee, Award, Rocket, LineChart, Target, UserPlus, LogIn } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { AppContext } from '@/context/app-context';
 import { content as allContent } from '@/lib/content';
@@ -16,10 +16,12 @@ import visionSlide1 from '../assets/visionSlide1.png'
 import clickImg from '../assets/clickImg.jpeg'
 import clickImage from '../assets/clickImage.png'
 import NotifyForm from '@/components/NotifyForm';
+import { Button } from '@/components/ui/button';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 
 
 export default function HomePage() {
-  const { language, setIsLoading } = useContext(AppContext);
+  const { language, setIsLoading, isAuthenticated } = useContext(AppContext);
   const content = allContent[language];
   
   useEffect(() => {
@@ -52,6 +54,10 @@ export default function HomePage() {
     { name: 'Gmail', url: 'mailto:growvejindi77@gmail.com' },
     { name: 'Facebook', url: 'https://www.facebook.com/profile.php?id=61580335581153&mibextid=ZbWKwL' }
   ]
+  
+  const handleNavClick = () => {
+    setIsLoading(true);
+  }
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -179,6 +185,41 @@ export default function HomePage() {
             <Rocket className="w-16 h-16 mx-auto mb-4" />
             <h2 className="text-3xl md:text-4xl font-headline font-bold mb-4">{content.cta.title}</h2>
             <p className="text-lg mb-8 max-w-2xl mx-auto">{content.cta.subtitle}</p>
+             {!isAuthenticated && (
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Link href="/sign-in" passHref>
+                  <Button size="lg" variant="default" onClick={handleNavClick}>
+                     <LogIn className="mr-2 h-5 w-5" />
+                    {content.auth.signIn}
+                  </Button>
+                </Link>
+                <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                    <Button size="lg" variant="outline" className="bg-background">
+                        <UserPlus className="mr-2 h-5 w-5" />
+                        {content.auth.signUp}
+                    </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="center" className="w-56">
+                    <DropdownMenuItem asChild>
+                        <Link href="/sign-up?role=farmer" onClick={handleNavClick}>
+                        {content.buttons.registerFarmer}
+                        </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                        <Link href="/sign-up?role=customer" onClick={handleNavClick}>
+                        Register as Customer
+                        </Link>
+                    </DropdownMenuItem>
+                    </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+            )}
+            {isAuthenticated && (
+                <Link href="/products" passHref>
+                    <Button size="lg" onClick={handleNavClick}>{content.buttons.browseProducts}</Button>
+                </Link>
+            )}
           </div>
         </section>
       </main>
